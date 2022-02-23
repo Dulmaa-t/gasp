@@ -124,13 +124,13 @@ export default function podcastCard() {
   return (
     <div>
       <HeaderMenu />
-        <section class="dark">
-          <div class="container py-4">
+        <section className="dark">
+          <div className="container py-4">
             {
               podcastCard.map(
                 (element, index) => {
                   return (
-                    <Card image={element.image} title={element.title} datetime={element.datetime} clock={element.clock} text={element.text} />
+                    <Card key={index} image={element.image} title={element.title} datetime={element.datetime} clock={element.clock} text={element.text} />
                   )
                 }
               )

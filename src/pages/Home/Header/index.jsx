@@ -38,7 +38,7 @@ export default function index() {
             {
               headerMenu.map(
                 (element, index) => {
-                  return <li>
+                  return <li key={index}>
                     <NavLink
                       to={element.href}
                       // onMouseOver={() => handleClick(element.title)}

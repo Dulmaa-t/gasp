@@ -636,5 +636,32 @@ col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col
   }
   .c-row{
     display: flex;
-    flex-wrap: wrap;
+  }
+
+  .c-container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  @media (min-width: 768px) {
+    .c-container {
+      width: 750px;
+    }
+  }
+  @media (min-width: 992px) {
+    .c-container {
+      width: 970px;
+    }
+  }
+  @media (min-width: 1200px) {
+    .c-container {
+      width: 1170px;
+    }
+  }
+  .c-container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
   }

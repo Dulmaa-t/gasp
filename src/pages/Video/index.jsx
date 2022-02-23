@@ -33,50 +33,50 @@ export default function video() {
   return (
     <div>
       <HeaderMenu />
-      <div class="video-menu">
-        <div class="container">
-          <div class="row nowrap" style={{ flexWrap:"nowrap" }}>
+      <div className="video-menu">
+        <div className="container">
+          <div className="row nowrap" style={{ flexWrap:"nowrap" }}>
             {
               video.map(
                 (element, index) => {
                   return (
-                    <Card image={element.image} title={element.title} text={element.text} />
+                    <Card key={index} image={element.image} title={element.title} text={element.text} />
                   )
                 }
               )
             }
           </div>
 
-          <div class="row">
+          <div className="row">
             {
               video.map(
                 (element, index) => {
                   return (
-                    <Card image={element.image} title={element.title} text={element.text} />
+                    <Card key={index} image={element.image} title={element.title} text={element.text} />
                   )
                 }
               )
             }
           </div>
 
-          <div class="row">
+          <div className="row">
             {
               video.map(
                 (element, index) => {
                   return (
-                    <Card image={element.image} title={element.title} text={element.text} />
+                    <Card key={index} image={element.image} title={element.title} text={element.text} />
                   )
                 }
               )
             }
           </div>
 
-          <div class="row">
+          <div className="row">
             {
               video.map(
                 (element, index) => {
                   return (
-                    <Card image={element.image} title={element.title} text={element.text} />
+                    <Card key={index} image={element.image} title={element.title} text={element.text} />
                   )
                 }
               )

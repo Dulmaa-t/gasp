@@ -7,8 +7,8 @@ export default function HeaderMenu() {
     return (
         <div>
             <Header />
-            <div class="header">
-                <img class="header-img" src="/static/image/1.jpg" alt="Card image cap" />
+            <div className="header">
+                <img className="header-img" src="/static/image/1.jpg" alt="Card image cap" />
             </div>
             <SubMenu />
         </div>

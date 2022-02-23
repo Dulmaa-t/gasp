@@ -2,16 +2,16 @@ import React from 'react'
 
 export default function footer(props) {
     return (
-        <div class="footer_menu-col">
-            <h3 class="footer-title"><b>{props.title}</b></h3>
-            <ul class="footer-nav">
+        <div className="footer_menu-col">
+            <h3 className="footer-title"><b>{props.title}</b></h3>
+            <ul className="footer-nav">
                 {
                     props.menus.map(
                         (element, index) =>
                         {
                             return (
-                                <li class="footer-nav-item">
-                                    <a class="footer-nav-link" href="#">
+                                <li className="footer-nav-item" key={index}>
+                                    <a className="footer-nav-link" href="#">
                                         <b>{element.subtitle}:&nbsp;</b>{element.text}
                                     </a>
                                 </li>

@@ -43,18 +43,18 @@ export default function index() {
   return (
     <footer>
       <div className='footer-mainbar row'>
-        <div class="footer-content">
-          <div class="footer-text">
+        <div className="footer-content">
+          <div className="footer-text">
             <a href="#">Gasp</a>
             <p>Your daily bread</p>
           </div>
         </div>
-        <div className='row'>
+        <div className='row' style={{ margin: "0 auto" }}>
         {
           footer.map(
             (element, index) => {
               return (
-                <Card title={element.title} menus={element.menus} />
+                <Card key={index} title={element.title} menus={element.menus} />
               )
             }
           )

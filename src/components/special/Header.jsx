@@ -29,11 +29,11 @@ export default function Header() {
   return (
       <nav>
           <ul>
-            <li><a href="" class="logo">Gasp</a></li>
+            <li><a href="" className="logo">Gasp</a></li>
             {
               headerMenu.map(
                 (element, index) => {
-                  return <li>
+                  return <li key={index}>
                     <NavLink
                       to={element.href}
                       // onMouseOver={() => handleClick(element.title)}

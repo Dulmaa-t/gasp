@@ -5,7 +5,7 @@ export default function Input() {
     <input
         name="first_name"
         id="first_name"
-        class="input"
+        className="input"
         type="text"
         required
         placeholder="FirstName*"

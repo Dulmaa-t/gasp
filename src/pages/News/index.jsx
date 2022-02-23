@@ -121,7 +121,7 @@ export default function News() {
             newsCards.map(
               (element, index) => {
                 return (
-                  <Card image={element.image} title={element.title} text={element.text} />
+                  <Card key={index} image={element.image} title={element.title} text={element.text} />
                 )
               }
             )
@@ -133,7 +133,7 @@ export default function News() {
             newsCards.map(
               (element, index) => {
                 return (
-                  <Card image={element.image} title={element.title} text={element.text} />
+                  <Card key={index} image={element.image} title={element.title} text={element.text} />
                 )
               }
             )
@@ -145,7 +145,7 @@ export default function News() {
             newsCards.map(
               (element, index) => {
                 return (
-                  <Card image={element.image} title={element.title} text={element.text} />
+                  <Card key={index} image={element.image} title={element.title} text={element.text} />
                 )
               }
             )
@@ -157,7 +157,7 @@ export default function News() {
             newsCards.map(
               (element, index) => {
                 return (
-                  <Card image={element.image} title={element.title} text={element.text} />
+                  <Card key={index} image={element.image} title={element.title} text={element.text} />
                 )
               }
             )
