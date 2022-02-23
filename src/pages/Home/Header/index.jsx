@@ -1,5 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import Sticky from 'react-sticky-el'
 
 export default function index() {
   const headerMenu = [
@@ -26,7 +27,7 @@ export default function index() {
   }
 
   return (
-      <div>
+      <Sticky>
         <header>
           <h1>Gasp</h1>
           <p>Your daily bread</p>
@@ -50,6 +51,6 @@ export default function index() {
             }
           </ul>
         </nav>
-    </div>
+    </Sticky>
   )
 }

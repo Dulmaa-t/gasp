@@ -1,5 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import Sticky from 'react-sticky-el'
 
 export default function Header() {
   const headerMenu = [
@@ -26,7 +27,6 @@ export default function Header() {
   }
 
   return (
-    <div>
       <nav>
           <ul>
             <li><a href="" class="logo">Gasp</a></li>
@@ -46,6 +46,5 @@ export default function Header() {
             }
           </ul>
         </nav>
-    </div>
   )
 }

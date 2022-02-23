@@ -82,6 +82,7 @@ nav ul li a:hover{
 }
 .side-section img {
     width: 100%;
+    z-index: -1;
 }
 .side-section .card img {
     width: 50em;
