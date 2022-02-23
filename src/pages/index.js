@@ -7,7 +7,7 @@ import Header from './Home/Header'
 import News from './News'
 import Video from './Video'
 import Podcast from './Podcast'
-
+import Admin from './Admin'
 
 export default function Page() {
   return (
@@ -17,6 +17,7 @@ export default function Page() {
         <Route path='/news/' element={<News />} />
         <Route path='/video/' element={<Video />} />
         <Route path='/podcast/' element={<Podcast />} />
+        <Route path='/admin/*' element={<Admin />} />
       </Routes>
     </BrowserRouter>
   )
