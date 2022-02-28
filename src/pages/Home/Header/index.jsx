@@ -59,9 +59,11 @@ export default function index() {
                   }
                 )
               }
+              <li style={{ marginLeft: "auto" }}>
+                <i className='fa fa-search'> </i>
+              </li>
             </ul>
           </nav>
-          <i className='fa fa-search'> </i>
       </header>
         </Sticky>
     </div>

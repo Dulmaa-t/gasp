@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import Sticky from 'react-sticky-el'
 
 export default function Header() {
@@ -29,7 +29,7 @@ export default function Header() {
   return (
     <header class="container mainMenu">
         <h1 class="logo">
-            <a href="index.html" class="logo">Gasp</a>
+            <Link to="/" class="logo">Gasp</Link>
         </h1>
         
         <input type="checkbox" class="nav-toggle" id="nav-toggle"/>

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import LinkButton from '../../../components/main/LinkButton'
 import Input from '../../../components/main/Input'
@@ -45,7 +46,7 @@ export default function SideSection() {
                             <p>Вэб сайтын аюулгүй байдал, үр ашиг, хэрэглэгчдийн ажиллагааг хөнгөвчилсөн, оновчтой шийдэлд анхааран, төслийн хугацаа, өртөгийг харилцагчийнхаа шаардлагад нийцүүлэн шийдвэрлэнэ.</p>
                         </div>
                         <span>
-                            <a href="#" class="button">Link Button</a>
+                            <Link to={'/news/'} class="button">Link Button</Link>
                         </span>
                     </div>
                 </div>
