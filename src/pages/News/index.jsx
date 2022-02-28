@@ -42,7 +42,7 @@ export default function News() {
         {
           console.log(rsp);
         })
-    alert("1 udaa")
+    // alert("1 udaa")
   }, [])
 
   return (

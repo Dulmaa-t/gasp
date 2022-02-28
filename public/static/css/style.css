@@ -805,6 +805,7 @@ nav ul li .logo{
     opacity: 1;
 }
   .news-card:hover .news-card__text-wrapper {
+    margin-bottom: 115px;
     background-color: rgba(0, 0, 0, 0.6);
 }
   .news-card:hover .news-card__title {
