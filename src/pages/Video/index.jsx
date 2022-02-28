@@ -30,12 +30,23 @@ export default function video() {
     },
   ]
 
+  /** new */
+  const videos = 
+  [
+    {
+      url: "",
+      title: "",
+      views: "",
+      creadetAt: "",
+    }
+  ]
+
   return (
     <div>
       <HeaderMenu />
       <div className="video-menu">
         <div className="container">
-          <div className="row nowrap" style={{ flexWrap:"nowrap" }}>
+          <div className="row nowrap">
             {
               video.map(
                 (element, index) => {

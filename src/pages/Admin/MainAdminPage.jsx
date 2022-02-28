@@ -1,78 +1,70 @@
 import React from 'react'
 
 export default function MainAdminPage() {
-  return (
-      <>
-        <div className="header l-header">
-            <div className="l-header__inner clearfix">
-                <div className="c-header-icon js-hamburger">
-                    <div className="hamburger-toggle">
-                        <span className="bar-top">
-
-                        </span>
-                        <span className="bar-mid">
-
-                        </span>
-                        <span className="bar-bot">
-
-                        </span>
+    return (
+        <>
+            <header class="l-header">
+                <div class="l-header__inner clearfix">
+                    <div class="c-header-icon js-hamburger">
+                        <div class="hamburger-toggle"><span class="bar-top"></span><span class="bar-mid"></span><span class="bar-bot"></span></div>
                     </div>
-                </div>
-                <div className="c-header-icon has-dropdown">
-                    <span className="c-badge c-badge--red c-badge--header-icon animated swing">
-                        4
-                    </span>
-                    <i className="fa fa-bell"></i>
-                    <div className="c-dropdown c-dropdown--notifications">
-                        <div className="c-dropdown__header"></div>
-                        <div className="c-dropdown__content"></div>
-                    </div>
-                    <div className="c-search">
-                        <input type="text" className="c-search__input" placeholder='Search...' />
-                    </div>
-                    <div className="header-icons-group">
-                        <div className="c-header-icon basket">
-                            <span className="c-badge c-badge--blue c-badge--header-icon animated swing">3</span>
-                            <i className="fa fa-shopping-basket"></i>
-                        </div>
-                        <div className="c-header-icon logout">
-                            <i className="fa fa-power-off"></i>
+                    <div class="c-header-icon has-dropdown"><span class="c-badge c-badge--header-icon animated shake">87</span><i class="fa fa-bell"></i>
+                        <div class="c-dropdown c-dropdown--notifications">
+                            <div class="c-dropdown__header"></div>
+                            <div class="c-dropdown__content"></div>
                         </div>
                     </div>
+                    <div class="c-search">
+                        <input class="c-search__input u-input" placeholder="Search..." type="text" />
+                    </div>
+                    <div class="header-icons-group">
+                        <div class="c-header-icon basket"><span class="c-badge c-badge--header-icon animated shake">12</span><i class="fa fa-shopping-basket"></i></div>
+                        <div class="c-header-icon logout"><i class="fa fa-power-off"></i></div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div className="l-sidebar">
-            <div className="logo">
-                <div className="logo__txt">D</div>
-            </div>
-        </div>
-        <div className="l-sidebar__content">
-            <nav className="c-menu js-menu">
-                <ul className="u-list">
-                    <li className="c-menu__item is-active">
-                            <div className="c-menu__item__inner">
-                                <i className="fa fa-plane"></i>
-                                <div className="c-menu-item__title">
-                                    <span>
-                                        Flight
-                                    </span>
+            </header>
+            <div class="l-sidebar">
+                <div class="logo">
+                    <div class="logo__txt">D</div>
+                </div>
+                <div class="l-sidebar__content">
+                    <nav class="c-menu js-menu">
+                        <ul class="u-list">
+                            <li class="c-menu__item is-active" data-toggle="tooltip" title="Flights">
+                                <div class="c-menu__item__inner"><i class="fa fa-plane"></i>
+                                    <div class="c-menu-item__title"><span>Flights</span></div>
                                 </div>
-                            </div>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-        <main className="l-main">
-            <div className="content-wrapper content-wrapper--with-bg">
-                <h1 className="page-title">
-                    DashBoard
-                </h1>
-                <div className="page-content">
-                    Content geos here
+                            </li>
+                            <li class="c-menu__item has-submenu" data-toggle="tooltip" title="Modules">
+                                <div class="c-menu__item__inner"><i class="fa fa-puzzle-piece"></i>
+                                    <div class="c-menu-item__title"><span>Modules</span></div>
+                                    <div class="c-menu-item__expand js-expand-submenu"><i class="fa fa-angle-down"></i></div>
+                                </div>
+                                <ul class="c-menu__submenu u-list">
+                                    <li>Payments</li>
+                                    <li>Maps</li>
+                                    <li>Notifications</li>
+                                </ul>
+                            </li>
+                            <li class="c-menu__item has-submenu" data-toggle="tooltip" title="Statistics">
+                                <div class="c-menu__item__inner"><i class="fa fa-bar-chart"></i>
+                                    <div class="c-menu-item__title"><span>Statistics</span></div>
+                                </div>
+                            </li>
+                            <li class="c-menu__item has-submenu" data-toggle="tooltip" title="Gifts">
+                                <div class="c-menu__item__inner"><i class="fa fa-gift"></i>
+                                    <div class="c-menu-item__title"><span>Gifts</span></div>
+                                </div>
+                            </li>
+                            <li class="c-menu__item has-submenu" data-toggle="tooltip" title="Settings">
+                                <div class="c-menu__item__inner"><i class="fa fa-cogs"></i>
+                                    <div class="c-menu-item__title"><span>Settings</span></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
             </div>
-        </main>
-      </>
-  )
+        </>
+    )
 }

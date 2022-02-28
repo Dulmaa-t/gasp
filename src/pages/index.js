@@ -8,6 +8,7 @@ import News from './News'
 import Video from './Video'
 import Podcast from './Podcast'
 import Admin from './Admin'
+import Sticky from 'react-sticky-el'
 
 export default function Page() {
   return (

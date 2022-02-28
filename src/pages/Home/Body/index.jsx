@@ -10,27 +10,27 @@ export default function index() {
 
   return (
     <div>
-      <div className="side-section" id="3">
-        <div className='c-container-fluid'>
-          <div className="c-row home-body-title">
-            <div className="card" style={{ marginBottom: "1em", display: "flex", alignItems: "center" }}>
-                <div className="text">
-                  <h5 className="text-title">
-                    Thinking
-                  </h5>
-                  <h5 className="text-title">
-                    differently
-                  </h5>
-                  <div className="text-about">
-                    <p>Вэб сайтын аюулгүй байдал, үр ашиг, хэрэглэгчдийн ажиллагааг хөнгөвчилсөн, оновчтой шийдэлд анхааран, төслийн хугацаа, өртөгийг харилцагчийнхаа шаардлагад нийцүүлэн шийдвэрлэнэ.</p>
-                  </div>
-                  <LinkButton title="Link Button" />
-                </div>
+      <section className='side-section'>
+        <div class="grid-flex">
+          <div class="col col-image">
+            &nbsp;
+          </div>
+          <div class="col col-text col-left">
+            <div class="Aligner-item">
+              <h5 class="text-title">
+                Thinking <br /> differently
+            </h5>
+              <div class="text-about">
+                <p>Вэб сайтын аюулгүй байдал, үр ашиг, хэрэглэгчдийн ажиллагааг хөнгөвчилсөн, оновчтой шийдэлд анхааран, төслийн хугацаа, өртөгийг харилцагчийнхаа шаардлагад нийцүүлэн шийдвэрлэнэ.</p>
             </div>
-            <img className='position-relative home-body-img' src="/static/image/5.jpg" alt="img" />
+            <span>
+                <a href="#" class="button">Link Button</a>
+            </span>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
+
       <main>
         <Cards />
         <News />

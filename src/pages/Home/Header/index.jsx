@@ -27,30 +27,43 @@ export default function index() {
   }
 
   return (
-      <Sticky>
-        <header>
+      <div>
+        <div className='headerImg'>
           <h1>Gasp</h1>
           <p>Your daily bread</p>
-        </header>
-
-        <nav>
-          <ul>
-            {
-              headerMenu.map(
-                (element, index) => {
-                  return <li key={index}>
-                    <NavLink
-                      to={element.href}
-                      // onMouseOver={() => handleClick(element.title)}
-                    >
-                      {element.title}
-                    </NavLink>
-                  </li>
-                }
-              )
-            }
-          </ul>
-        </nav>
-    </Sticky>
+          
+        </div>
+        <Sticky>
+        <header class="container mainMenu position-relative">
+        <h1 class="logo">
+            <a href="index.html" class="logo">Gasp</a>
+        </h1>
+        
+        <input type="checkbox" class="nav-toggle" id="nav-toggle"/>
+        <label for="nav-toggle" class="nav-toggle-label">
+          <span></span>
+        </label>
+          <nav>
+            <ul>
+              {
+                headerMenu.map(
+                  (element, index) => {
+                    return <li key={index}>
+                      <NavLink
+                        to={element.href}
+                        // onMouseOver={() => handleClick(element.title)}
+                      >
+                        {element.title}
+                      </NavLink>
+                    </li>
+                  }
+                )
+              }
+            </ul>
+          </nav>
+          <i className='fa fa-search'> </i>
+      </header>
+        </Sticky>
+    </div>
   )
 }

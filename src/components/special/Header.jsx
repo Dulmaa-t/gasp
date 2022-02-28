@@ -27,9 +27,17 @@ export default function Header() {
   }
 
   return (
-      <nav>
+    <header class="container mainMenu">
+        <h1 class="logo">
+            <a href="index.html" class="logo">Gasp</a>
+        </h1>
+        
+        <input type="checkbox" class="nav-toggle" id="nav-toggle"/>
+        <label for="nav-toggle" class="nav-toggle-label">
+          <span></span>
+        </label>
+        <nav>
           <ul>
-            <li><a href="" className="logo">Gasp</a></li>
             {
               headerMenu.map(
                 (element, index) => {
@@ -46,5 +54,9 @@ export default function Header() {
             }
           </ul>
         </nav>
+        
+        
+      </header>
+   
   )
 }

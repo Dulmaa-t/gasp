@@ -3,6 +3,16 @@ import React from 'react'
 import ImageTitle from '../../../components/main/ImageTitle'
 
 export default function News() {
+
+    const lastNews =
+    [
+        {
+            image: "/static/image/2.jpg",
+            title: "",
+            text: "",
+        }
+    ]
+
     return (
         <section className='m-top-content'>
             <div className="c-container">
@@ -13,7 +23,7 @@ export default function News() {
                             <div className="card-img-overlay">
                                 <h4 className="card-title"><a href="#">What is Computer Technology | IGI Global</a></h4>
                                 <p className="card-text">Computer technology requires a completely different methodology </p>
-                                <p className="card-text"><a href="#" className="fa fa-bookmark-o"></a><a className="fa fa-heart-o" href="#"></a></p>
+                                <p className="card-text"><a href="#" className="fa fa-bookmark-o"></a><i className="fa fa-heart-o" href="#"></i></p>
                             </div>
                         </div>
                     </div>

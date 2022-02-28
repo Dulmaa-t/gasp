@@ -3,6 +3,15 @@ import React from 'react'
 import Button from '../main/Button'
 
 export default function SubMenu() {
+
+  const menus = 
+  [
+    {
+      title: "",
+      id: ""
+    }
+  ]
+
   return (
     <div  className="sub-menu">
       <div className="sub-menu-nav">

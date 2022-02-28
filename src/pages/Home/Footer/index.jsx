@@ -41,15 +41,15 @@ export default function index() {
   ]
 
   return (
-    <footer>
-      <div className='footer-mainbar row'>
-        <div className="footer-content">
-          <div className="footer-text">
-            <a href="#">Gasp</a>
-            <p>Your daily bread</p>
-          </div>
-        </div>
-        <div className='row' style={{ margin: "0 auto" }}>
+    <footer class="footer">
+      <div class="footer__addr">
+        <h1 class="footer__logo">
+          <a href="#">Gasp</a>
+          <p>Your daily bread</p>
+        </h1>
+
+      </div>
+      <ul class="footer__nav">
         {
           footer.map(
             (element, index) => {
@@ -59,8 +59,7 @@ export default function index() {
             }
           )
         }
-      </div>
-      </div>
+      </ul>
     </footer>
   )
 }
