@@ -6,7 +6,7 @@ import MainAdminPage from './MainAdminPage'
 export default function Admin() {
   return (
     <Routes>
-        <Route path='/' element={<MainAdminPage />} />
+        <Route path='/*' element={<MainAdminPage />} />
     </Routes>
   )
 }
