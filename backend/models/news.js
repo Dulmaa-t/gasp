@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Author = require('./authors')
+const Category = require('./categories')
 
 const NewsSchema = new mongoose.Schema({
 
@@ -27,6 +28,12 @@ const NewsSchema = new mongoose.Schema({
     /** Мэдээний үндсэн мэдээлэл */
     news: {
         type: String,
+        required: true,
+    },
+    /** Ангилал */
+    category: {
+        type: mongoose.Types.ObjectId,
+        ref: Category,
         required: true,
     }
 }, {

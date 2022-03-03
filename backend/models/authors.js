@@ -15,6 +15,6 @@ const AuthorSchema = new mongoose.Schema({
     timestamps: true,
 })
 
-const News = mongoose.model('Author', AuthorSchema);
+const Author = mongoose.model('Author', AuthorSchema);
 
-module.exports = News
+module.exports = Author

@@ -6,6 +6,7 @@ const News = require('../models/news')
  * @param {string} content.text        тухайн мэдээний товч тайлбар
  * @param {string} content.author      тухайн мэдээг үүсгэсэн хүний ID
  * @param {string} content.image       тухайн мэдээний зураг
+ * @param {string} content.category    ангилалын ID
  * @param {string} content.news        тухайн мэдээний үндсэн мэдээлэл
  */
 exports.createNewNews = async (content) =>

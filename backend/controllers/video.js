@@ -4,7 +4,8 @@ const videoService = require('../services/video');
  * @param {string} req.body.url     тухайн бичлэгний зам
  * @param {string} req.body.title   тухайн бичлэгний гарчиг
  * @param {string} req.body.author  бичлэгийг үүсгэж буй author ийн ID
- * @param {string} req.body.views   бичлгэндээр дарж орсон хүний тоо
+ * @param {string} req.body.category    ангилалын ID
+ * @param {number} req.body.views   бичлгэндээр дарж орсон хүний тоо
 */
 exports.create = async (req, res) =>
 {

@@ -2,9 +2,10 @@ const podcastService = require('../services/podcast');
 
 /** Шинээр podcast үүсгэх нь
  * @param {string} req.body.title       тухайн podcast гарчиг
- * @param {string} req.body.clock       тухайн podcast ны үргэлжлэх хугацаа
+ * @param {number} req.body.clock       тухайн podcast ны үргэлжлэх хугацаа
  * @param {string} req.body.text        товч тайлбар
  * @param {string} req.body.author      author ийн ID
+ * @param {string} req.body.category    ангилалын ID
  * @param {string} req.file.realPath    thumbnail зургийн холбоос
 */
 exports.create = async (req, res) =>

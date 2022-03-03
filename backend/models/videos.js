@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Author = require('./authors')
+const Category = require('./categories')
 
 const VideosSchema = new mongoose.Schema({
     /** Тухайн бичлэгний холбоос */
@@ -23,6 +24,12 @@ const VideosSchema = new mongoose.Schema({
         type: Number,
         default: 0,
         required: false,
+    },
+    /** Ангилал */
+    category: {
+        type: mongoose.Types.ObjectId,
+        ref: Category,
+        required: true,
     }
 }, {
     timestamps: true,

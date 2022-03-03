@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Author = require('./authors')
+const Category = require('./categories')
 
 const PodcastSchema = new mongoose.Schema({
     /** Тухайн podcast гарчиг */
@@ -26,6 +27,12 @@ const PodcastSchema = new mongoose.Schema({
     /** Podcast ний thubmnail зурагны холбоос */
     image: {
         type: String,
+        required: true,
+    },
+    /** Ангилал */
+    category: {
+        type: mongoose.Types.ObjectId,
+        ref: Category,
         required: true,
     }
 }, {

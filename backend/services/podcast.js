@@ -3,9 +3,10 @@ const Podcast = require('../models/podcast')
 
 /** шинэ podcast үүсгэх нь
  * @param {string} content.title       тухайн podcast гарчиг
- * @param {string} content.clock       тухайн podcast ны үргэлжлэх хугацаа
+ * @param {number} content.clock       тухайн podcast ны үргэлжлэх хугацаа
  * @param {string} content.text        товч тайлбар
  * @param {string} content.author      author ийн ID
+ * @param {string} content.category    ангилалын ID
  * @param {string} content.image       thumbnail зургийн холбоос
  */
 exports.createPodcast = async (content) =>

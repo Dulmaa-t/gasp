@@ -1,10 +1,11 @@
 const Videos = require('../models/videos')
 
 /** шинэ video үүсгэх нь
- * @param {string} content.url     тухайн бичлэгний зам
- * @param {string} content.title   тухайн бичлэгний гарчиг
- * @param {string} content.author  бичлэгийг үүсгэж буй author ийн ID
- * @param {string} content.views   бичлгэндээр дарж орсон хүний тоо
+ * @param {string} content.url      тухайн бичлэгний зам
+ * @param {string} content.title    тухайн бичлэгний гарчиг
+ * @param {string} content.author   бичлэгийг үүсгэж буй author ийн ID
+ * @param {string} content.category ангилалын ID
+ * @param {number} content.views    бичлгэндээр дарж орсон хүний тоо
  */
 exports.createAuthor = async (content) =>
 {
