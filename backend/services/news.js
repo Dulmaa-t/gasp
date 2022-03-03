@@ -39,3 +39,46 @@ exports.getNewsDetail = async (newsId) =>
     const news = await News.findById(newsId).populate("author", 'email nickName')
     return news
 }
+
+/** тухай мэдээг засах нь
+ * @param {string} newsId тухайн мэдээний ID
+ * @param {object} content шинэчлэх мэдээлэл
+ */
+exports.update = async (newsId, content) =>
+{
+
+    console.log(content);
+    /** id аар нь хайж олоод засах нь */
+    const updated = await News.updateOne(
+        {
+            _id: newsId
+        },
+        content
+    )
+
+    /** алдаа гарсан бол */
+    if (updated.modifiedCount === 0)
+    {
+        throw new Error("Засахад алдаа гарсан байна")
+    }
+
+}
+
+/** Тухайн нэг мэдээг устгах нь
+ * @param {string} newsId тухайн мэдээний ID
+ */
+exports.delete = async (newsId) =>
+{
+    /** хайгаад олдсон мэдээ */
+    const news = await News.deleteOne(
+        {
+            _id: newsId
+        }
+    )
+
+    /** алдаа гарсан бол */
+    if (news.deletedCount === 0)
+    {
+        throw new Error("Устгахад алдаа гарсан байна")
+    }
+}

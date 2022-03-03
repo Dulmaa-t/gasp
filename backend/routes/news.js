@@ -19,5 +19,10 @@ router
 router
     .route("/:newsId/")
     .get(asyncHandler(newsController.getNewsDetail))
+    .put(
+        upload.single("image"),
+        asyncHandler(newsController.update)
+    )
+    .delete(asyncHandler(newsController.delete))
 
 module.exports = router

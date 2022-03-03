@@ -47,3 +47,34 @@ exports.getNewsDetail = async (req, res) =>
     const foundNews = await newsService.getNewsDetail(newsId)
     res.sendData(foundNews);
 }
+
+/** тухайн мэдээг шинэчлэх нь
+ * @param {string} req.params.newsId тухайн мэдээний ID
+*/
+exports.update = async (req, res) =>
+{
+    /** мэдээний зургийн замийг оноох хувьсагч */
+    let imageUrl = ""
+
+    /** req ээс жинхэнэ зургын холбоосыг авах нь */
+    if (req.file)
+    {
+        imageUrl = req.file.realPath
+        /** зургийн холбоосыг оноох нь */
+        req.body.image = imageUrl
+    }
+
+    const { newsId } = req.params
+    await newsService.update(newsId, req.body)
+    res.sendInfo("Амжилттай заслаа");
+}
+
+/** мэдээ устгах нь
+ * @param {string} req.params.newsId тухайн мэдээний ID
+ */
+exports.delete = async (req, res) =>
+{
+    const { newsId } = req.params
+    await newsService.delete(newsId)
+    res.sendInfo("Амжилттай устгалаа");
+}

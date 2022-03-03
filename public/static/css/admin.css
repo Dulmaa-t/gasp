@@ -415,6 +415,12 @@ main.l-main {
 main.l-main .c-content-wrapper {
 	padding: 25px;
 	height: 100%;
+	width: calc(100% - 95px - 25px);
+	transition: .4s;
+}
+.sidebar-is-expanded main.l-main .c-content-wrapper {
+	width: calc(100% - 220px - 25px - 25px);
+	transition: .4s;
 }
 main.l-main .c-content-wrapper .page-content {
 	border-top: 1px solid #d0d0d0;

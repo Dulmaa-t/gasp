@@ -1,11 +1,16 @@
 import React from 'react'
+import { Routes, Route } from 'react-router-dom'
+
+import NewsList from './list'
+import NewsForm from './form'
 
 export default function AdminNews()
 {
     return (
-        <>
-            <h1 className={`page-title`}>NEWS</h1>
-            <div className={`page-content`}>Content goes here</div>
-        </>
+        <Routes>
+            <Route path='/' element={<NewsList />} />
+            <Route path='/create/' element={<NewsForm />} />
+            <Route path='/update/:newsId/' element={<NewsForm />} />
+        </Routes>
     )
 }
