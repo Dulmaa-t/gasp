@@ -28,10 +28,13 @@ exports.createNews = async (req, res) =>
     res.sendInfo('Амжилттай хадгалалаа');
 }
 
-/** Бүх мэдээнүүдийг авах нь */
+/** Бүх мэдээнүүдийг авах нь
+ * @param {string} req.query.category ангилалын ID
+*/
 exports.getNews = async (req, res) =>
 {
-    const foundNews = await newsService.getNewsList(req.body)
+    const { category } = req.query
+    const foundNews = await newsService.getNewsList(category)
     res.sendData(foundNews);
 }
 

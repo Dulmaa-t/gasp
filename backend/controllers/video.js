@@ -14,10 +14,13 @@ exports.create = async (req, res) =>
     res.sendInfo('Амжилттай хадгалалаа');
 }
 
-/** Бүх video ийн жагсаалтыг авах нь */
+/** Бүх video ийн жагсаалтыг авах нь
+ * @param {string} req.query.category ангиалалын iD
+*/
 exports.getList = async (req, res) =>
 {
-    const foundVideos = await videoService.getList()
+    const { category } = req.query
+    const foundVideos = await videoService.getList(category)
     res.sendData(foundVideos);
 }
 

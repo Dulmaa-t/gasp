@@ -14,11 +14,19 @@ exports.createPodcast = async (content) =>
     await Podcast.create(content)
 }
 
-/** Бүртгэлтэй бүх podcast жагсаалтыг авах  */
-exports.getList = async () =>
+/** Бүртгэлтэй бүх podcast жагсаалтыг авах
+ * @param {string} category ангиалалын iD
+*/
+exports.getList = async (category) =>
 {
+    /** Хайх нөхцөл */
+    const where = {}
+    /** ангилал байвал ангилалаар нь шүүх */
+    if (category)
+        where['category'] = category
+
     /** хайгаад олдсон podcast ууд */
-    const news = await Podcast.find({}).populate("author", 'email nickName')
+    const news = await Podcast.find(where).populate("author", 'email nickName')
     return news
 }
 

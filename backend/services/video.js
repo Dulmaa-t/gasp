@@ -12,10 +12,18 @@ exports.createAuthor = async (content) =>
     await Videos.create(content)
 }
 
-/** Бүх video ний жагсаалтыг авах нь */
-exports.getList = async () =>
+/** Бүх video ний жагсаалтыг авах нь
+ * @param {string} category ангиалалын iD
+*/
+exports.getList = async (category) =>
 {
-    const foundVideos = await Videos.find({}).populate("author", 'email nickName')
+    /** Хайх нөхцөл */
+    const where = {}
+    /** ангилал байвал ангилалаар нь шүүх */
+    if (category)
+        where['category'] = category
+
+    const foundVideos = await Videos.find(where).populate("author", 'email nickName')
     return foundVideos
 }
 

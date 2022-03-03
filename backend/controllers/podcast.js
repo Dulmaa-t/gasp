@@ -27,10 +27,13 @@ exports.create = async (req, res) =>
     res.sendInfo('Амжилттай хадгалалаа');
 }
 
-/** Бүх podcast ийн жагсаалтыг авах нь */
+/** Бүх podcast ийн жагсаалтыг авах нь
+ * @param {string} req.query.category ангиалалын iD
+*/
 exports.getList = async (req, res) =>
 {
-    const foundVideos = await podcastService.getList()
+    const { category } = req.query
+    const foundVideos = await podcastService.getList(category)
     res.sendData(foundVideos);
 }
 

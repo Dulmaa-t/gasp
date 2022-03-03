@@ -14,11 +14,19 @@ exports.createNewNews = async (content) =>
     await News.create(content)
 }
 
-/** Бүртгэлтэй бүх мэдээний жагсаалтыг авах  */
-exports.getNewsList = async () =>
+/** Бүртгэлтэй бүх мэдээний жагсаалтыг авах
+ * @param {string} category ангиалалын iD
+*/
+exports.getNewsList = async (category) =>
 {
+    /** Хайх нөхцөл */
+    const where = {}
+    /** ангилал байвал ангилалаар нь шүүх */
+    if (category)
+        where['category'] = category
+
     /** хайгаад олдсон мэдээнүүд */
-    const news = await News.find({}).populate("author", 'email nickName')
+    const news = await News.find(where).populate("author", 'email nickName')
     return news
 }
 
