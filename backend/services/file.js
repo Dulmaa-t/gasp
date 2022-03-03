@@ -68,4 +68,10 @@ exports.deleteFiles = function (req)
             }
         }
     }
+
+    if (req.file)
+    {
+        module.exports.deleteFile(`${IMAGE_PATH}/${req.file.filename}`)
+    }
+
 }
