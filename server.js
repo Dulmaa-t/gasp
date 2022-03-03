@@ -43,6 +43,7 @@ app.use(successFn)
 app.use("/api/news", require("./backend/routes/news"))
 app.use("/api/author", require("./backend/routes/author"))
 app.use("/api/video", require("./backend/routes/videos"))
+app.use("/api/podcast", require("./backend/routes/podcast"))
 
 app.use(errorHandler)
 app.use('/public', express.static("./public/server"));

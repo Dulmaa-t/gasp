@@ -26,7 +26,7 @@ exports.getNewsList = async () =>
  */
 exports.getNewsDetail = async (newsId) =>
 {
-    /** хайгаад олдсон мэдээнүүд */
+    /** хайгаад олдсон мэдээ */
     const news = await News.findById(newsId).populate("author", 'email nickName')
     return news
 }

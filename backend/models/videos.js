@@ -28,6 +28,6 @@ const VideosSchema = new mongoose.Schema({
     timestamps: true,
 })
 
-const News = mongoose.model('Video', VideosSchema);
+const Video = mongoose.model('Video', VideosSchema);
 
-module.exports = News
+module.exports = Video

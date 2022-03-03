@@ -4,8 +4,8 @@ const newsService = require('../services/news');
  * @param {string} req.body.title       тухайн мэдээний гарчиг
  * @param {string} req.body.text        тухайн мэдээний товч тайлбар
  * @param {string} req.body.author      тухайн мэдээг үүсгэсэн хүний ID
- * @param {string} req.body.image       тухайн мэдээний зураг
  * @param {string} req.body.news        тухайн мэдээний үндсэн мэдээлэл
+ * @param {string} req.file.realPath    тухайн мэдээний зургийн холбоос
  * TODO: authorId -г loginRequired аас авах
 */
 exports.createNews = async (req, res) =>
