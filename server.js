@@ -42,6 +42,7 @@ app.use(successFn)
 //  routes
 app.use("/api/news", require("./backend/routes/news"))
 app.use("/api/author", require("./backend/routes/author"))
+app.use("/api/video", require("./backend/routes/videos"))
 
 app.use(errorHandler)
 app.use('/public', express.static("./public/server"));

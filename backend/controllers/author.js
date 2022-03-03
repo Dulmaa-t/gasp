@@ -3,7 +3,6 @@ const authorService = require('../services/author');
 /** Шинээр author үүсгэх нь
  * @param {string} req.body.nickName    тухайн үүсгэгчийн нийтэд харагдах нэр
  * @param {string} req.body.email       тухайн үүсгэгчийн цахим шуудан
- * TODO: authorId -г loginRequired аас авах
 */
 exports.create = async (req, res) =>
 {
