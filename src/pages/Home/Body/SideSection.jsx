@@ -8,50 +8,69 @@ export default function SideSection() {
 
     return (
         <section>
-            <div class="grid-flex">
-                <div class="col col-form">
-                    <div className="form">
-                        <div style={{ display: "flex" }}>
-                            <div>
-                                <div className="col-2">
-                                    <Input />
-                                </div>
+            <div class="flexbox">
+                <div class="leftside">
+                    <div class="card">
+                        <div class="text">
+                            <h5 class="text-title">
+                                Thinking
+                            </h5>
+                            <h5 class="text-title">
+                                differently
+                            </h5>
+                            <div class="text-about">
+                                <p>Вэб сайтын аюулгүй байдал, үр ашиг, хэрэглэгчдийн ажиллагааг хөнгөвчилсөн, оновчтой шийдэлд анхааран, төслийн хугацаа, өртөгийг харилцагчийнхаа шаардлагад нийцүүлэн шийдвэрлэнэ.</p>
                             </div>
-                            <div>
-                                <div className="col-2">
-                                    <Input />
-                                </div>
-                            </div>
+                            <span>
+                                <Link to={'/news/'} class="button">Link Button</Link>
+                            </span>
                         </div>
-                        <div className="col-2">
-                            <Input />
-                        </div>
-                        <div className="col-2">
-                            <Input />
-                        </div>
-                        <textarea rows="7" cols="70" placeholder="Enter a message...">
-                        </textarea>
-                        <span>
-
-                        </span>
-                        <input className="input-btn" type="submit" value="Login" />
                     </div>
                 </div>
-                <div class="col col-text col-left">
-                    <div class="Aligner-item">
-                        <h5 class="text-title">
-                            Thinking <br /> differently
-                        </h5>
-                        <div class="text-about">
-                            <p>Вэб сайтын аюулгүй байдал, үр ашиг, хэрэглэгчдийн ажиллагааг хөнгөвчилсөн, оновчтой шийдэлд анхааран, төслийн хугацаа, өртөгийг харилцагчийнхаа шаардлагад нийцүүлэн шийдвэрлэнэ.</p>
+                <div class="rightside">
+                    <div class="form_wrapper">
+                        <div class="form_container">
+                            <form>
+                                <div class="row clearfix">
+                                    <div class="col_half">
+                                        <div class="input_field">
+                                            <Input />
+                                        </div>
+                                    </div>
+                                    <div class="col_half">
+                                        <div class="input_field">
+                                            <Input />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row clearfix">
+                                    <div class="col_half">
+                                        <div class="input_field">
+                                            <Input />
+                                        </div>
+                                    </div>
+                                    <div class="col_half">
+                                        <div class="input_field">
+                                            <Input />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row clearfix">
+                                    <div>
+                                        <div class="textarea_field">
+                                            <textarea cols="46" rows="3" name="comments"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-center">
+                                    <input class="button" type="submit" value="Sumbit" />
+                                </div>
+                            </form>
                         </div>
-                        <span>
-                            <Link to={'/news/'} class="button">Link Button</Link>
-                        </span>
                     </div>
                 </div>
             </div>
-      </section >
-      
+        </section >
+
     )
 }

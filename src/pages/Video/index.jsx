@@ -6,27 +6,62 @@ import Button from '../../components/main/Button'
 
 import MoreBtn from '../../components/special/MoreBtn'
 
-export default function video() {
+export default function CVideo() {
   const video = [
     {
-      image: "https://images.pexels.com/photos/127513/pexels-photo-127513.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
-      title: "Crystal Card",
-      text: "Crystal CardLorem ipsum dolor sit amet, consectetur adiscing elit. Aenean leo urna, tempor non neque vel, ruteum tempus ligula. Maecenas accumsan varius elit sit amet posuere."
+      "source": {
+        "id": "engadget",
+        "name": "Engadget"
+      },
+      image: "https://picsum.photos/1000/1000",
+      title: "Podcast Title",
+      createdAt: "Mon, May 25th 2020",
+      clock: "55 mins",
+      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, fugiat asperiores inventore beatae accusamus odit minima enim, commodi quia, doloribus eius! Ducimus nemo accusantium maiores velit corrupti tempora reiciendis molestiae repellat vero. Eveniet ipsam adipisci illo iusto quibusdam, sunt neque nulla unde ipsum dolores nobis enim quidem excepturi, illum quos!"
     },
     {
-      image: "https://images.pexels.com/photos/631954/pexels-photo-631954.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
-      title: "Crystal Card",
-      text: "Lorem ipsum dolor sit amet, consectetur adiscing elit. Aenean leo urna, tempor non neque vel, ruteum tempus ligula. Maecenas accumsan varius elit sit amet posuere."
+      "source": {
+        "id": "engadget",
+        "name": "Engadget"
+      },
+      image: "https://picsum.photos/1000/1000",
+      title: "Podcast Title",
+      createdAt: "Mon, May 25th 2020",
+      clock: "55 mins",
+      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, fugiat asperiores inventore beatae accusamus odit minima enim, commodi quia, doloribus eius! Ducimus nemo accusantium maiores velit corrupti tempora reiciendis molestiae repellat vero. Eveniet ipsam adipisci illo iusto quibusdam, sunt neque nulla unde ipsum dolores nobis enim quidem excepturi, illum quos!"
     },
     {
-      image: "/static/image/9.jpg",
-      title: "Crystal Card",
-      text: "Lorem ipsum dolor sit amet, consectetur adiscing elit. Aenean leo urna, tempor non neque vel, ruteum tempus ligula. Maecenas accumsan varius elit sit amet posuere."
+      "source": {
+        "id": "engadget",
+        "name": "Engadget"
+      },
+      image: "https://picsum.photos/1000/1000",
+      title: "Podcast Title",
+      createdAt: "Mon, May 25th 2020",
+      clock: "55 mins",
+      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, fugiat asperiores inventore beatae accusamus odit minima enim, commodi quia, doloribus eius! Ducimus nemo accusantium maiores velit corrupti tempora reiciendis molestiae repellat vero. Eveniet ipsam adipisci illo iusto quibusdam, sunt neque nulla unde ipsum dolores nobis enim quidem excepturi, illum quos!"
     },
     {
-      image: "/static/image/9.jpg",
-      title: "Crystal Card",
-      text: "Lorem ipsum dolor sit amet, consectetur adiscing elit. Aenean leo urna, tempor non neque vel, ruteum tempus ligula. Maecenas accumsan varius elit sit amet posuere."
+      "source": {
+        "id": "engadget",
+        "name": "Engadget"
+      },
+      image: "https://picsum.photos/1000/1000",
+      title: "Podcast Title",
+      createdAt: "Mon, May 25th 2020",
+      clock: "55 mins",
+      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, fugiat asperiores inventore beatae accusamus odit minima enim, commodi quia, doloribus eius! Ducimus nemo accusantium maiores velit corrupti tempora reiciendis molestiae repellat vero. Eveniet ipsam adipisci illo iusto quibusdam, sunt neque nulla unde ipsum dolores nobis enim quidem excepturi, illum quos!"
+    },
+    {
+      "source": {
+        "id": "engadget",
+        "name": "Engadget"
+      },
+      image: "https://picsum.photos/1000/1000",
+      title: "Podcast Title",
+      createdAt: "Mon, May 25th 2020",
+      clock: "55 mins",
+      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, fugiat asperiores inventore beatae accusamus odit minima enim, commodi quia, doloribus eius! Ducimus nemo accusantium maiores velit corrupti tempora reiciendis molestiae repellat vero. Eveniet ipsam adipisci illo iusto quibusdam, sunt neque nulla unde ipsum dolores nobis enim quidem excepturi, illum quos!"
     },
   ]
 

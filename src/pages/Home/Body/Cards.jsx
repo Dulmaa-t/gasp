@@ -25,6 +25,43 @@ export default function Cards() {
         },
     ]
 
+    const articles = [
+        {
+          "source": {
+            "id": "engadget",
+            "name": "Engadget"
+          },
+          
+          image: "/static/image/9.jpg",
+          color: "success",
+          title: "Crystal Card",
+          text: "Lorem ipsum dolor sit amet, consectetur adiscing elit. Aenean leo urna, tempor non neque vel, ruteum tempus ligula. Maecenas accumsan varius elit sit amet posuere."
+        },
+        {
+          "source": {
+            "id": "engadget",
+            "name": "Engadget"
+          },
+         
+          image: "/static/image/9.jpg",
+          color: "success",
+          title: "Crystal Card",
+          text: "Lorem ipsum dolor sit amet, consectetur adiscing elit. Aenean leo urna, tempor non neque vel, ruteum tempus ligula. Maecenas accumsan varius elit sit amet posuere."
+        },
+        {
+          "source": {
+            "id": "engadget",
+            "name": "Engadget"
+          },
+          
+          image: "/static/image/9.jpg",
+          color: "success",
+          title: "Crystal Card",
+          text: "Lorem ipsum dolor sit amet, consectetur adiscing elit. Aenean leo urna, tempor non neque vel, ruteum tempus ligula. Maecenas accumsan varius elit sit amet posuere."
+        }
+      ]
+    
+
     return (
         <div className='c-container m-top-content'>
             <div className='wrapper'>
