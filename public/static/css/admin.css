@@ -340,7 +340,6 @@ h3 {
 }
 .c-menu > ul .c-menu__item .c-menu-item__expand {
 	position: relative;
-	/* left: 100px; */
 	padding-right: 20px;
 	margin-left: auto;
 	-webkit-transition: all 1s ease-in-out;
@@ -439,4 +438,19 @@ main.l-main .page-title {
 }
 .sidebar-is-expanded main.l-main {
 	padding-left: 220px;
+}
+
+.l-header {
+    display: block;
+    text-align: start;
+    padding: 0px;
+    grid-template-columns: none;
+}
+
+nav.c-menu {
+    display: block;
+}
+
+nav.c-menu a {
+    padding: 0;
 }

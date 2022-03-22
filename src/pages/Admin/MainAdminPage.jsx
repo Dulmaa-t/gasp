@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 import Menu from './Menu'
 import AdminPages from './Pages'
@@ -61,6 +62,14 @@ export default function MainAdminPage()
         }();
 
         Dashboard.init()
+        return () =>
+        {
+            const body = document.getElementsByTagName('body')[0]
+            body.style.backgroundColor = "#000";
+            body.style.color = "#fff"
+            body.style.lineHeight = 1.42857143
+            body.style.fontSize = "14px"
+        }
     }, [])
 
     return (
@@ -99,7 +108,9 @@ export default function MainAdminPage()
                 </header>
                 <div className={`l-sidebar`}>
                     <div className={`c-logo`}>
-                        <div className={`logo__txt`}>D</div>
+                        <Link to={"/"}>
+                            <div className={`logo__txt`}>D</div>
+                        </Link>
                     </div>
                     <div className={`l-sidebar__content`}>
                     <nav className={`c-menu js-menu`}>
