@@ -1,0 +1,14 @@
+header {
+    display: block;
+    text-align: start;
+    padding: 0px;
+    grid-template-columns: none;
+}
+
+nav {
+    display: block;
+}
+
+nav a {
+    padding: 0;
+}
