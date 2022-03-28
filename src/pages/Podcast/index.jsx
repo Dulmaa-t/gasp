@@ -32,8 +32,6 @@ export default function PodcastCard() {
       )
   }
 
-  console.log(podcastCard);
-
   useEffect(
     () =>
     {
@@ -43,9 +41,19 @@ export default function PodcastCard() {
     []
   )
 
+  /** Ямар category дарагдсан түүнийг авах функц */
+  const handleCategory = async (catName) =>
+  {
+    const { success, data, error } = await axios.get(`/api/podcast/?category=${catName}`)
+    if (success)
+    {
+      setPodcast(data)
+    }
+  }
+
   return (
     <div>
-      <HeaderMenu />
+      <HeaderMenu handleCategory={handleCategory}/>
         <section className="dark">
           <div className="container py-4">
             {

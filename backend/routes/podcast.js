@@ -3,6 +3,7 @@ const router = new express.Router
 
 // middlewares
 const asyncHandler = require("../middleware/asyncHandler");
+const getCatId = require("../middleware/getCatId")
 
 const podcastController = require('../controllers/podcast')
 const { upload } = require("../services/file");
@@ -13,7 +14,7 @@ router
         upload.single("image"),
         asyncHandler(podcastController.create)
     )
-    .get(asyncHandler(podcastController.getList))
+    .get(getCatId, asyncHandler(podcastController.getList))
 
 router
     .route("/:podcastId/")

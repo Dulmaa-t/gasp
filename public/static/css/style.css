@@ -743,7 +743,10 @@ nav ul li .logo{
     border-radius: 50px;
     border: 1px solid #3e0481;
     background: -webkit-linear-gradient(rgb(144 70 227 / 30%), rgb(181 131 238 / 30%));
-}  
+}
+.sub-menu-nav .nav-btn.active {
+    background-color: #2C3E50;
+}
 .sub-menu a:hover, .sub-menu-nav:hover .nav-btn {
     background-color: #2C3E50;
 }  

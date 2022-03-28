@@ -4,7 +4,7 @@ export default function video(props) {
     return (
         <div className="item item--1">
             <div className="embed-responsive embed-responsive-16by9">
-                <iframe src="https://www.youtube.com/embed/4z2PyfaoiYk?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen=""></iframe>
+                <iframe src="https://www.youtube.com/embed/4z2PyfaoiYk?rel=0&amp;showinfo=0" frameborder="0" allowFullScreen=""></iframe>
             </div>
             <div className="video-text">
                 <h6>The World in2050: Future Technology</h6>
