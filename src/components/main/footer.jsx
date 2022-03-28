@@ -1,9 +1,7 @@
 import React from 'react'
 
-export default function footer(props) {
+export default function Footer(props) {
     return (
-
-
         <ul className="footer__nav">
             <li className="nav__item nav__item--extra">
                 <h2 className="nav__title">{props.title}</h2>

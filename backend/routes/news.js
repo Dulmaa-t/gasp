@@ -3,6 +3,7 @@ const router = new express.Router
 
 // middlewares
 const asyncHandler = require("../middleware/asyncHandler");
+const getCatId = require("../middleware/getCatId");
 
 const newsController = require('../controllers/news')
 
@@ -14,7 +15,7 @@ router
         upload.single("image"),
         asyncHandler(newsController.createNews)
     )
-    .get(asyncHandler(newsController.getNews))
+    .get(getCatId, asyncHandler(newsController.getNews))
 
 router
     .route("/:newsId/")

@@ -46,8 +46,6 @@ exports.getNewsDetail = async (newsId) =>
  */
 exports.update = async (newsId, content) =>
 {
-
-    console.log(content);
     /** id аар нь хайж олоод засах нь */
     const updated = await News.updateOne(
         {
