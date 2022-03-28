@@ -1,24 +1,23 @@
 import React from 'react'
 
-export default function video(props) {
+import { numberToString, minusDate } from 'utils/index'
+
+export default function Video({ url, title="", views=0, createdAt }) {
     return (
         <div className="item item--1">
             <div className="embed-responsive embed-responsive-16by9">
-                <iframe src="https://www.youtube.com/embed/4z2PyfaoiYk?rel=0&amp;showinfo=0" frameborder="0" allowFullScreen=""></iframe>
+                <iframe src={`${url}?rel=0&amp;showinfo=0`} frameBorder="0" allowFullScreen=""></iframe>
             </div>
             <div className="video-text">
-                <h6>The World in2050: Future Technology</h6>
+                <h6>{title}</h6>
                 <div id="metadata-line" className="style-scope ytd-video-meta-block">
 
-                    <span className="style-scope ytd-video-meta-block">13K views |</span>
+                    <span className="style-scope ytd-video-meta-block">{numberToString(views)} views </span>
 
-                    <span className="style-scope ytd-video-meta-block">8 months ago</span>
+                    <span className="style-scope ytd-video-meta-block">{createdAt ? `| ${minusDate(createdAt)}` : null}</span>
                     <dom-repeat strip-whitespace="" className="style-scope ytd-video-meta-block"><template is="dom-repeat"></template></dom-repeat>
                 </div>
             </div>
         </div>
-        
-
-
     )
 }

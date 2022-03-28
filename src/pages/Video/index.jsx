@@ -1,131 +1,90 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
+
 import Footer from '../Home/Footer'
 import HeaderMenu from '../../components/special/HeaderMenu'
 import Card from '../../components/main/video'
-import Button from '../../components/main/Button'
 
 import MoreBtn from '../../components/special/MoreBtn'
 
-export default function CVideo() {
-  const video = [
-    {
-      "source": {
-        "id": "engadget",
-        "name": "Engadget"
-      },
-      image: "https://picsum.photos/1000/1000",
-      title: "Podcast Title",
-      createdAt: "Mon, May 25th 2020",
-      clock: "55 mins",
-      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, fugiat asperiores inventore beatae accusamus odit minima enim, commodi quia, doloribus eius! Ducimus nemo accusantium maiores velit corrupti tempora reiciendis molestiae repellat vero. Eveniet ipsam adipisci illo iusto quibusdam, sunt neque nulla unde ipsum dolores nobis enim quidem excepturi, illum quos!"
-    },
-    {
-      "source": {
-        "id": "engadget",
-        "name": "Engadget"
-      },
-      image: "https://picsum.photos/1000/1000",
-      title: "Podcast Title",
-      createdAt: "Mon, May 25th 2020",
-      clock: "55 mins",
-      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, fugiat asperiores inventore beatae accusamus odit minima enim, commodi quia, doloribus eius! Ducimus nemo accusantium maiores velit corrupti tempora reiciendis molestiae repellat vero. Eveniet ipsam adipisci illo iusto quibusdam, sunt neque nulla unde ipsum dolores nobis enim quidem excepturi, illum quos!"
-    },
-    {
-      "source": {
-        "id": "engadget",
-        "name": "Engadget"
-      },
-      image: "https://picsum.photos/1000/1000",
-      title: "Podcast Title",
-      createdAt: "Mon, May 25th 2020",
-      clock: "55 mins",
-      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, fugiat asperiores inventore beatae accusamus odit minima enim, commodi quia, doloribus eius! Ducimus nemo accusantium maiores velit corrupti tempora reiciendis molestiae repellat vero. Eveniet ipsam adipisci illo iusto quibusdam, sunt neque nulla unde ipsum dolores nobis enim quidem excepturi, illum quos!"
-    },
-    {
-      "source": {
-        "id": "engadget",
-        "name": "Engadget"
-      },
-      image: "https://picsum.photos/1000/1000",
-      title: "Podcast Title",
-      createdAt: "Mon, May 25th 2020",
-      clock: "55 mins",
-      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, fugiat asperiores inventore beatae accusamus odit minima enim, commodi quia, doloribus eius! Ducimus nemo accusantium maiores velit corrupti tempora reiciendis molestiae repellat vero. Eveniet ipsam adipisci illo iusto quibusdam, sunt neque nulla unde ipsum dolores nobis enim quidem excepturi, illum quos!"
-    },
-    {
-      "source": {
-        "id": "engadget",
-        "name": "Engadget"
-      },
-      image: "https://picsum.photos/1000/1000",
-      title: "Podcast Title",
-      createdAt: "Mon, May 25th 2020",
-      clock: "55 mins",
-      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, fugiat asperiores inventore beatae accusamus odit minima enim, commodi quia, doloribus eius! Ducimus nemo accusantium maiores velit corrupti tempora reiciendis molestiae repellat vero. Eveniet ipsam adipisci illo iusto quibusdam, sunt neque nulla unde ipsum dolores nobis enim quidem excepturi, illum quos!"
-    },
-  ]
+import axios from 'utils/axios'
 
-  /** new */
-  const videos = 
-  [
+export default function CVideo()
+{
+
+  /** video ийн мэдээллийг хадгалах state */
+  const [ videos, setVideos ] = useState([])
+  const location = useLocation()
+
+  /** podcast ийн мэдээллийг back аас дуудах нь */
+  const getData = async () =>
+  {
+    /** url ээс дарагдсан category байгаа эсэхийг анх орохдоо шалгах нь */
+    const paramCatName = new URLSearchParams(location.search).get("category")
+    await axios.get(`/api/video/${paramCatName ? `?category=${paramCatName}` : ""}`)
+      .then(({ success, data, error }) =>
+        {
+          if (success)
+          {
+            setVideos(data)
+          }
+        }
+      )
+      .catch(err =>
+        {
+
+        }
+      )
+  }
+
+  useEffect(
+    () =>
     {
-      url: "",
-      title: "",
-      views: "",
-      creadetAt: "",
+      //  video ийн мэдээллийг back аас дуудах нь
+      getData()
+    },
+    []
+  )
+
+  /** Ямар category дарагдсан түүнийг авах функц */
+  const handleCategory = async (catName) =>
+  {
+    const { success, data, error } = await axios.get(`/api/video/?category=${catName}`)
+    if (success)
+    {
+      setVideos(data)
     }
-  ]
+  }
 
   return (
     <div>
-      <HeaderMenu />
+      <HeaderMenu handleCategory={handleCategory} />
       <div className="video-menu">
         <div className="container">
           <div className="row nowrap">
             {
-              video.map(
+              videos.map(
                 (element, index) => {
                   return (
-                    <Card key={index} image={element.image} title={element.title} text={element.text} />
+                    <Card
+                      key={index}
+                      image={element.image}
+                      title={element.title}
+                      text={element.text}
+                      url={element.url}
+                      createdAt={element.createdAt}
+                    />
                   )
                 }
               )
             }
-          </div>
-
-          <div className="row">
             {
-              video.map(
-                (element, index) => {
-                  return (
-                    <Card key={index} image={element.image} title={element.title} text={element.text} />
-                  )
-                }
-              )
-            }
-          </div>
-
-          <div className="row">
-            {
-              video.map(
-                (element, index) => {
-                  return (
-                    <Card key={index} image={element.image} title={element.title} text={element.text} />
-                  )
-                }
-              )
-            }
-          </div>
-
-          <div className="row">
-            {
-              video.map(
-                (element, index) => {
-                  return (
-                    <Card key={index} image={element.image} title={element.title} text={element.text} />
-                  )
-                }
-              )
+              // хэрэв video байхгүй бол
+              videos.length === 0
+              ?
+                <div style={{ display: "flex", justifyContent: "center" }}>Хоосон байна</div>
+              :
+                null
             }
           </div>
         </div>

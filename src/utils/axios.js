@@ -3,7 +3,7 @@ import axios from 'axios'
 /** тохиргоо оруулсан axios */
 const instance = axios.create(
     {
-        baseURL: "http://localhost:8001"
+        baseURL: process.env.REACT_APP_SERVER_URL
     }
 )
 instance.interceptors.response.use(
