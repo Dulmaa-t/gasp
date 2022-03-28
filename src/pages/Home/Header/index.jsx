@@ -25,7 +25,7 @@ export default function index() {
   const handleClick = (title) => {
     alert("clicked" + title)
   }
-  
+
   return (
     <div>
       <div className='headerImg'>
@@ -33,7 +33,7 @@ export default function index() {
         <p>Your daily bread</p>
 
       </div>
-      <Sticky>
+      <Sticky className='header-zindex'>
         <header className="container mainMenu position-relative">
           <h1 className="logo">
             <a href="index.html" className="logo">Gasp</a>
