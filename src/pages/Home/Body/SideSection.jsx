@@ -8,62 +8,62 @@ export default function SideSection() {
 
     return (
         <section>
-            <div class="flexbox">
-                <div class="leftside">
-                    <div class="card">
-                        <div class="text">
-                            <h5 class="text-title">
+            <div className="flexbox">
+                <div className="leftside">
+                    <div className="card">
+                        <div className="text">
+                            <h5 className="text-title">
                                 Thinking
                             </h5>
-                            <h5 class="text-title">
+                            <h5 className="text-title">
                                 differently
                             </h5>
-                            <div class="text-about">
+                            <div className="text-about">
                                 <p>Вэб сайтын аюулгүй байдал, үр ашиг, хэрэглэгчдийн ажиллагааг хөнгөвчилсөн, оновчтой шийдэлд анхааран, төслийн хугацаа, өртөгийг харилцагчийнхаа шаардлагад нийцүүлэн шийдвэрлэнэ.</p>
                             </div>
                             <span>
-                                <Link to={'/news/'} class="button">Link Button</Link>
+                                <Link to={'/news/'} className="button">Link Button</Link>
                             </span>
                         </div>
                     </div>
                 </div>
-                <div class="rightside">
-                    <div class="form_wrapper">
-                        <div class="form_container">
+                <div className="rightside">
+                    <div className="form_wrapper">
+                        <div className="form_container">
                             <form>
-                                <div class="row clearfix">
-                                    <div class="col_half">
-                                        <div class="input_field">
+                                <div className="row clearfix">
+                                    <div className="col_half">
+                                        <div className="input_field">
                                             <Input />
                                         </div>
                                     </div>
-                                    <div class="col_half">
-                                        <div class="input_field">
-                                            <Input />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row clearfix">
-                                    <div class="col_half">
-                                        <div class="input_field">
-                                            <Input />
-                                        </div>
-                                    </div>
-                                    <div class="col_half">
-                                        <div class="input_field">
+                                    <div className="col_half">
+                                        <div className="input_field">
                                             <Input />
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row clearfix">
+                                <div className="row clearfix">
+                                    <div className="col_half">
+                                        <div className="input_field">
+                                            <Input />
+                                        </div>
+                                    </div>
+                                    <div className="col_half">
+                                        <div className="input_field">
+                                            <Input />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="row clearfix">
                                     <div>
-                                        <div class="textarea_field">
+                                        <div className="textarea_field">
                                             <textarea cols="46" rows="3" name="comments"></textarea>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="text-center">
-                                    <input class="button" type="submit" value="Sumbit" />
+                                <div className="text-center">
+                                    <input className="button" type="submit" value="Sumbit" />
                                 </div>
                             </form>
                         </div>

@@ -10,8 +10,8 @@ export default function podcastCard(props) {
                 <div className="postcard__text">
                     <h1 className="postcard__title blue"><a href="#">{props.title}</a></h1>
                     <div className="postcard__subtitle small">
-                        <time datetime="2020-05-25 12:00:00">
-                            <i className="fas fa-calendar-alt mr-2"></i>{props.datetime}
+                        <time dateTime={props.dateTime}>
+                            <i className="fas fa-calendar-alt mr-2"></i>{" "}{props.dateTime}
                         </time>
                     </div>
                     <div className="postcard__bar"></div>

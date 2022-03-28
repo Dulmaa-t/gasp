@@ -41,15 +41,15 @@ export default function index() {
   ]
 
   return (
-    <footer class="footer">
-      <div class="footer__addr">
-        <h1 class="footer__logo">
+    <footer className="footer">
+      <div className="footer__addr">
+        <h1 className="footer__logo">
           <a href="#">Gasp</a>
           <p>Your daily bread</p>
         </h1>
 
       </div>
-      <ul class="footer__nav">
+      <ul className="footer__nav">
         {
           footer.map(
             (element, index) => {

@@ -27,13 +27,13 @@ export default function Header() {
   }
 
   return (
-    <header class="container mainMenu">
-        <h1 class="logo">
-            <Link to="/" class="logo">Gasp</Link>
+    <header className="container mainMenu">
+        <h1 className="logo">
+            <Link to="/" className="logo">Gasp</Link>
         </h1>
         
-        <input type="checkbox" class="nav-toggle" id="nav-toggle"/>
-        <label for="nav-toggle" class="nav-toggle-label">
+        <input type="checkbox" className="nav-toggle" id="nav-toggle"/>
+        <label htmlFor="nav-toggle" className="nav-toggle-label">
           <span></span>
         </label>
         <nav>

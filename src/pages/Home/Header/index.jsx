@@ -34,13 +34,13 @@ export default function index() {
 
       </div>
       <Sticky>
-        <header class="container mainMenu position-relative">
-          <h1 class="logo">
-            <a href="index.html" class="logo">Gasp</a>
+        <header className="container mainMenu position-relative">
+          <h1 className="logo">
+            <a href="index.html" className="logo">Gasp</a>
           </h1>
 
-          <input type="checkbox" class="nav-toggle" id="nav-toggle" />
-          <label for="nav-toggle" class="nav-toggle-label">
+          <input type="checkbox" className="nav-toggle" id="nav-toggle" />
+          <label htmlFor="nav-toggle" className="nav-toggle-label">
             <span></span>
           </label>
           <nav>
@@ -60,27 +60,27 @@ export default function index() {
                 )
               }
               <li>
-                <div class="searchbar">
+                <div className="searchbar">
                   <input type="text" placeholder="search" />
-                  <div class="icon">
-                    <i class="fas fa-search"></i>
+                  <div className="icon">
+                    <i className="fas fa-search"></i>
                   </div>
                 </div>
               </li>
               <ul className='icon'>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    <i class="fab fa-facebook"></i>
+                <li className="nav-item">
+                  <a className="nav-link" href="#">
+                    <i className="fab fa-facebook"></i>
                   </a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    <i class="fab fa-instagram"></i>
+                <li className="nav-item">
+                  <a className="nav-link" href="#">
+                    <i className="fab fa-instagram"></i>
                   </a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    <i class="fab fa-youtube"></i>
+                <li className="nav-item">
+                  <a className="nav-link" href="#">
+                    <i className="fab fa-youtube"></i>
                   </a>
                 </li>
               </ul>

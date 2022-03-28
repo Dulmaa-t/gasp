@@ -1,56 +1,47 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+
 import Footer from '../Home/Footer'
 import HeaderMenu from '../../components/special/HeaderMenu'
 import Card from '../../components/main/podcastCard'
-import Button from '../../components/main/Button'
 import MoreBtn from '../../components/special/MoreBtn'
 
-export default function podcastCard() {
-  const podcastCard = [
-    {
-      image: "https://picsum.photos/1000/1000",
-      title: "Podcast Title",
-      createdAt: "Mon, May 25th 2020",
-      clock: "55 mins", // bichlegnii higatsaa
-      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, fugiat asperiores inventore beatae accusamus odit minima enim, commodi quia, doloribus eius! Ducimus nemo accusantium maiores velit corrupti tempora reiciendis molestiae repellat vero. Eveniet ipsam adipisci illo iusto quibusdam, sunt neque nulla unde ipsum dolores nobis enim quidem excepturi, illum quos!"
-    },
-  ]
+import axios from 'utils/axios'
+import { timeZoneToDateString, msToTime } from 'utils/index'
 
-  const articles = [
+export default function PodcastCard() {
+
+  /** podcast ийн мэдээллийг хадгалах state */
+  const [ podcastCard, setPodcast ] = useState([])
+
+  /** podcast ийн мэдээллийг back аас дуудах нь */
+  const getData = async () =>
+  {
+    await axios.get('/api/podcast/')
+      .then(({ success, data, error }) =>
+        {
+          if (success)
+          {
+            setPodcast(data)
+          }
+        }
+      )
+      .catch(err =>
+        {
+
+        }
+      )
+  }
+
+  console.log(podcastCard);
+
+  useEffect(
+    () =>
     {
-      "source": {
-        "id": "engadget",
-        "name": "Engadget"
-      },
-      image: "https://picsum.photos/1000/1000",
-      title: "Podcast Title",
-      createdAt: "Mon, May 25th 2020",
-      clock: "55 mins",
-      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, fugiat asperiores inventore beatae accusamus odit minima enim, commodi quia, doloribus eius! Ducimus nemo accusantium maiores velit corrupti tempora reiciendis molestiae repellat vero. Eveniet ipsam adipisci illo iusto quibusdam, sunt neque nulla unde ipsum dolores nobis enim quidem excepturi, illum quos!"
+      //  podcast ийн мэдээллийг back аас дуудах нь
+      getData()
     },
-    {
-      "source": {
-        "id": "engadget",
-        "name": "Engadget"
-      },
-      image: "https://picsum.photos/1000/1000",
-      title: "Podcast Title",
-      createdAt: "Mon, May 25th 2020",
-      clock: "55 mins",
-      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, fugiat asperiores inventore beatae accusamus odit minima enim, commodi quia, doloribus eius! Ducimus nemo accusantium maiores velit corrupti tempora reiciendis molestiae repellat vero. Eveniet ipsam adipisci illo iusto quibusdam, sunt neque nulla unde ipsum dolores nobis enim quidem excepturi, illum quos!"
-    },
-    {
-      "source": {
-        "id": "engadget",
-        "name": "Engadget"
-      },
-      image: "https://picsum.photos/1000/1000",
-      title: "Podcast Title",
-      createdAt: "Mon, May 25th 2020",
-      clock: "55 mins",
-      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, fugiat asperiores inventore beatae accusamus odit minima enim, commodi quia, doloribus eius! Ducimus nemo accusantium maiores velit corrupti tempora reiciendis molestiae repellat vero. Eveniet ipsam adipisci illo iusto quibusdam, sunt neque nulla unde ipsum dolores nobis enim quidem excepturi, illum quos!"
-    },
-  ]
+    []
+  )
 
   return (
     <div>
@@ -61,7 +52,14 @@ export default function podcastCard() {
               podcastCard.map(
                 (element, index) => {
                   return (
-                    <Card key={index} image={element.image} title={element.title} datetime={element.createdAt} clock={element.clock} text={element.text} />
+                    <Card
+                      key={index}
+                      image={process.env.REACT_APP_SERVER_URL + element.image}
+                      title={element.title}
+                      dateTime={timeZoneToDateString(element.createdAt)}
+                      clock={msToTime(3600000)}
+                      text={element.text}
+                    />
                   )
                 }
               )

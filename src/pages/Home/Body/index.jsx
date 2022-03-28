@@ -11,20 +11,20 @@ export default function index() {
   return (
     <div>
       <section className='side-section'>
-        <div class="grid-flex">
-          <div class="col col-image">
+        <div className="grid-flex">
+          <div className="col col-image">
             &nbsp;
           </div>
-          <div class="col col-text col-left">
-            <div class="Aligner-item">
-              <h5 class="text-title">
+          <div className="col col-text col-left">
+            <div className="Aligner-item">
+              <h5 className="text-title">
                 Thinking <br /> differently
             </h5>
-              <div class="text-about">
+              <div className="text-about">
                 <p>Вэб сайтын аюулгүй байдал, үр ашиг, хэрэглэгчдийн ажиллагааг хөнгөвчилсөн, оновчтой шийдэлд анхааран, төслийн хугацаа, өртөгийг харилцагчийнхаа шаардлагад нийцүүлэн шийдвэрлэнэ.</p>
             </div>
             <span>
-                <a href="#" class="button">Link Button</a>
+                <a href="#" className="button">Link Button</a>
             </span>
             </div>
           </div>

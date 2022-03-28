@@ -39,3 +39,29 @@ export function timeZoneToDateString(timezone, hasHour=true, symbol="-", hasMs=f
 
     return full
 }
+
+/** mill second ийг string хугацаа руу хөрвүүлэх */
+export function msToTime(ms)
+{
+
+    let time = ms
+    let text = "ms"
+
+    if (ms > 1000)
+    {
+        time = ms / 1000
+    }
+    if (time > 60)
+    {
+        time = time / 60
+        text = "min"
+    }
+    if (time >= 60)
+    {
+        time = time / 60
+        text = "h"
+    }
+
+    return `${time}${text}`
+
+}
