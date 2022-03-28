@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 
 import Footer from '../Home/Footer'
 import HeaderMenu from '../../components/special/HeaderMenu'
@@ -12,11 +13,14 @@ export default function PodcastCard() {
 
   /** podcast ийн мэдээллийг хадгалах state */
   const [ podcastCard, setPodcast ] = useState([])
+  const location = useLocation()
 
   /** podcast ийн мэдээллийг back аас дуудах нь */
   const getData = async () =>
   {
-    await axios.get('/api/podcast/')
+    /** url ээс дарагдсан category байгаа эсэхийг анх орохдоо шалгах нь */
+    const paramCatName = new URLSearchParams(location.search).get("category")
+    await axios.get(`/api/podcast/${paramCatName ? `?category=${paramCatName}` : ""}`)
       .then(({ success, data, error }) =>
         {
           if (success)
@@ -71,6 +75,14 @@ export default function PodcastCard() {
                   )
                 }
               )
+            }
+            {
+              // хэрэв podcast байхгүй бол
+              podcastCard.length === 0
+              ?
+                <div style={{ display: "flex", justifyContent: "center" }}>Хоосон байна</div>
+              :
+                null
             }
           </div>
 
