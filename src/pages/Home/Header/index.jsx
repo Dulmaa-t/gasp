@@ -4,6 +4,8 @@ import Sticky from 'react-sticky-el'
 
 import Search from 'components/main/search'
 
+import Urls from './Urls'
+
 export default function index() {
   const headerMenu = [
     {
@@ -64,23 +66,7 @@ export default function index() {
               <li>
                 <Search />
               </li>
-              <ul className='icon'>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">
-                    <i className="fab fa-facebook"></i>
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">
-                    <i className="fab fa-instagram"></i>
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">
-                    <i className="fab fa-youtube"></i>
-                  </a>
-                </li>
-              </ul>
+              <Urls />
             </ul>
           </nav>
         </header>
