@@ -2,6 +2,8 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import Sticky from 'react-sticky-el'
 
+import Search from 'components/main/search'
+
 export default function index() {
   const headerMenu = [
     {
@@ -60,12 +62,7 @@ export default function index() {
                 )
               }
               <li>
-                <div className="searchbar">
-                  <input type="text" placeholder="search" />
-                  <div className="icon">
-                    <i className="fas fa-search"></i>
-                  </div>
-                </div>
+                <Search />
               </li>
               <ul className='icon'>
                 <li className="nav-item">
