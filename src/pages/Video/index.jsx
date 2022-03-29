@@ -66,14 +66,16 @@ export default function CVideo()
               videos.map(
                 (element, index) => {
                   return (
-                    <Card
-                      key={index}
-                      image={element.image}
-                      title={element.title}
-                      text={element.text}
-                      url={element.url}
-                      createdAt={element.createdAt}
-                    />
+                    <div className='col-md-3'>
+                      <Card
+                        key={index}
+                        image={element.image}
+                        title={element.title}
+                        text={element.text}
+                        url={element.url}
+                        createdAt={element.createdAt}
+                      />
+                    </div>
                   )
                 }
               )
