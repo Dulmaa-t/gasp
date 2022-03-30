@@ -46,6 +46,7 @@ app.use("/api/video", require("./backend/routes/videos"))
 app.use("/api/podcast", require("./backend/routes/podcast"))
 app.use("/api/category", require("./backend/routes/category"))
 app.use("/api/config", require("./backend/routes/config"))
+app.use("/api/sign", require("./backend/routes/sign"))
 
 app.use(errorHandler)
 app.use('/public', express.static("./public/server"));

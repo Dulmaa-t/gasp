@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require("bcrypt");
 
 const AuthorSchema = new mongoose.Schema({
     /** Тухайн үүсгэгчийн мэдээнд харагдах нэр */
@@ -10,11 +11,42 @@ const AuthorSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true,
+        unique: true,
     },
+    /** Тухайн хүний нэвтрэх нууц үг */
+    password: {
+        type: String,
+        required: true,
+    }
 }, {
     timestamps: true,
 })
 
-const Author = mongoose.model('Author', AuthorSchema);
+/**
+ * Хэрэглэгч хадгалахад нууц үгийг hash лах
+ */
+AuthorSchema.pre('save', function (next) {
 
-module.exports = Author
+    console.log("dsadasdsad prev save");
+    if (!this.isModified('password'))
+        return next();
+
+    bcrypt.hash(this.password, 10, (err, passwordHash) => {
+        if (err)
+            return next(err);
+        this.password = passwordHash;
+        next();
+    });
+});
+
+/**
+ * Нууц үг таарч байгаа эсэхийг шалгах
+ * @param {string} password
+ */
+AuthorSchema.methods.comparePassword = async function (password) {
+    console.log(password, this.password)
+    const isMatch = await bcrypt.compareSync(password, this.password)
+    return isMatch
+}
+
+module.exports = mongoose.model('Author', AuthorSchema);
