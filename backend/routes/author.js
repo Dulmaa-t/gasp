@@ -14,5 +14,6 @@ router
 router
     .route("/:authorId/")
     .get(asyncHandler(authController.getDetail))
+    .put(asyncHandler(authController.update))
 
 module.exports = router

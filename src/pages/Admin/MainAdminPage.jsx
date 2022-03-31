@@ -115,8 +115,13 @@ export default function MainAdminPage()
                     <div className={`l-sidebar__content`}>
                     <nav className={`c-menu js-menu`}>
                         <ul className={`u-list`}>
+                            <Menu title={'Author'} to="/admin/author/"/>
+                            <Menu title={'Category'} to="/admin/category/"/>
                             <Menu title={'News'} to="/admin/news/"/>
-                            <Menu
+                            <Menu title={'Video'} to="/admin/video/"/>
+                            <Menu title={'Podcast'} to="/admin/podcast/"/>
+                            <Menu title={'Config'} to="/admin/config/"/>
+                            {/* <Menu
                                 to={"/admin/"}
                                 title={'Modules'}
                                 subs={
@@ -129,7 +134,7 @@ export default function MainAdminPage()
                                         }
                                     ]
                                 }
-                            />
+                            /> */}
                         </ul>
                     </nav>
                     </div>

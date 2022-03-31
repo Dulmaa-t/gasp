@@ -12,7 +12,7 @@ exports.createAuthor = async (content) =>
 /** Бүх aother ийн жагсаалтыг авах нь */
 exports.getList = async () =>
 {
-    const foundAuthors = await Authors.find({})
+    const foundAuthors = await Authors.find({}).select("-password")
     return foundAuthors
 }
 
@@ -21,6 +21,16 @@ exports.getList = async () =>
  */
 exports.getDetail = async (authorId) =>
 {
-    const foundAuthor = await Authors.findById(authorId)
+    const foundAuthor = await Authors.findById(authorId).select("-password")
     return foundAuthor
+}
+
+exports.update = async (authorId, body) =>
+{
+    await Authors.updateOne(
+        {
+            id: authorId,
+        },
+        body
+    )
 }
