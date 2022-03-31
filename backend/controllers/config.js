@@ -54,6 +54,8 @@ exports.addImage = async (req, res) =>
 exports.deleteImage = async (req, res) =>
 {
     const image = req.body.image
+    if (!image)
+        return res.sendInfo("Зураг байхгүй байна")
     let fileName = getFileName(image)
     deleteFile(IMAGE_PATH + "/" + fileName)
     res.sendInfo('Зургийг устгасан');

@@ -45,7 +45,7 @@ export default function ConfigText({ configName, title="" }) {
             toast.success(`${title} заслаа`)
         }
         else {
-            toast.success(`${title}: ${error}`)
+            toast.error(`${title}: ${error}`)
         }
     }
 

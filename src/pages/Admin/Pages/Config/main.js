@@ -2,12 +2,17 @@ import React from 'react'
 
 import ConfigText from './ConfigText'
 import ConfigTextArea from './ConfigTextArea'
+import ConfigImage from './ConfigImage'
 
 export default function Configs() {
     return (
         <>
             <h1 className={`page-title`}>Тохиргоо</h1>
             <div className={`page-content`}>
+                <h3>Үндсэн</h3>
+                <hr />
+                <ConfigImage configName={"SITE_LOGO"} title="сайтын лого"/>
+                <ConfigImage configName={"SITE_BANNER_IMAGE"} title="сайтын banner зураг"/>
                 <h3>Холбоосууд</h3>
                 <hr />
                 <ConfigText configName={"FACEBOOK"} title="FACEBOOK"/>
@@ -15,6 +20,7 @@ export default function Configs() {
                 <ConfigText configName={"YOUTUBE"} title="YOUTUBE"/>
                 <h3>Нүүр хуудас</h3>
                 <hr />
+                <ConfigImage configName={"HOME_IMAGE"} title="Ерөнхий танилцуулагын зураг"/>
                 <ConfigTextArea configName={"HOME_ABOUT"} title="Ерөнхий танилцуулага"/>
                 <ConfigText configName={"HOME_TITLE"} title="Ерөнхий танилцуулагын гарчиг"/>
                 <ConfigTextArea configName={"HOME_GOAL"} title="Сайтын уриа"/>
