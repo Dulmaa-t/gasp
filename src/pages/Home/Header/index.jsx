@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import Sticky from 'react-sticky-el'
 
-import Search from 'components/main/search'
+import Search from 'components/main/Search/search'
 
 import Urls from './Urls'
 

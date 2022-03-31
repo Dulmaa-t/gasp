@@ -243,7 +243,10 @@ nav ul li a:hover{
 }
 .searchbar{
     position: relative;
-    margin: 0.5em 4em;
+    margin: 0.5em 2em;
+}
+.searchbar.show {
+    margin: 0.5em 0em;
 }  
 .searchbar input[type="text"]{
     border: 0;
@@ -252,7 +255,11 @@ nav ul li a:hover{
     height: 35px;
     border-radius: 3px;
     transition: all 0.3s ease;
-}  
+}
+.searchbar.show input[type="text"]{
+    width: 50px;
+    transition: all 0.3s ease;
+}
 .searchbar .icon{
     position: absolute;
     top: 0;
@@ -262,8 +269,11 @@ nav ul li a:hover{
     background: none;
     border-radius: 3px;
     color: #fff;
-    transition: all 0.5s 0.3s ease;
-}  
+    transition: all 0.2s 0.3s ease;
+}
+.searchbar.show .icon {
+    color: #000;
+}
 .searchbar .icon i{
     position: absolute;
     top: 50%;
@@ -1131,3 +1141,154 @@ h1,	.h1 {
 .header-zindex .sticky {
     z-index: 10;
 }
+/* login */
+.fas {
+    width: 32px;
+}
+.loginForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(-45deg, #8a51cc, #c579f1, #7352df, #3f88dd);
+    background-size: 400% 400%;
+    animation: gradient 10s ease infinite;
+} 
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+.loginForm .container {
+    position: relative;
+    padding: 50px;
+    width: 260px;
+    min-height: 380px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2);
+}
+.loginForm .container::after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    bottom: 5px;
+    left: 5px;
+    border-radius: 5px;
+    pointer-events: none;
+    background: linear-gradient( to bottom, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 2%
+    );
+}
+.loginForm .container .form {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.loginForm .container h2 {
+    color: #fff;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+}  
+.loginForm .container .inputBx {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.loginForm .container .inputBx input {
+    width: 80%;
+    outline: none;
+    border: none;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.2);
+    padding: 8px 10px;
+    padding-left: 40px;
+    border-radius: 15px;
+    color: #fff;
+    font-size: 16px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}      
+.loginForm .container .password-control {
+    position: absolute;
+    top: 11px;
+    right: 10px;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: url(https://snipp.ru/demo/495/view.svg) 0 0 no-repeat;
+    transition: 0.5s;
+}          
+.loginForm .view {
+    background: url(https://snipp.ru/demo/495/no-view.svg) 0 0 no-repeat;
+    transition: 0.5s;
+}
+.loginForm .fas {
+    position: absolute;
+    top: 13px;
+    left: 13px;
+}      
+.loginForm input[type="submit"] {
+    background: #fff;
+    color: #111;
+    max-width: 100px;
+    padding: 8px 10px;
+    box-shadow: none;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 1.5s;
+}      
+.loginForm input[type="submit"]:hover {
+    background: linear-gradient(115deg, 
+    rgba(0,0,0,0.10), 
+    rgba(255,255,255,0.25));
+    color: #fff;
+    transition: .5s;
+}
+.loginForm input::placeholder {
+    color: #fff;
+}      
+.loginForm span {
+    position: absolute;
+    left: 30px;
+    padding: 10px;
+    display: inline-block;
+    color: #fff;
+    transition: .5s;
+    pointer-events: none;
+}
+.loginForm input:focus ~ span,
+.loginForm input:valid ~ span {
+    transform: translateX(-30px) translateY(-25px);
+    font-size: 12px;
+}    
+.loginForm p {
+    color: #fff;
+    font-size: 15px;
+    margin-top: 5px;
+}
+.loginForm a {
+    color: #fff;
+}      
+.loginForm a:hover {
+    background-color: #000;
+    background-image: linear-gradient(to right, #434343 0%, black 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}  
+.loginForm .remember {
+    position: relative;
+    display: inline-block;
+    color: #fff;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }

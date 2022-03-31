@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import { useConfig } from 'context/configContext'
 
+import Loader from 'components/main/Loader'
+
 import Home from './Home'
 import News from './News/'
 import Video from './Video'
@@ -32,7 +34,7 @@ export default function Page() {
 
   if (isLoading)
   {
-    return "Уншиж байна"
+    return <Loader />
   }
 
   return (
