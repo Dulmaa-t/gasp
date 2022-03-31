@@ -12,7 +12,7 @@ exports.createAuthor = async (content) =>
 /** Бүх aother ийн жагсаалтыг авах нь */
 exports.getList = async () =>
 {
-    const foundCategories = await Category.find({})
+    const foundCategories = await Category.find({}).sort("-createdAt")
     return foundCategories
 }
 

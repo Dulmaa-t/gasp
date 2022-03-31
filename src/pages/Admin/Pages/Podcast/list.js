@@ -7,20 +7,19 @@ import Button from '../../../../components/main/Button';
 import axios from "utils/axios"
 import { timeZoneToDateString } from '../../../../utils'
 
-export default function NewsList()
+export default function PodcastList()
 {
+    /** podcast хадгалах state */
+    const [ podcasts, setPodcasts ] = useState([])
 
-    /** мэдээнүүдийг хадгалах state */
-    const [ newsList, setNews ] = useState([])
-
-    /** back аас мэдээний жагсаалтыг авах */
-    const getNews = async () =>
+    /** back аас podcast жагсаалтыг авах */
+    const getPodcasts = async () =>
     {
-        const { success, data, error } = await axios.get('/api/news/')
+        const { success, data, error } = await axios.get('/api/podcast/')
         if (success)
         {
             /** амжилттай дата авсан үед датаг state -д оноож өгөх нь */
-            setNews(data)
+            setPodcasts(data)
         }
         else {
             /** алдаа гарвал alert харуулах */
@@ -28,21 +27,21 @@ export default function NewsList()
         }
     }
 
-    /** хуудас руу анх ороход мэдээний жагсаалтыг авах */
+    /** хуудас руу анх ороход podcast жагсаалтыг авах */
     useEffect(() =>
     {
-        getNews()
+        getPodcasts()
     }, [])
 
     /** Мэдээ устгах нь */
     const handleDelete = async (id) =>
     {
-        const { success, data, info, error } = await axios.delete(`/api/news/${id}/`)
+        const { success, data, info, error } = await axios.delete(`/api/podcast/${id}/`)
         if (success)
         {
             /** амжилттай устгасны дараа alert харуулах нь */
             toast.success(info)
-            getNews()
+            getPodcasts()
         }
         else {
             /** алдаа гарвал alert харуулах */
@@ -52,9 +51,9 @@ export default function NewsList()
 
     return (
         <>
-            <h1 className={`page-title`}>NEWS</h1>
+            <h1 className={`page-title`}>Podcast</h1>
             <div className={`page-content`}>
-                <Link to={"/admin/news/create/"} className="main">Үүсгэх</Link>
+                <Link to={"/admin/podcast/create/"} className="main">Үүсгэх</Link>
                 <table>
                     <thead>
                         <tr>
@@ -65,6 +64,9 @@ export default function NewsList()
                                 Үүсгэсэн
                             </th>
                             <th>
+                                Category
+                            </th>
+                            <th>
                                 Огноо
                             </th>
                             <th>
@@ -73,27 +75,30 @@ export default function NewsList()
                     </thead>
                     <tbody>
                         {
-                            newsList.map(
-                                (news, idx) =>
+                            podcasts.map(
+                                (podcast, idx) =>
                                 {
                                     return (
                                         <tr key={idx}>
                                             <td>
-                                                {news.title}
+                                                {podcast.title}
                                             </td>
                                             <td>
-                                                {news.author.nickName}
+                                                {podcast.author.nickName}
                                             </td>
                                             <td>
-                                                {timeZoneToDateString(news.createdAt)}
+                                                {podcast.category?.name || ""}
                                             </td>
                                             <td>
-                                                <Link to={`/admin/news/update/${news._id}/`} className="main">Засах</Link>
+                                                {timeZoneToDateString(podcast.createdAt)}
+                                            </td>
+                                            <td>
+                                                <Link to={`/admin/podcast/update/${podcast._id}/`} className="main">Засах</Link>
                                                 <Button
                                                     style={{
                                                         backgroundColor: "red"
                                                     }}
-                                                    onClick={() => handleDelete(news._id)}
+                                                    onClick={() => handleDelete(podcast._id)}
                                                     title="Устгах"
                                                 />
                                             </td>
