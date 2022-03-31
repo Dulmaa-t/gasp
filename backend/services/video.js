@@ -34,7 +34,7 @@ exports.getList = async (category) =>
                 select: "name"
             }
         ]
-    )
+    ).sort("-createdAt")
     return foundVideos
 }
 
