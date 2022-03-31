@@ -3,7 +3,8 @@ import axios from 'axios'
 /** тохиргоо оруулсан axios */
 const instance = axios.create(
     {
-        baseURL: process.env.REACT_APP_SERVER_URL
+        baseURL: process.env.REACT_APP_SERVER_URL,
+        withCredentials: true,
     }
 )
 instance.interceptors.response.use(

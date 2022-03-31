@@ -1,37 +1,77 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { toast } from 'react-toastify'
 
-export default function newsCard(props) {
+import { useAuth } from 'context/authContext'
+
+import axios from 'utils/axios'
+
+export default function LoginForm(props)
+{
+    const [ data, setDatas ] = useState(
+        {
+            email: "",
+            password: "",
+        }
+    )
+    const [ showPass, setShowPass ] = useState(false)
+
+    const { loggedUser } = useAuth()
+
+    const showPassword = () =>
+    {
+        setShowPass(!showPass)
+    }
+
+    const handleChange = (event, key) =>
+    {
+        const value = event.target.value
+        setDatas({ ...data, [key]: value })
+    }
+
+    const handleSubmit = async (event) =>
+    {
+        event.preventDefault()
+
+        const { success, data: userData, error, info } = await axios.post("/api/sign/in/", data).catch(err => err)
+        if (success)
+        {
+            toast.success(info)
+            loggedUser(userData)
+        }
+        else {
+            toast.error(error)
+        }
+    }
+
     return (
         <section className='loginForm'>
 
             <div className="box">
 
-                <div className="square" style="--i:0;"></div>
-                <div className="square" style="--i:1;"></div>
-                <div className="square" style="--i:2;"></div>
-                <div className="square" style="--i:3;"></div>
-                <div className="square" style="--i:4;"></div>
-                <div className="square" style="--i:5;"></div>
+                <div className="square"></div>
+                <div className="square"></div>
+                <div className="square"></div>
+                <div className="square"></div>
+                <div className="square"></div>
+                <div className="square"></div>
 
                 <div className="container">
                     <div className="form">
-                        <h2>LOGIN to CodePen</h2>
-                        <form action="">
+                        <h2>LOGIN</h2>
+                        <form onSubmit={handleSubmit}>
                             <div className="inputBx">
-                                <input type="text" required="required" />
+                                <input type="text" required="required" onChange={(e) => handleChange(e, 'email')} />
                                 <span>Login</span>
                                 <i className="fas fa-user-circle"></i>
                             </div>
                             <div className="inputBx password">
-                                <input id="password-input" type="password" name="password" required="required" />
+                                <input id="password-input" type={showPass ? "text" : "password"} name="password" required="required" onChange={(e) => handleChange(e, 'password')}/>
                                 <span>Password</span>
-                                <a href="#" className="password-control" onclick="return show_hide_password(this);"></a>
+                                <a className="password-control" onClick={showPassword}></a>
                                 <i className="fas fa-key"></i>
                             </div>
-                            <label className="remember"><input type="checkbox" />
-                                Remember</label>
                             <div className="inputBx">
-                                <input type="submit" value="Log in" disabled />
+                                <input type="submit" value="Log in" />
                             </div>
                         </form>
                         <p>Forgot password? <a href="#">Click Here</a></p>

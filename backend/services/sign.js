@@ -58,6 +58,12 @@ exports.in = async (email, password, res) =>
 
     //Токенийг cookie-нд хадгална
     res.cookie(process.env.TOKEN_NAME, token, cookieOption);
+    const author = await Authors.findOne(
+        {
+            email: email,
+        }
+    ).select("-password")
+    return author
 }
 
 /**

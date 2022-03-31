@@ -28,6 +28,13 @@ exports.getDetail = async (req, res) =>
     res.sendData(foundAuthor);
 }
 
+exports.getDetailWithLogged = async (req, res) =>
+{
+    const authId = req.userId
+    const foundAuthor = await authorService.getDetail(authId)
+    res.sendData(foundAuthor);
+}
+
 exports.update = async (req, res) =>
 {
     const { authorId } = req.params

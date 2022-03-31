@@ -5,9 +5,9 @@ exports.login = async (req, res, next) =>
 {
     const { email, password } = req.body
 
-    await signService.in(email, password, res)
+    const user = await signService.in(email, password, res)
 
-    res.sendInfo("Амжилттай нэвтэрлээ")
+    res.sendDataInfo("Амжилттай нэвтэрлээ", user)
 }
 
 /**

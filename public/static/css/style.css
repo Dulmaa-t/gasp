@@ -1145,6 +1145,9 @@ h1,	.h1 {
 .fas {
     width: 32px;
 }
+section.loginForm{
+    margin: unset;
+}
 .loginForm {
     display: flex;
     justify-content: center;

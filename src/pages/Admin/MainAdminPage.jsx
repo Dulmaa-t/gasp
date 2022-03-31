@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
+import { useAuth } from 'context/authContext'
+
 import Menu from './Menu'
 import AdminPages from './Pages'
 
@@ -8,6 +10,8 @@ import css from './style.module.css'
 
 export default function MainAdminPage()
 {
+
+    const { signOut } = useAuth()
 
     useEffect(() => {
 
@@ -72,6 +76,11 @@ export default function MainAdminPage()
         }
     }, [])
 
+    const logout = () =>
+    {
+        signOut()
+    }
+
     return (
         <>
             <div className={`sidebar-is-reduced body`}>
@@ -100,7 +109,7 @@ export default function MainAdminPage()
                                 <span className={`c-badge c-badge--header-icon animated shake`}>12</span>
                                 <i className={`fa fa-shopping-basket`}></i>
                             </div>
-                            <div className={`c-header-icon logout`}>
+                            <div className={`c-header-icon logout`} onClick={logout}>
                                 <i className={`fa fa-power-off`}></i>
                             </div>
                         </div>
