@@ -1,5 +1,7 @@
 const Videos = require('../models/videos')
 
+const  { MORE_DATA } = require("../utils/index")
+
 /** шинэ video үүсгэх нь
  * @param {string} content.url      тухайн бичлэгний зам
  * @param {string} content.title    тухайн бичлэгний гарчиг
@@ -17,6 +19,8 @@ exports.createAuthor = async (content) =>
 */
 exports.getList = async (category) =>
 {
+    if (start)
+        start = parseInt(start)
     /** Хайх нөхцөл */
     const where = {}
     /** ангилал байвал ангилалаар нь шүүх */
@@ -34,7 +38,7 @@ exports.getList = async (category) =>
                 select: "name"
             }
         ]
-    ).sort("-createdAt")
+    ).sort("-createdAt").skip(start).limit(start + MORE_DATA)
     return foundVideos
 }
 

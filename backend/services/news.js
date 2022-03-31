@@ -1,6 +1,8 @@
 const mongoose = require('mongoose')
 const News = require('../models/news')
 
+const  { MORE_DATA } = require("../utils/index")
+
 const { deleteFile, IMAGE_PATH, getFileName } = require("./file")
 
 /** шинэ мэдээ үүсгэх нь
@@ -19,8 +21,12 @@ exports.createNewNews = async (content) =>
 /** Бүртгэлтэй бүх мэдээний жагсаалтыг авах
  * @param {string} category ангиалалын iD
 */
-exports.getNewsList = async (category) =>
+exports.getNewsList = async (category, start) =>
 {
+
+    if (start)
+        start = parseInt(start)
+
     /** Хайх нөхцөл */
     const where = {}
     /** ангилал байвал ангилалаар нь шүүх */
@@ -28,7 +34,7 @@ exports.getNewsList = async (category) =>
         where['category'] = category
 
     /** хайгаад олдсон мэдээнүүд */
-    const news = await News.find(where).populate("author", 'email nickName').sort("-createdAt")
+    const news = await News.find(where).populate("author", 'email nickName').sort("-createdAt").skip(start).limit(start + MORE_DATA)
     return news
 }
 

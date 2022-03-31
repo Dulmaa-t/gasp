@@ -19,8 +19,8 @@ exports.create = async (req, res) =>
 */
 exports.getList = async (req, res) =>
 {
-    const { category } = req.query
-    const foundVideos = await videoService.getList(category)
+    const { category, start } = req.query
+    const foundVideos = await videoService.getList(category, start)
     res.sendData(foundVideos);
 }
 

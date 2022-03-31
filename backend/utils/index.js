@@ -1,3 +1,5 @@
+exports.MORE_DATA = 2
+
 /**
  * тооны өмнө 0 ээр дүүргэж өгөх нь
  * @param {number} num тоо

@@ -33,8 +33,8 @@ exports.createNews = async (req, res) =>
 */
 exports.getNews = async (req, res) =>
 {
-    const { category } = req.query
-    const foundNews = await newsService.getNewsList(category)
+    const { category, start } = req.query
+    const foundNews = await newsService.getNewsList(category, start)
     res.sendData(foundNews);
 }
 

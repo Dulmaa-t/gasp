@@ -1,6 +1,8 @@
 const mongoose = require('mongoose')
 const Podcast = require('../models/podcast')
 
+const  { MORE_DATA } = require("../utils/index")
+
 const { deleteFile, IMAGE_PATH, getFileName } = require("./file")
 
 /** шинэ podcast үүсгэх нь
@@ -19,8 +21,12 @@ exports.createPodcast = async (content) =>
 /** Бүртгэлтэй бүх podcast жагсаалтыг авах
  * @param {string} category ангиалалын iD
 */
-exports.getList = async (category) =>
+exports.getList = async (category, start) =>
 {
+
+    if (start)
+        start = parseInt(start)
+
     /** Хайх нөхцөл */
     const where = {}
     /** ангилал байвал ангилалаар нь шүүх */
@@ -39,7 +45,7 @@ exports.getList = async (category) =>
                 select: "name"
             }
         ]
-    ).sort("-createdAt")
+    ).sort("-createdAt").skip(start).limit(start + MORE_DATA)
     return news
 }
 
