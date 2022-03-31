@@ -93,7 +93,7 @@ exports.sendMail = async (mailOptions) =>
     });
 
     mailOptions.from = email
-    await transporter.sendMail(mailOptions)
+    transporter.sendMail(mailOptions)
 }
 
 /**

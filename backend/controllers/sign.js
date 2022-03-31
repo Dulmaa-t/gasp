@@ -23,10 +23,12 @@ exports.logout = async (req, res) =>
 exports.resetPassword = async (req, res) =>
 {
     await signService.sendMailResetPassword(req)
+    res.sendInfo('Мэйл хаяг руугаа орж баталгаажуулна уу')
 }
 
 /** Шинэ нууц үгийг хадгалах */
 exports.confirmPassword = async (req, res) =>
 {
     await signService.reset(req)
+    res.sendInfo('Нууц амжилттай солилоо')
 }
