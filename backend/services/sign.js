@@ -118,7 +118,7 @@ exports.sendMailResetPassword = async (req) =>
 
     await Verification.create(verification)
 
-    const confirmEmailUrl = process.env.CLIENT_URL + "/resetpassword/" + verification.token
+    const confirmEmailUrl = process.env.CLIENT_URL + "/admin/resetpassword/" + verification.token
 
     var mailOptions = {
         to: email,

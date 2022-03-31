@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 import { useAuth } from 'context/authContext'
@@ -74,7 +75,7 @@ export default function LoginForm(props)
                                 <input type="submit" value="Log in" />
                             </div>
                         </form>
-                        <p>Forgot password? <a href="#">Click Here</a></p>
+                        <p>Forgot password? <Link to="/admin/resetpassword/">Click Here</Link></p>
                     </div>
                 </div>
 
