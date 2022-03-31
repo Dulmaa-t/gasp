@@ -6,11 +6,13 @@ import Header from 'components/special/Header'
 import Footer from "pages/Home/Footer"
 
 import axios from 'utils/axios'
+import { useConfig } from 'context/configContext'
 
 export default function NewsAbout() {
 
   const [ about, setAbout ] = useState({})
   const { newsId } = useParams()
+  const { configs } = useConfig()
 
   /** мэдээний дэлгэрэнгүй авах */
   const getNewsAbout = async () =>
@@ -42,7 +44,7 @@ export default function NewsAbout() {
     <>
       <Header />
       <div className='header'>
-        <img className="header-img" src="/static/image/1.jpg" alt="Card image cap"></img>
+        <img className="header-img" src={process.env.REACT_APP_SERVER_URL + configs.SITE_MENU_IMAGE} alt="Card image cap"></img>
       </div>
       <h1 className='text-center'>
         {about.title}

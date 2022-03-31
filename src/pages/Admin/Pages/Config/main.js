@@ -13,6 +13,7 @@ export default function Configs() {
                 <hr />
                 <ConfigImage configName={"SITE_LOGO"} title="сайтын лого"/>
                 <ConfigImage configName={"SITE_BANNER_IMAGE"} title="сайтын banner зураг"/>
+                <ConfigImage configName={"SITE_MENU_IMAGE"} title="сайтын цэсны арын зураг"/>
                 <h3>Холбоосууд</h3>
                 <hr />
                 <ConfigText configName={"FACEBOOK"} title="FACEBOOK"/>
