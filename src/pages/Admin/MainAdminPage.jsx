@@ -124,12 +124,12 @@ export default function MainAdminPage()
                     <div className={`l-sidebar__content`}>
                     <nav className={`c-menu js-menu`}>
                         <ul className={`u-list`}>
-                            <Menu title={'Author'} to="/admin/author/"/>
-                            <Menu title={'Category'} to="/admin/category/"/>
-                            <Menu title={'News'} to="/admin/news/"/>
-                            <Menu title={'Video'} to="/admin/video/"/>
-                            <Menu title={'Podcast'} to="/admin/podcast/"/>
-                            <Menu title={'Config'} to="/admin/config/"/>
+                            <Menu title={'Author'} to="/admin/author/" icon='fa fa-user'/>
+                            <Menu title={'Category'} to="/admin/category/" icon='fas fa-books'/>
+                            <Menu title={'News'} to="/admin/news/" icon='fal fa-newspaper'/>
+                            <Menu title={'Video'} to="/admin/video/" icon={"fab fa-youtube"}/>
+                            <Menu title={'Podcast'} to="/admin/podcast/" icon='fal fa-podcast'/>
+                            <Menu title={'Config'} to="/admin/config/" icon='fal fa-cog'/>
                             {/* <Menu
                                 to={"/admin/"}
                                 title={'Modules'}
