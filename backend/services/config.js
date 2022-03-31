@@ -33,7 +33,7 @@ exports.saveConfigs = async (configs) =>
         saveToConfigs = [configs]
     }
 
-    await Config.create(saveToConfigs)
+    
 
 }
 
@@ -57,13 +57,15 @@ exports.updateConfigs = async (configs) =>
     {
         const { name, value } = config
 
-        await Config.updateOne(
-            {
-                name,
-            },
-            {
-                value
-            }
-        )
+        const foundConfig = await Config.findOne({ name })
+        if (foundConfig)
+        {
+            foundConfig.value = value
+            await foundConfig.save()
+        }
+        else {
+            const newConfig = new Config({ name, value })
+            await newConfig.save()
+        }
     }
 }
