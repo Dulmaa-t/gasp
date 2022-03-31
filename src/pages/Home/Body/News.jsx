@@ -1,108 +1,153 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
-import ImageTitle from '../../../components/main/ImageTitle'
+import axios from 'utils/axios'
 
 export default function News() {
 
-    const lastNews =
-    [
+    const [ lastNews, setNews ] = useState([[],[],[],[]])
+
+    const getLastNews = async () =>
+    {
+        const { success, data, error } = await axios.get("/api/news/home/").catch(err => err)
+        if (success)
         {
-            image: "/static/image/2.jpg",
-            title: "",
-            text: "",
+
+            const firstRow = [0, 1]
+            const firstRowData = []
+
+            const secondRow = [2, 3]
+            const secondRowData = []
+
+            const tirthRow = [4, 5]
+            const tirthRowData = []
+
+            const forthRow = [6, 7]
+            const forthRowData = []
+
+            for (const idx in data)
+            {
+                const index = parseInt(idx)
+                const item = data[idx]
+                if (firstRow.includes(index))
+                {
+                    firstRowData.push(item)
+                }
+                if (secondRow.includes(index))
+                {
+                    secondRowData.push(item)
+                }
+                if (tirthRow.includes(index))
+                {
+                    tirthRowData.push(item)
+                }
+                if (forthRow.includes(index))
+                {
+                    forthRowData.push(item)
+                }
+            }
+
+            setNews(
+                [
+                    firstRowData,
+                    secondRowData,
+                    tirthRowData,
+                    forthRowData,
+                ]
+            )
         }
-    ]
+    }
+
+    useEffect(
+        () =>
+        {
+            getLastNews()
+        },
+        []
+    )
 
     return (
         <section className='m-top-content'>
             <div className="c-container">
                 <div className="c-row">
-                    <div className="col-md-4">
-                        <div className="card card-01 height-fix">
-                            <img className="card-img-top" src="/static/image/2.jpg" alt="Card image cap" />
-                            <div className="card-img-overlay">
-                                <h4 className="card-title"><a href="#">What is Computer Technology | IGI Global</a></h4>
-                                <p className="card-text">Computer technology requires a completely different methodology </p>
-                                <p className="card-text"><a href="#" className="fa fa-bookmark-o"></a><i className="fa fa-heart-o" href="#"></i></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-md-8">
-                        <div className="card card-01 height-fix">
-                            <img className="card-img-top" src="/static/image/lead_800x450.jpeg" alt="Card image cap" />
-                            <div className="card-img-overlay">
-                                <h4 className="card-title"><a href="#">What is Computer Technology | IGI Global</a></h4>
-                                <p className="card-text">Captain Jack Sparrow searches for the trident of Poseidon.</p>
-                                <p className="card-text"><a href="#" className="fa fa-bookmark-o"></a><a className="fa fa-heart-o" href="#"></a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="c-row">
-                    <div className="col-md-8">
-                        <div className="card card-01 height-fix">
-                            <img className="card-img-top" src="/static/image/neon-coming-soon-background_52683-58476.webp" alt="Card image cap" />
-                            <div className="card-img-overlay">
-                                <h4 className="card-title"><a href="#">What is Computer Technology | IGI Global</a></h4>
-                                <p className="card-text">Computer technology requires a completely different methodology </p>
-                                <p className="card-text"><a href="#" className="fa fa-bookmark-o"></a><a className="fa fa-heart-o" href="#"></a></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-md-4">
-                        <div className="card card-01 height-fix">
-                            <img className="card-img-top" src="/static/image/neon-coming-soon-background_52683-58476.webp" alt="Card image cap" />
-                            <div className="card-img-overlay">
-                                <h4 className="card-title"><a href="#">What is Computer Technology | IGI Global</a></h4>
-                                <p className="card-text">Computer technology requires a completely different methodology </p>
-                                <p className="card-text"><a href="#" className="fa fa-bookmark-o"></a><a className="fa fa-heart-o" href="#"></a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="c-row">
-                    <div className="col-md-4">
-                        <div className="card card-01 height-fix">
-                            <img className="card-img-top long-img" src="/static/image/13.jpg" alt="Card image cap" />
-                            <div className="card-img-overlay">
-                                <h4 className="card-title"><a href="#">What is Computer Technology | IGI Global</a></h4>
-                                <p className="card-text">Computer technology requires a completely different methodology </p>
-                                <p className="card-text"><a href="#" className="fa fa-bookmark-o"></a><a className="fa fa-heart-o" href="#"></a></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-md-8">
-                        <div className="card card-01 height-fix">
-                            <img className="card-img-top" src="/static/image/6.jpg" alt="Card image cap" />
-                            <div className="card-img-overlay">
-                                <h4 className="card-title"><a href="#">What is Computer Technology | IGI Global</a></h4>
-                                <p className="card-text">Captain Jack Sparrow searches for the trident of Poseidon.</p>
-                                <p className="card-text"><a href="#" className="fa fa-bookmark-o"></a><a className="fa fa-heart-o" href="#"></a></p>
-                            </div>
-                        </div>
-                        <div className="c-row">
-                            <div className="col-md-8">
-                                <div className="card card-01 height-fix">
-                                    <img className="card-img-top" src="/static/image/11.jpg" alt="Card image cap" />
-                                    <div className="card-img-overlay">
-                                        <h4 className="card-title"><a href="#">What is Computer Technology | IGI Global</a></h4>
-                                        <p className="card-text">Computer technology requires a completely different methodology </p>
-                                        <p className="card-text"><a href="#" className="fa fa-bookmark-o"></a><a className="fa fa-heart-o" href="#"></a></p>
+                    {
+                        lastNews[0].map((news, idx) =>
+                        {
+                            return (
+                                <div className={`col-md-${idx === 0 ? "4" : "8"}`} key={idx}>
+                                    <div className="card card-01 height-fix">
+                                        <img className="card-img-top" src={process.env.REACT_APP_SERVER_URL + news.image} alt="Card image cap" />
+                                        <div className="card-img-overlay">
+                                            <h4 className="card-title"><Link to={`/news/${news._id}/`}>{news.title}</Link></h4>
+                                            <p className="card-text">{news.text}</p>
+                                            <p className="card-text"><Link to={`/news/${news._id}/`}></Link><i className="fa fa-heart-o"></i></p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div className="col-md-4">
-                                <div className="card card-01 height-fix">
-                                    <img className="card-img-top" src="/static/image/14.jpg" alt="Card image cap" />
-                                    <div className="card-img-overlay">
-                                        <h4 className="card-title"><a href="#">What is Computer Technology | IGI Global</a></h4>
-                                        <p className="card-text">Captain Jack Sparrow searches for the trident of Poseidon.</p>
-                                        <p className="card-text"><a href="#" className="fa fa-bookmark-o"></a><a className="fa fa-heart-o" href="#"></a></p>
+                            )
+                        })
+                    }
+                </div>
+                <div className="c-row">
+                    {
+                        lastNews[1].map((news, idx) =>
+                        {
+                            return (
+                                <div className={`col-md-${idx === 0 ? "8" : "4"}`} key={idx}>
+                                    <div className="card card-01 height-fix">
+                                        <img className="card-img-top" src={process.env.REACT_APP_SERVER_URL + news.image} alt="Card image cap" />
+                                        <div className="card-img-overlay">
+                                            <h4 className="card-title"><Link to={`/news/${news._id}/`}>{news.title}</Link></h4>
+                                            <p className="card-text">{news.text}</p>
+                                            <p className="card-text"><Link to={`/news/${news._id}/`}></Link><i className="fa fa-heart-o"></i></p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
+                            )
+                        })
+                    }
+                </div>
+                <div className="c-row">
+                    {
+                        lastNews[2].map((news, idx) =>
+                        {
+                            return (
+                                <div className={`col-md-${idx === 0 ? "4" : "8"}`} key={idx}>
+                                    <div className="card card-01 height-fix">
+                                        <img className={`card-img-top ${idx === 0 ? "long-img" : ""}`} src={process.env.REACT_APP_SERVER_URL + news.image} alt="Card image cap" />
+                                        <div className="card-img-overlay">
+                                            <h4 className="card-title"><Link to={`/news/${news._id}/`}>{news.title}</Link></h4>
+                                            <p className="card-text">{news.text}</p>
+                                            <p className="card-text"><Link to={`/news/${news._id}/`}></Link><i className="fa fa-heart-o"></i></p>
+                                        </div>
+                                    </div>
+                                    {
+                                        idx === 1
+                                        &&
+                                            <div className="c-row">
+                                                {
+                                                    lastNews[3].map((news, idx) =>
+                                                    {
+                                                        return (
+                                                            <div className={`col-md-${idx === 0 ? "8" : "4"}`} key={idx}>
+                                                                <div className="card card-01 height-fix">
+                                                                    <img className="card-img-top" src={process.env.REACT_APP_SERVER_URL + news.image} alt="Card image cap" />
+                                                                    <div className="card-img-overlay">
+                                                                        <h4 className="card-title"><Link to={`/news/${news._id}/`}>{news.title}</Link></h4>
+                                                                        <p className="card-text">{news.text}</p>
+                                                                        <p className="card-text"><Link to={`/news/${news._id}/`}></Link><i className="fa fa-heart-o"></i></p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        )
+                                                    })
+                                                }
+                                            </div>
+                                    }
+                                </div>
+                            )
+                        })
+                    }
                 </div>
             </div>
         </section>
