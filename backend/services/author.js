@@ -29,7 +29,7 @@ exports.update = async (authorId, body) =>
 {
     await Authors.updateOne(
         {
-            id: authorId,
+            _id: authorId,
         },
         body
     )

@@ -1,3 +1,4 @@
+const { default: mongoose } = require('mongoose')
 const Category = require('../models/categories')
 
 /** шинэ ангилал үүсгэх нь
@@ -22,4 +23,17 @@ exports.getDetail = async (categoryId) =>
 {
     const foundCategory = await Category.findById(categoryId)
     return foundCategory
+}
+
+exports.update = async (categoryId, body) =>
+{
+    const cat = await Category.findById(categoryId)
+    cat.name = body.name
+    await cat.save()
+}
+
+exports.delete = async (categoryId) =>
+{
+    const cat = await Category.findById(categoryId)
+    await Category.deleteOne({ _id:  cat._id })
 }

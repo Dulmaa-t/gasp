@@ -14,5 +14,7 @@ router
 router
     .route("/:categoryId/")
     .get(asyncHandler(categoryController.getDetail))
+    .put(asyncHandler(categoryController.update))
+    .delete(asyncHandler(categoryController.delete))
 
 module.exports = router

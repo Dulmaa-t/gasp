@@ -33,5 +33,5 @@ exports.update = async (req, res) =>
     const { authorId } = req.params
     const body = req.body
     await authorService.update(authorId, body)
-    req.sendInfo("Амжилттай заслаа")
+    res.sendInfo("Амжилттай заслаа")
 }

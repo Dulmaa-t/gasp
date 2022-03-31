@@ -26,3 +26,18 @@ exports.getDetail = async (req, res) =>
     const foundCategory = await categoryService.getDetail(categoryId)
     res.sendData(foundCategory);
 }
+
+exports.update = async (req, res) =>
+{
+    const { categoryId } = req.params
+    const body = req.body
+    await categoryService.update(categoryId, body)
+    res.sendInfo("Амжилттай заслаа")
+}
+
+exports.delete = async (req, res) =>
+{
+    const { categoryId } = req.params
+    await categoryService.delete(categoryId)
+    res.sendInfo("Амжилттай устгалаа")
+}

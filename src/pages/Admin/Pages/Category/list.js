@@ -7,20 +7,20 @@ import Button from '../../../../components/main/Button';
 import axios from "utils/axios"
 import { timeZoneToDateString } from '../../../../utils'
 
-export default function NewsList()
+export default function CategoryList()
 {
 
-    /** мэдээнүүдийг хадгалах state */
-    const [ newsList, setNews ] = useState([])
+    /** category ийг хадгалах state */
+    const [ categories, setCategories ] = useState([])
 
-    /** back аас мэдээний жагсаалтыг авах */
-    const getNews = async () =>
+    /** back аас category жагсаалтыг авах */
+    const getCategory = async () =>
     {
-        const { success, data, error } = await axios.get('/api/news/')
+        const { success, data, error } = await axios.get('/api/category/')
         if (success)
         {
             /** амжилттай дата авсан үед датаг state -д оноож өгөх нь */
-            setNews(data)
+            setCategories(data)
         }
         else {
             /** алдаа гарвал alert харуулах */
@@ -28,21 +28,21 @@ export default function NewsList()
         }
     }
 
-    /** хуудас руу анх ороход мэдээний жагсаалтыг авах */
+    /** хуудас руу анх ороход category жагсаалтыг авах */
     useEffect(() =>
     {
-        getNews()
+        getCategory()
     }, [])
 
-    /** Мэдээ устгах нь */
+    /** category устгах нь */
     const handleDelete = async (id) =>
     {
-        const { success, data, info, error } = await axios.delete(`/api/news/${id}/`)
+        const { success, data, info, error } = await axios.delete(`/api/category/${id}/`)
         if (success)
         {
             /** амжилттай устгасны дараа alert харуулах нь */
             toast.success(info)
-            getNews()
+            getCategory()
         }
         else {
             /** алдаа гарвал alert харуулах */
@@ -52,20 +52,17 @@ export default function NewsList()
 
     return (
         <>
-            <h1 className={`page-title`}>NEWS</h1>
+            <h1 className={`page-title`}>Category</h1>
             <div className={`page-content`}>
-                <Link to={"/admin/news/create/"} className="main">Үүсгэх</Link>
+                <Link to={"/admin/category/create/"} className="main">Үүсгэх</Link>
                 <table>
                     <thead>
                         <tr>
                             <th>
-                                Гарчиг
+                                Нэр
                             </th>
                             <th>
-                                Үүсгэсэн
-                            </th>
-                            <th>
-                                Огноо
+                                бүртгүүлсэн огноо
                             </th>
                             <th>
                             </th>
@@ -73,27 +70,24 @@ export default function NewsList()
                     </thead>
                     <tbody>
                         {
-                            newsList.map(
-                                (news, idx) =>
+                            categories.map(
+                                (category, idx) =>
                                 {
                                     return (
                                         <tr key={idx}>
                                             <td>
-                                                {news.title}
+                                                {category.name}
                                             </td>
                                             <td>
-                                                {news.author.nickName}
+                                                {timeZoneToDateString(category.createdAt)}
                                             </td>
                                             <td>
-                                                {timeZoneToDateString(news.createdAt)}
-                                            </td>
-                                            <td>
-                                                <Link to={`/admin/news/update/${news._id}/`} className="main">Засах</Link>
+                                                <Link to={`/admin/category/update/${category._id}/`} className="main">Засах</Link>
                                                 <Button
                                                     style={{
                                                         backgroundColor: "red"
                                                     }}
-                                                    onClick={() => handleDelete(news._id)}
+                                                    onClick={() => handleDelete(category._id)}
                                                     title="Устгах"
                                                 />
                                             </td>

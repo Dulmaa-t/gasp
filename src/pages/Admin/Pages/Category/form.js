@@ -2,67 +2,25 @@ import React, { useEffect, useState, useRef } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
-import { Editor } from '@tinymce/tinymce-react';
-
 import axios from 'utils/axios'
 
 export default function NewsForm()
 {
     /** form ийн утгийг хадгалах state */
     const [ formData, setFormData ] = useState({})
-    /** author ийн жагсаалтыг хадгалах state */
-    const [ authors, setAuthors ] = useState([])
-    /** ангилалуудын жагсаалтыг хадгалах state */
-    const [ categories, setCategories ] = useState([])
-    /** оруулсан зургийг хадгалах state */
-    const [ image, setImage ] = useState(null)
-
-    /** Мэдээний үндсэн мэдээллийг ref хийж хариуг нь авах нь */
-    const editorRef = useRef(null);
 
     /** update хийж байгаа хуудас байх үед newsId байна */
-    const { newsId } = useParams()
+    const { categoryId } = useParams()
 
     /** хуудас үсрэхэд ашиглах функц */
     const navigate = useNavigate()
 
-    /** author уудийн жагсаалтыг авах нь */
-    const getAuthors = async () =>
+    /** category дэлгэрэнгүй авах нь */
+    const getCategories = async (categoryId) =>
     {
-        const { success, data, error, info } = await axios.get('/api/author/')
-        /** амжилттай дата ирвэл author ийг state -д оноох нь */
+        const { success, data, error } = await axios.get(`/api/category/${categoryId ? categoryId + "/" : ""}`)
         if (success)
         {
-            setAuthors(data)
-        }
-        else {
-            /** алдаа гарвал алдааг харуулах нь */
-            toast(error)
-        }
-    }
-
-    /** Ангилалуудыг авах нь */
-    const getCategories = async () =>
-    {
-        const { success, data, error, info } = await axios.get('/api/category/')
-        /** амжилттай дата ирвэл ангилалийг state -д оноох нь */
-        if (success)
-        {
-            setCategories(data)
-        }
-        else {
-            /** алдаа гарвал алдааг харуулах нь */
-            toast.error(error)
-        }
-    }
-
-    /** мэдээний дэлгэрэнгүй авах нь */
-    const getNews = async (newsId) =>
-    {
-        const { success, data, error } = await axios.get(`/api/news/${newsId}/`)
-        if (success)
-        {
-            data.author = data.author._id
             setFormData(data)
         }
         else {
@@ -70,15 +28,14 @@ export default function NewsForm()
         }
     }
 
-    /** анх орж ирэхэд author ыг дуудна */
+    /** анх орж ирэхэд category ыг дуудна */
     useEffect(() =>
     {
-        getAuthors()
         getCategories()
-        /** хэрвээ id байвал мэдээний дэлгэрэнгүй дуудна */
-        if (newsId)
+        /** хэрвээ id байвал category дэлгэрэнгүй дуудна */
+        if (categoryId)
         {
-            getNews(newsId)
+            getCategories(categoryId)
         }
     }, [])
 
@@ -95,45 +52,27 @@ export default function NewsForm()
         /** submit дарахад хуудас refresh хийж байгааг болиулсан */
         event.preventDefault()
 
-        /** үндсэн мэдээний дэлгэрэнгүй мэдээллийг html ээр авсан нь */
-        const news = editorRef.current.getContent()
-
-        const reqFormData = new FormData()
-        reqFormData.append('title', formData.title)
-        reqFormData.append('text', formData.text)
-        reqFormData.append('author', formData.author)
-        reqFormData.append('category', formData.category)
-        reqFormData.append('news', news)
-
-        if (image)
-        {
-            Array.from(image.target.files).map((file, idx) => reqFormData.append('image', file))
-        }
-
-        const config =
-        {
-            headers: { 'content-type': 'multipart/form-data' }
-        }
+        const body = formData
 
         /** update үе нь */
-        if (newsId)
+        if (categoryId)
         {
-            const { success, data, error, info } = await axios.put(`/api/news/${newsId}/`, reqFormData, config)
+            const { success, data, error, info } = await axios.put(`/api/category/${categoryId}/`, body)
             if (success)
             {
                 toast.success(info)
-                navigate('/admin/news/')
+                navigate('/admin/category/')
             }
             else {
                 toast.error(error)
             }
             return
         }
-        const { success, data, error, info } = await axios.post('/api/news/', reqFormData, config)
+        const { success, data, error, info } = await axios.post('/api/category/', body)
         if (success)
         {
             toast.success(info)
-            navigate('/admin/news/')
+            navigate('/admin/category/')
         }
         else {
             toast.error(error)
@@ -142,90 +81,18 @@ export default function NewsForm()
 
     return (
         <>
-            <h1 className={`page-title`}>Мэдээ үүсгэх</h1>
+            <h1 className={`page-title`}>category үүсгэх</h1>
             <div className={`page-content`}>
                 <form onSubmit={handleSubmit}>
                     <div>
-                        <label htmlhtmlFor="title">Гарчиг:</label>
+                        <label htmlhtmlFor="name">Нэр:</label>
                         <input
                             type="text"
-                            id='title'
-                            value={formData.title}
-                            onChange={(e) => handleChange(e, 'title')}
+                            id='name'
+                            value={formData.name}
+                            onChange={(e) => handleChange(e, 'name')}
                         />
                     </div>
-                    <div>
-                        <label htmlhtmlFor="author">Author:</label>
-                        <select
-                            id="author"
-                            value={formData.author}
-                            onChange={(e) => handleChange(e, 'author')}
-                        >
-                            <option value="">Сонго</option>
-                            {
-                                authors.map(
-                                    (author, idx) =>
-                                    {
-                                        return (
-                                            <option key={idx} value={author._id}>
-                                                {author.nickName}
-                                            </option>
-                                        )
-                                    }
-                                )
-                            }
-                        </select>
-                    </div>
-                    <div>
-                        <label htmlhtmlFor="text">Тайлбар:</label>
-                        <textarea
-                            id="text"
-                            value={formData.text}
-                            onChange={(e) => handleChange(e, 'text')}
-                        >
-                        </textarea>
-                    </div>
-                    <div>
-                        <label htmlhtmlFor="image">Зураг:</label>
-                        <input
-                            id="image"
-                            type={"file"}
-                            onChange={setImage}
-                            multiple={false}
-                        >
-                        </input>
-                    </div>
-                    <div>
-                        <label htmlhtmlFor="category">Ангилал:</label>
-                        <select
-                            id="category"
-                            value={formData.category}
-                            onChange={(e) => handleChange(e, 'category')}
-                        >
-                            <option value="">Сонго</option>
-                            {
-                                categories.map(
-                                    (category, idx) =>
-                                    {
-                                        return (
-                                            <option key={idx} value={category._id}>
-                                                {category.name}
-                                            </option>
-                                        )
-                                    }
-                                )
-                            }
-                        </select>
-                    </div>
-                    <Editor
-                        onInit={(evt, editor) => editorRef.current = editor}
-                        initialValue="<p>This is the initial content of the editor.</p>"
-                        init={{
-                            height: 500,
-                            menubar: true,
-                            content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
-                        }}
-                    />
                     <button className='main' type='submit'>
                         Хадгалах
                     </button>
