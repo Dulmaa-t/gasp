@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 
-export default function Menu({ title, subs, initIsActive=false, to })
+export default function Menu({ title, subs, initIsActive=false, to, icon="fa fa-plane" })
 {
 
     const hasSubs = (subs && subs.length > 0)
@@ -17,7 +17,7 @@ export default function Menu({ title, subs, initIsActive=false, to })
     return (
         <li className={`c-menu__item ${hasSubs ? 'has-submenu' : ""}`} data-toggle="tooltip" title={title}>
             <NavLink className={`c-menu__item__inner`} to={to}>
-                <i className={`fa fa-plane`}></i>
+                <i className={`${icon}`}></i>
                 <div className={`c-menu-item__title`}>
                     <span>{title}</span>
                 </div>

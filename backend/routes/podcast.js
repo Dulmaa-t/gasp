@@ -19,5 +19,10 @@ router
 router
     .route("/:podcastId/")
     .get(asyncHandler(podcastController.getPodcast))
+    .put(
+        upload.single("image"),
+        asyncHandler(podcastController.update)
+    )
+    .delete(asyncHandler(podcastController.delete))
 
 module.exports = router

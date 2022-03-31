@@ -27,3 +27,11 @@ exports.getDetail = async (req, res) =>
     const foundAuthor = await authorService.getDetail(authorId)
     res.sendData(foundAuthor);
 }
+
+exports.update = async (req, res) =>
+{
+    const { authorId } = req.params
+    const body = req.body
+    await authorService.update(authorId, body)
+    res.sendInfo("Амжилттай заслаа")
+}

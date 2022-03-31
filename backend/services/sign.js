@@ -29,8 +29,6 @@ exports.in = async (email, password, res) =>
         throw new MyError('Имэйл эсвэл нууц үг буруу байна')
     }
 
-    console.log(user);
-
     /**
      *  Нууц үг таарч байгаа эсэхийг шалгах
      */

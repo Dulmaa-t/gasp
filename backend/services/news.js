@@ -1,6 +1,8 @@
 const mongoose = require('mongoose')
 const News = require('../models/news')
 
+const { deleteFile, IMAGE_PATH, getFileName } = require("./file")
+
 /** шинэ мэдээ үүсгэх нь
  * @param {string} content.title       тухайн мэдээний гарчиг
  * @param {string} content.text        тухайн мэдээний товч тайлбар
@@ -26,7 +28,7 @@ exports.getNewsList = async (category) =>
         where['category'] = category
 
     /** хайгаад олдсон мэдээнүүд */
-    const news = await News.find(where).populate("author", 'email nickName')
+    const news = await News.find(where).populate("author", 'email nickName').sort("-createdAt")
     return news
 }
 
@@ -46,6 +48,8 @@ exports.getNewsDetail = async (newsId) =>
  */
 exports.update = async (newsId, content) =>
 {
+    const oldNews = await News.findById(podcastId)
+    let image = oldNews.image
     /** id аар нь хайж олоод засах нь */
     const updated = await News.updateOne(
         {
@@ -59,6 +63,13 @@ exports.update = async (newsId, content) =>
     {
         throw new Error("Засахад алдаа гарсан байна")
     }
+    else {
+        if (content.image)
+        {
+            let fileName = getFileName(image)
+            deleteFile(IMAGE_PATH + "/" + fileName)
+        }
+    }
 
 }
 
@@ -67,6 +78,8 @@ exports.update = async (newsId, content) =>
  */
 exports.delete = async (newsId) =>
 {
+    const oldNews = await News.findById(newsId)
+    let image = oldNews.image
     /** хайгаад олдсон мэдээ */
     const news = await News.deleteOne(
         {
@@ -78,5 +91,9 @@ exports.delete = async (newsId) =>
     if (news.deletedCount === 0)
     {
         throw new Error("Устгахад алдаа гарсан байна")
+    }
+    else {
+        let fileName = getFileName(image)
+        deleteFile(IMAGE_PATH + "/" + fileName)
     }
 }

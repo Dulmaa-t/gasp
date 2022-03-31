@@ -1,7 +1,9 @@
 const multer = require("multer");
 const path = require("path");
 
-const IMAGE_PATH = `${path.dirname(path.dirname(__dirname))}/public/server/images`
+exports.PROJECT_BASE = path.dirname(path.dirname(__dirname))
+exports.BASE_DIR = `${this.PROJECT_BASE}/server`
+exports.IMAGE_PATH = `${this.PROJECT_BASE}/public/server/images`
 const SERVER_PUBLIC_PATH = "/public/images"
 
 /** Зургийг folder-т хадгална */
@@ -9,7 +11,7 @@ const storage = multer.diskStorage(
 {
     destination: (req, file, cb) =>
     {
-        cb(null, `${IMAGE_PATH}/`);
+        cb(null, `${this.IMAGE_PATH}/`);
     },
     filename: (req, file, cb) =>
     {
@@ -46,7 +48,7 @@ exports.deleteFile = function (url)
     {
         if (err)
         {
-            throw err;
+            console.log(err);
         }
     });
 }
@@ -64,14 +66,19 @@ exports.deleteFiles = function (req)
         {
             for (let a in item)
             {
-                module.exports.deleteFile(`${IMAGE_PATH}/${item[a].filename}`)
+                module.exports.deleteFile(`${this.IMAGE_PATH}/${item[a].filename}`)
             }
         }
     }
 
     if (req.file)
     {
-        module.exports.deleteFile(`${IMAGE_PATH}/${req.file.filename}`)
+        module.exports.deleteFile(`${this.IMAGE_PATH}/${req.file.filename}`)
     }
 
+}
+
+exports.getFileName = (fullPath) =>
+{
+    return path.basename(fullPath)
 }

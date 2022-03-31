@@ -2,9 +2,8 @@ import React, { useEffect, useState, useRef } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
-import { Editor } from '@tinymce/tinymce-react';
-
 import axios from 'utils/axios'
+import { getImageFormUrl } from 'utils'
 
 export default function NewsForm()
 {
@@ -16,12 +15,8 @@ export default function NewsForm()
     const [ categories, setCategories ] = useState([])
     /** оруулсан зургийг хадгалах state */
     const [ image, setImage ] = useState(null)
-
-    /** Мэдээний үндсэн мэдээллийг ref хийж хариуг нь авах нь */
-    const editorRef = useRef(null);
-
     /** update хийж байгаа хуудас байх үед newsId байна */
-    const { newsId } = useParams()
+    const { podcastId } = useParams()
 
     /** хуудас үсрэхэд ашиглах функц */
     const navigate = useNavigate()
@@ -56,13 +51,14 @@ export default function NewsForm()
         }
     }
 
-    /** мэдээний дэлгэрэнгүй авах нь */
-    const getNews = async (newsId) =>
+    /** podcast дэлгэрэнгүй авах нь */
+    const getPodcast = async (podcastId) =>
     {
-        const { success, data, error } = await axios.get(`/api/news/${newsId}/`)
+        const { success, data, error } = await axios.get(`/api/podcast/${podcastId ? podcastId + "/" : ""}`)
         if (success)
         {
             data.author = data.author._id
+            data.category = data?.category?._id
             setFormData(data)
         }
         else {
@@ -70,15 +66,15 @@ export default function NewsForm()
         }
     }
 
-    /** анх орж ирэхэд author ыг дуудна */
+    /** анх орж ирэхэд podcast ыг дуудна */
     useEffect(() =>
     {
         getAuthors()
         getCategories()
-        /** хэрвээ id байвал мэдээний дэлгэрэнгүй дуудна */
-        if (newsId)
+        /** хэрвээ id байвал podcast дэлгэрэнгүй дуудна */
+        if (podcastId)
         {
-            getNews(newsId)
+            getPodcast(podcastId)
         }
     }, [])
 
@@ -95,15 +91,12 @@ export default function NewsForm()
         /** submit дарахад хуудас refresh хийж байгааг болиулсан */
         event.preventDefault()
 
-        /** үндсэн мэдээний дэлгэрэнгүй мэдээллийг html ээр авсан нь */
-        const news = editorRef.current.getContent()
-
         const reqFormData = new FormData()
         reqFormData.append('title', formData.title)
+        reqFormData.append('clock', formData.clock)
         reqFormData.append('text', formData.text)
-        reqFormData.append('author', formData.author)
         reqFormData.append('category', formData.category)
-        reqFormData.append('news', news)
+        reqFormData.append('author', formData.author)
 
         if (image)
         {
@@ -116,24 +109,24 @@ export default function NewsForm()
         }
 
         /** update үе нь */
-        if (newsId)
+        if (podcastId)
         {
-            const { success, data, error, info } = await axios.put(`/api/news/${newsId}/`, reqFormData, config)
+            const { success, data, error, info } = await axios.put(`/api/podcast/${podcastId}/`, reqFormData, config)
             if (success)
             {
                 toast.success(info)
-                navigate('/admin/news/')
+                navigate('/admin/podcast/')
             }
             else {
                 toast.error(error)
             }
             return
         }
-        const { success, data, error, info } = await axios.post('/api/news/', reqFormData, config)
+        const { success, data, error, info } = await axios.post('/api/podcast/', reqFormData, config)
         if (success)
         {
             toast.success(info)
-            navigate('/admin/news/')
+            navigate('/admin/podcast/')
         }
         else {
             toast.error(error)
@@ -142,17 +135,35 @@ export default function NewsForm()
 
     return (
         <>
-            <h1 className={`page-title`}>Мэдээ үүсгэх</h1>
+            <h1 className={`page-title`}>Podcast үүсгэх</h1>
             <div className={`page-content`}>
                 <form onSubmit={handleSubmit}>
                     <div>
-                        <label htmlFor="title">Гарчиг:</label>
+                        <label htmlFor="title">Тухайн podcast гарчиг :</label>
                         <input
                             type="text"
                             id='title'
                             value={formData.title}
                             onChange={(e) => handleChange(e, 'title')}
                         />
+                    </div>
+                    <div>
+                        <label htmlFor="clock">Podcast ийн бичлэгний урт ms ээр :</label>
+                        <input
+                            type="number"
+                            id='clock'
+                            value={formData.clock}
+                            onChange={(e) => handleChange(e, 'clock')}
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="text">Podcast ийн товч тайлбар:</label>
+                        <textarea
+                            id="text"
+                            value={formData.text}
+                            onChange={(e) => handleChange(e, 'text')}
+                        >
+                        </textarea>
                     </div>
                     <div>
                         <label htmlFor="author">Author:</label>
@@ -177,25 +188,6 @@ export default function NewsForm()
                         </select>
                     </div>
                     <div>
-                        <label htmlFor="text">Тайлбар:</label>
-                        <textarea
-                            id="text"
-                            value={formData.text}
-                            onChange={(e) => handleChange(e, 'text')}
-                        >
-                        </textarea>
-                    </div>
-                    <div>
-                        <label htmlFor="image">Зураг:</label>
-                        <input
-                            id="image"
-                            type={"file"}
-                            onChange={setImage}
-                            multiple={false}
-                        >
-                        </input>
-                    </div>
-                    <div>
                         <label htmlFor="category">Ангилал:</label>
                         <select
                             id="category"
@@ -217,15 +209,16 @@ export default function NewsForm()
                             }
                         </select>
                     </div>
-                    <Editor
-                        onInit={(evt, editor) => editorRef.current = editor}
-                        initialValue="<p>This is the initial content of the editor.</p>"
-                        init={{
-                            height: 500,
-                            menubar: true,
-                            content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
-                        }}
-                    />
+                    <div>
+                        <label htmlFor="image">Podcast ний thubmnail зураг:</label>
+                        <input
+                            id="image"
+                            type={"file"}
+                            onChange={setImage}
+                            multiple={false}
+                        >
+                        </input>
+                    </div>
                     <button className='main' type='submit'>
                         Хадгалах
                     </button>

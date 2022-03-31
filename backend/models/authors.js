@@ -27,7 +27,6 @@ const AuthorSchema = new mongoose.Schema({
  */
 AuthorSchema.pre('save', function (next) {
 
-    console.log("dsadasdsad prev save");
     if (!this.isModified('password'))
         return next();
 
@@ -44,7 +43,6 @@ AuthorSchema.pre('save', function (next) {
  * @param {string} password
  */
 AuthorSchema.methods.comparePassword = async function (password) {
-    console.log(password, this.password)
     const isMatch = await bcrypt.compareSync(password, this.password)
     return isMatch
 }

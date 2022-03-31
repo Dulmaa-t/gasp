@@ -46,3 +46,34 @@ exports.getPodcast = async (req, res) =>
     const foundVideo = await podcastService.getDetail(podcastId)
     res.sendData(foundVideo);
 }
+
+/** тухайн мэдээг шинэчлэх нь
+ * @param {string} req.params.podcastId тухайн podcast ID
+*/
+exports.update = async (req, res) =>
+{
+    /** podcast зургийн замийг оноох хувьсагч */
+    let imageUrl = ""
+
+    /** req ээс жинхэнэ зургын холбоосыг авах нь */
+    if (req.file)
+    {
+        imageUrl = req.file.realPath
+        /** зургийн холбоосыг оноох нь */
+        req.body.image = imageUrl
+    }
+
+    const { podcastId } = req.params
+    await podcastService.update(podcastId, req.body)
+    res.sendInfo("Амжилттай заслаа");
+}
+
+/** мэдээ устгах нь
+ * @param {string} req.params.podcastId тухайн podcast ID
+ */
+exports.delete = async (req, res) =>
+{
+    const { podcastId } = req.params
+    await podcastService.delete(podcastId)
+    res.sendInfo("Амжилттай устгалаа");
+}
