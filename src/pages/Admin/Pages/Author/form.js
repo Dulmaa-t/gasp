@@ -31,7 +31,6 @@ export default function NewsForm()
     /** анх орж ирэхэд author ыг дуудна */
     useEffect(() =>
     {
-        getAuthor()
         /** хэрвээ id байвал author дэлгэрэнгүй дуудна */
         if (authorId)
         {
@@ -85,7 +84,7 @@ export default function NewsForm()
             <div className={`page-content`}>
                 <form onSubmit={handleSubmit}>
                     <div>
-                        <label htmlhtmlFor="nickName">NickName:</label>
+                        <label htmlFor="nickName">NickName:</label>
                         <input
                             type="text"
                             id='nickName'
@@ -94,7 +93,7 @@ export default function NewsForm()
                         />
                     </div>
                     <div>
-                        <label htmlhtmlFor="email">email:</label>
+                        <label htmlFor="email">email:</label>
                         <input
                             type="email"
                             id='email'
@@ -106,7 +105,7 @@ export default function NewsForm()
                         !authorId
                         &&
                             <div>
-                                <label htmlhtmlFor="password">Нууц үг:</label>
+                                <label htmlFor="password">Нууц үг:</label>
                                 <input
                                     type="password"
                                     id='password'

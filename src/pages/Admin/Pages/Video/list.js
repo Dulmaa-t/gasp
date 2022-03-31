@@ -7,20 +7,20 @@ import Button from '../../../../components/main/Button';
 import axios from "utils/axios"
 import { timeZoneToDateString } from '../../../../utils'
 
-export default function NewsList()
+export default function VideoList()
 {
 
-    /** мэдээнүүдийг хадгалах state */
-    const [ newsList, setNews ] = useState([])
+    /** video хадгалах state */
+    const [ videos, setVideos ] = useState([])
 
-    /** back аас мэдээний жагсаалтыг авах */
-    const getNews = async () =>
+    /** back аас video жагсаалтыг авах */
+    const getVideos = async () =>
     {
-        const { success, data, error } = await axios.get('/api/news/')
+        const { success, data, error } = await axios.get('/api/video/')
         if (success)
         {
             /** амжилттай дата авсан үед датаг state -д оноож өгөх нь */
-            setNews(data)
+            setVideos(data)
         }
         else {
             /** алдаа гарвал alert харуулах */
@@ -31,18 +31,18 @@ export default function NewsList()
     /** хуудас руу анх ороход мэдээний жагсаалтыг авах */
     useEffect(() =>
     {
-        getNews()
+        getVideos()
     }, [])
 
-    /** Мэдээ устгах нь */
+    /** video устгах нь */
     const handleDelete = async (id) =>
     {
-        const { success, data, info, error } = await axios.delete(`/api/news/${id}/`)
+        const { success, data, info, error } = await axios.delete(`/api/video/${id}/`)
         if (success)
         {
             /** амжилттай устгасны дараа alert харуулах нь */
             toast.success(info)
-            getNews()
+            getVideos()
         }
         else {
             /** алдаа гарвал alert харуулах */
@@ -52,9 +52,9 @@ export default function NewsList()
 
     return (
         <>
-            <h1 className={`page-title`}>NEWS</h1>
+            <h1 className={`page-title`}>VIDEO</h1>
             <div className={`page-content`}>
-                <Link to={"/admin/news/create/"} className="main">Үүсгэх</Link>
+                <Link to={"/admin/video/create/"} className="main">Үүсгэх</Link>
                 <table>
                     <thead>
                         <tr>
@@ -65,6 +65,9 @@ export default function NewsList()
                                 Үүсгэсэн
                             </th>
                             <th>
+                                Category
+                            </th>
+                            <th>
                                 Огноо
                             </th>
                             <th>
@@ -73,27 +76,30 @@ export default function NewsList()
                     </thead>
                     <tbody>
                         {
-                            newsList.map(
-                                (news, idx) =>
+                            videos.map(
+                                (video, idx) =>
                                 {
                                     return (
                                         <tr key={idx}>
                                             <td>
-                                                {news.title}
+                                                {video.title}
                                             </td>
                                             <td>
-                                                {news.author.nickName}
+                                                {video.author.nickName}
                                             </td>
                                             <td>
-                                                {timeZoneToDateString(news.createdAt)}
+                                                {video.category?.name || ""}
                                             </td>
                                             <td>
-                                                <Link to={`/admin/news/update/${news._id}/`} className="main">Засах</Link>
+                                                {timeZoneToDateString(video.createdAt)}
+                                            </td>
+                                            <td>
+                                                <Link to={`/admin/video/update/${video._id}/`} className="main">Засах</Link>
                                                 <Button
                                                     style={{
                                                         backgroundColor: "red"
                                                     }}
-                                                    onClick={() => handleDelete(news._id)}
+                                                    onClick={() => handleDelete(video._id)}
                                                     title="Устгах"
                                                 />
                                             </td>

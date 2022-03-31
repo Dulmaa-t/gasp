@@ -31,7 +31,6 @@ export default function NewsForm()
     /** анх орж ирэхэд category ыг дуудна */
     useEffect(() =>
     {
-        getCategories()
         /** хэрвээ id байвал category дэлгэрэнгүй дуудна */
         if (categoryId)
         {
@@ -85,7 +84,7 @@ export default function NewsForm()
             <div className={`page-content`}>
                 <form onSubmit={handleSubmit}>
                     <div>
-                        <label htmlhtmlFor="name">Нэр:</label>
+                        <label htmlFor="name">Нэр:</label>
                         <input
                             type="text"
                             id='name'

@@ -1,16 +1,16 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 
-import NewsList from './list'
-import NewsForm from './form'
+import VideoList from './list'
+import VideoForm from './form'
 
-export default function AdminNews()
+export default function AdminVideo()
 {
     return (
         <Routes>
-            <Route path='/' element={<NewsList />} />
-            <Route path='/create/' element={<NewsForm />} />
-            <Route path='/update/:newsId/' element={<NewsForm />} />
+            <Route path='/' element={<VideoList />} />
+            <Route path='/create/' element={<VideoForm />} />
+            <Route path='/update/:videoId/' element={<VideoForm />} />
         </Routes>
     )
 }

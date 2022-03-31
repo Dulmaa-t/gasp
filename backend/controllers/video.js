@@ -33,3 +33,18 @@ exports.getVideo = async (req, res) =>
     const foundVideo = await videoService.getDetail(videoId)
     res.sendData(foundVideo);
 }
+
+exports.update = async (req, res) =>
+{
+    const { videoId } = req.params
+    const body = req.body
+    await videoService.update(videoId, body)
+    res.sendInfo("Амжилттай заслаа")
+}
+
+exports.delete = async (req, res) =>
+{
+    const { videoId } = req.params
+    await videoService.delete(videoId)
+    res.sendInfo("Амжилттай устгалаа")
+}

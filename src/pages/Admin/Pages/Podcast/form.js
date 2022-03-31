@@ -146,7 +146,7 @@ export default function NewsForm()
             <div className={`page-content`}>
                 <form onSubmit={handleSubmit}>
                     <div>
-                        <label htmlhtmlFor="title">Гарчиг:</label>
+                        <label htmlFor="title">Гарчиг:</label>
                         <input
                             type="text"
                             id='title'
@@ -155,7 +155,7 @@ export default function NewsForm()
                         />
                     </div>
                     <div>
-                        <label htmlhtmlFor="author">Author:</label>
+                        <label htmlFor="author">Author:</label>
                         <select
                             id="author"
                             value={formData.author}
@@ -177,7 +177,7 @@ export default function NewsForm()
                         </select>
                     </div>
                     <div>
-                        <label htmlhtmlFor="text">Тайлбар:</label>
+                        <label htmlFor="text">Тайлбар:</label>
                         <textarea
                             id="text"
                             value={formData.text}
@@ -186,7 +186,7 @@ export default function NewsForm()
                         </textarea>
                     </div>
                     <div>
-                        <label htmlhtmlFor="image">Зураг:</label>
+                        <label htmlFor="image">Зураг:</label>
                         <input
                             id="image"
                             type={"file"}
@@ -196,7 +196,7 @@ export default function NewsForm()
                         </input>
                     </div>
                     <div>
-                        <label htmlhtmlFor="category">Ангилал:</label>
+                        <label htmlFor="category">Ангилал:</label>
                         <select
                             id="category"
                             value={formData.category}

@@ -15,5 +15,7 @@ router
 router
     .route("/:videoId/")
     .get(asyncHandler(videoController.getVideo))
+    .put(asyncHandler(videoController.update))
+    .delete(asyncHandler(videoController.delete))
 
 module.exports = router
