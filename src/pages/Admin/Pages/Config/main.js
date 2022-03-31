@@ -32,6 +32,10 @@ export default function Configs() {
                 <ConfigText configName={"FOOTER_SITE"} title="Сайт"/>
                 <ConfigText configName={"FOOTER_PHONE"} title="Утас"/>
                 <ConfigText configName={"FOOTER_PHONE_NUMBER"} title="Гар утас"/>
+                <h3>SITE EMAIL</h3>
+                <hr />
+                <ConfigText configName={"SITE_EMAIL"} title="Сайтын цахим хаяг"/>
+                <ConfigText configName={"SITE_EMAIL_PASS"} title="Сайтын цахим хаягын нууц үг"/>
             </div>
         </>
     )
