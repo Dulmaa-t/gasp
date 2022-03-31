@@ -97,6 +97,7 @@ export default function NewsForm()
         reqFormData.append('text', formData.text)
         reqFormData.append('category', formData.category)
         reqFormData.append('author', formData.author)
+        reqFormData.append('url', formData.url)
 
         if (image)
         {
@@ -164,6 +165,15 @@ export default function NewsForm()
                             onChange={(e) => handleChange(e, 'text')}
                         >
                         </textarea>
+                    </div>
+                    <div>
+                        <label htmlFor="url">Podcast ийн холбоос:</label>
+                        <input
+                            type={"text"}
+                            id="text"
+                            value={formData.url}
+                            onChange={(e) => handleChange(e, 'url')}
+                        />
                     </div>
                     <div>
                         <label htmlFor="author">Author:</label>

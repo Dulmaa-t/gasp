@@ -71,6 +71,7 @@ export default function PodcastCard() {
                       dateTime={timeZoneToDateString(element.createdAt)}
                       clock={msToTime(3600000)}
                       text={element.text}
+                      url={element.url}
                     />
                   )
                 }
