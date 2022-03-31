@@ -7,18 +7,15 @@ import Button from '../../../../components/main/Button';
 import axios from "utils/axios"
 import { timeZoneToDateString } from '../../../../utils'
 
-export default function NewsList()
-{
+export default function NewsList() {
 
     /** мэдээнүүдийг хадгалах state */
-    const [ newsList, setNews ] = useState([])
+    const [newsList, setNews] = useState([])
 
     /** back аас мэдээний жагсаалтыг авах */
-    const getNews = async () =>
-    {
+    const getNews = async () => {
         const { success, data, error } = await axios.get('/api/news/')
-        if (success)
-        {
+        if (success) {
             /** амжилттай дата авсан үед датаг state -д оноож өгөх нь */
             setNews(data)
         }
@@ -29,17 +26,14 @@ export default function NewsList()
     }
 
     /** хуудас руу анх ороход мэдээний жагсаалтыг авах */
-    useEffect(() =>
-    {
+    useEffect(() => {
         getNews()
     }, [])
 
     /** Мэдээ устгах нь */
-    const handleDelete = async (id) =>
-    {
+    const handleDelete = async (id) => {
         const { success, data, info, error } = await axios.delete(`/api/news/${id}/`)
-        if (success)
-        {
+        if (success) {
             /** амжилттай устгасны дараа alert харуулах нь */
             toast.success(info)
             getNews()
@@ -53,8 +47,19 @@ export default function NewsList()
     return (
         <>
             <h1 className={`page-title`}>NEWS</h1>
+            
             <div className={`page-content`}>
-                <Link to={"/admin/news/create/"} className="main">Үүсгэх</Link>
+                <div class="table-title">
+                    <div className='row'>
+                        <div className='col-md-6'>
+                            <h2>Manage <b>Employees</b></h2>
+                        </div>
+                        <div className='col-md-6'>
+                            <Link to={"/admin/news/create/"} className="main">Үүсгэх</Link>
+                        </div>
+                    </div>
+                </div>
+
                 <table>
                     <thead>
                         <tr>
@@ -74,8 +79,7 @@ export default function NewsList()
                     <tbody>
                         {
                             newsList.map(
-                                (news, idx) =>
-                                {
+                                (news, idx) => {
                                     return (
                                         <tr key={idx}>
                                             <td>

@@ -2,8 +2,6 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import Sticky from 'react-sticky-el'
 
-import Search from 'components/main/Search/search'
-
 import Urls from './Urls'
 
 export default function index() {
@@ -63,9 +61,7 @@ export default function index() {
                   }
                 )
               }
-              <li>
-                <Search />
-              </li>
+
               <Urls />
             </ul>
           </nav>

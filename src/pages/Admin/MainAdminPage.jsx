@@ -109,7 +109,7 @@ export default function MainAdminPage()
                 <div className={`l-sidebar`}>
                     <div className={`c-logo`}>
                         <Link to={"/"}>
-                            <div className={`logo__txt`}>D</div>
+                            <div className={`logo__txt`}>G</div>
                         </Link>
                     </div>
                     <div className={`l-sidebar__content`}>
