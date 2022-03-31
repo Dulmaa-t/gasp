@@ -78,3 +78,9 @@ exports.delete = async (req, res) =>
     await newsService.delete(newsId)
     res.sendInfo("Амжилттай устгалаа");
 }
+
+exports.getNewsHome =  async (req, res) =>
+{
+    const newsHome = await newsService.newsHome()
+    res.sendData(newsHome);
+}

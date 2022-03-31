@@ -97,3 +97,9 @@ exports.delete = async (newsId) =>
         deleteFile(IMAGE_PATH + "/" + fileName)
     }
 }
+
+exports.newsHome = async () =>
+{
+    const newsHome = await News.find({}).sort("-createdAt").limit(8)
+    return newsHome
+}

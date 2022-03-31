@@ -18,6 +18,10 @@ router
     .get(getCatId, asyncHandler(newsController.getNews))
 
 router
+    .route("/home/")
+    .get(asyncHandler(newsController.getNewsHome))
+
+router
     .route("/:newsId/")
     .get(asyncHandler(newsController.getNewsDetail))
     .put(
