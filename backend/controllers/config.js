@@ -1,6 +1,8 @@
 //  model оруулж ирж байгаа
 const configService = require('../services/config')
 
+const { deleteFile, IMAGE_PATH, getFileName } = require("../services/file")
+
 /**
  * Config ийг авах нь
  * @param {Array} req.query.names тохиргооны нэрнүүд
@@ -38,4 +40,21 @@ exports.put = async (req, res) =>
     await configService.updateConfigs(configs)
 
     res.sendInfo('Амжилттай заслаа')
+}
+
+/**
+ * Зураг хадгадах
+ * @param {Object} req.file  Хадгалах зураг
+ */
+exports.addImage = async (req, res) =>
+{
+    res.sendDataInfo('Зураг хадгласан', req.file.realPath);
+}
+
+exports.deleteImage = async (req, res) =>
+{
+    const image = req.body.image
+    let fileName = getFileName(image)
+    deleteFile(IMAGE_PATH + "/" + fileName)
+    res.sendInfo('Зургийг устгасан');
 }
