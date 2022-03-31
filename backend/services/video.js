@@ -17,10 +17,11 @@ exports.createAuthor = async (content) =>
 /** Бүх video ний жагсаалтыг авах нь
  * @param {string} category ангиалалын iD
 */
-exports.getList = async (category) =>
+exports.getList = async (category, start) =>
 {
     if (start)
         start = parseInt(start)
+
     /** Хайх нөхцөл */
     const where = {}
     /** ангилал байвал ангилалаар нь шүүх */
@@ -38,7 +39,7 @@ exports.getList = async (category) =>
                 select: "name"
             }
         ]
-    ).sort("-createdAt").skip(start).limit(start + MORE_DATA)
+    ).sort("-createdAt").skip(start).limit(start + MORE_DATA - 1)
     return foundVideos
 }
 

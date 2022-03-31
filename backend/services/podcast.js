@@ -45,7 +45,7 @@ exports.getList = async (category, start) =>
                 select: "name"
             }
         ]
-    ).sort("-createdAt").skip(start).limit(start + MORE_DATA)
+    ).sort("-createdAt").skip(start).limit(start + MORE_DATA - 1)
     return news
 }
 

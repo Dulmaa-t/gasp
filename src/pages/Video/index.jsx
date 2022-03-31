@@ -14,19 +14,20 @@ export default function CVideo()
 
   /** video ийн мэдээллийг хадгалах state */
   const [ videos, setVideos ] = useState([])
+  const [ start, setStart ] = useState(0)
   const location = useLocation()
 
   /** podcast ийн мэдээллийг back аас дуудах нь */
-  const getData = async () =>
+  const getData = async (newStart) =>
   {
     /** url ээс дарагдсан category байгаа эсэхийг анх орохдоо шалгах нь */
     const paramCatName = new URLSearchParams(location.search).get("category")
-    await axios.get(`/api/video/${paramCatName ? `?category=${paramCatName}` : ""}`)
+    await axios.get(`/api/video/?${paramCatName ? `category=${paramCatName}&` : ""}start=${newStart}`)
       .then(({ success, data, error }) =>
         {
           if (success)
           {
-            setVideos(data)
+            setVideos([ ...videos, ...data ])
           }
         }
       )
@@ -37,11 +38,18 @@ export default function CVideo()
       )
   }
 
+  const handleMore = () =>
+  {
+    const newStart = videos.length
+    getData(newStart)
+    setStart(newStart)
+  }
+
   useEffect(
     () =>
     {
       //  video ийн мэдээллийг back аас дуудах нь
-      getData()
+      getData(start)
     },
     []
   )
@@ -49,7 +57,8 @@ export default function CVideo()
   /** Ямар category дарагдсан түүнийг авах функц */
   const handleCategory = async (catName) =>
   {
-    const { success, data, error } = await axios.get(`/api/video/?category=${catName}`)
+    setStart(0)
+    const { success, data, error } = await axios.get(`/api/video/?category=${catName}&start=0`)
     if (success)
     {
       setVideos(data)
@@ -91,7 +100,7 @@ export default function CVideo()
           </div>
         </div>
       </div>
-      <MoreBtn />
+      <MoreBtn onClick={handleMore}/>
       <Footer />
     </div>
   )

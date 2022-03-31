@@ -2,7 +2,7 @@ import React from 'react'
 
 import Button from '../main/Button'
 
-export default function MoreBtn() {
+export default function MoreBtn({ onClick }) {
   return (
     <div
         style={{
@@ -10,7 +10,7 @@ export default function MoreBtn() {
           justifyContent: "center"
         }}
     >
-        <Button title="More" />
+        <Button title="More" onClick={onClick} />
     </div>
   )
 }

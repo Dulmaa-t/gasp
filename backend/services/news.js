@@ -34,7 +34,7 @@ exports.getNewsList = async (category, start) =>
         where['category'] = category
 
     /** хайгаад олдсон мэдээнүүд */
-    const news = await News.find(where).populate("author", 'email nickName').sort("-createdAt").skip(start).limit(start + MORE_DATA)
+    const news = await News.find(where).populate("author", 'email nickName').sort("-createdAt").skip(start).limit(start + MORE_DATA - 1)
     return news
 }
 

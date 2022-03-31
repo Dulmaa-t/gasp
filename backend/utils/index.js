@@ -1,4 +1,4 @@
-exports.MORE_DATA = 2
+exports.MORE_DATA = 3
 
 /**
  * тооны өмнө 0 ээр дүүргэж өгөх нь

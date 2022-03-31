@@ -14,19 +14,20 @@ export default function News() {
 
   /** news ийн мэдээллийг хадгалах state */
   const [ news, setNews ] = useState([])
+  const [ start, setStart ] = useState(0)
   const location = useLocation()
 
   /** news ийн мэдээллийг back аас дуудах нь */
-  const getData = async () =>
+  const getData = async (newStart) =>
   {
     /** url ээс дарагдсан category байгаа эсэхийг анх орохдоо шалгах нь */
     const paramCatName = new URLSearchParams(location.search).get("category")
-    await axios.get(`/api/news/${paramCatName ? `?category=${paramCatName}` : ""}`)
+    await axios.get(`/api/news/${paramCatName ? `?category=${paramCatName}&start=${newStart}` : `?start=${newStart}`}`)
       .then(({ success, data, error }) =>
         {
           if (success)
           {
-            setNews(data)
+            setNews([ ...news, ...data ])
           }
         }
       )
@@ -41,15 +42,23 @@ export default function News() {
     () =>
     {
       //  news ийн мэдээллийг back аас дуудах нь
-      getData()
+      getData(start)
     },
     []
   )
 
+  const handleMore = () =>
+  {
+    const newStart = news.length
+    getData(newStart)
+    setStart(newStart)
+  }
+
   /** Ямар category дарагдсан түүнийг авах функц */
   const handleCategory = async (catName) =>
   {
-    const { success, data, error } = await axios.get(`/api/news/?category=${catName}`)
+    setStart(0)
+    const { success, data, error } = await axios.get(`/api/news/?category=${catName}&start=0`)
     if (success)
     {
       setNews(data)
@@ -79,7 +88,7 @@ export default function News() {
           }
         </div>
       </div>
-      <MoreBtn />
+      <MoreBtn onClick={handleMore}/>
       <Footer />
     </div>
   )

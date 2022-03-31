@@ -13,19 +13,20 @@ export default function PodcastCard() {
 
   /** podcast ийн мэдээллийг хадгалах state */
   const [ podcastCard, setPodcast ] = useState([])
+  const [ start, setStart ] = useState(0)
   const location = useLocation()
 
   /** podcast ийн мэдээллийг back аас дуудах нь */
-  const getData = async () =>
+  const getData = async (newStart) =>
   {
     /** url ээс дарагдсан category байгаа эсэхийг анх орохдоо шалгах нь */
     const paramCatName = new URLSearchParams(location.search).get("category")
-    await axios.get(`/api/podcast/${paramCatName ? `?category=${paramCatName}` : ""}`)
+    await axios.get(`/api/podcast/?${paramCatName ? `category=${paramCatName}&` : ""}start=${newStart}`)
       .then(({ success, data, error }) =>
         {
           if (success)
           {
-            setPodcast(data)
+            setPodcast([ ...podcastCard, ...data ])
           }
         }
       )
@@ -40,15 +41,23 @@ export default function PodcastCard() {
     () =>
     {
       //  podcast ийн мэдээллийг back аас дуудах нь
-      getData()
+      getData(start)
     },
     []
   )
 
+  const handleMore = () =>
+  {
+    const newStart = podcastCard.length
+    getData(newStart)
+    setStart(newStart)
+  }
+
   /** Ямар category дарагдсан түүнийг авах функц */
   const handleCategory = async (catName) =>
   {
-    const { success, data, error } = await axios.get(`/api/podcast/?category=${catName}`)
+    setStart(0)
+    const { success, data, error } = await axios.get(`/api/podcast/?category=${catName}&start=0`)
     if (success)
     {
       setPodcast(data)
@@ -88,7 +97,7 @@ export default function PodcastCard() {
           </div>
 
         </section>
-      <MoreBtn />
+      <MoreBtn onClick={handleMore}/>
       <Footer />
     </div>
   )
