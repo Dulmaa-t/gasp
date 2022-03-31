@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import Sticky from 'react-sticky-el'
 
+import { useConfig } from 'context/configContext'
+
 import Urls from './Urls'
 
-export default function index() {
+export default function Index() {
   const headerMenu = [
     {
       title: "Home",
@@ -24,15 +26,25 @@ export default function index() {
     },
   ]
 
-  const handleClick = (title) => {
-    alert("clicked" + title)
-  }
+  const { configs } = useConfig()
+
+  useEffect(
+    () =>
+    {
+      if (configs.SITE_BANNER_IMAGE)
+      {
+        /** Header ийн арын  зургийг сольж байна */
+        document.getElementById("headerImage").style.backgroundImage = `url(${process.env.REACT_APP_SERVER_URL + configs.SITE_BANNER_IMAGE})`
+      }
+    },
+    [configs]
+  )
 
   return (
     <div>
-      <div className='headerImg'>
+      <div className='headerImg' id='headerImage'>
         <h1>Gasp</h1>
-        <p>Your daily bread</p>
+        <p>{configs.HOME_GOAL}</p>
 
       </div>
       <Sticky className='header-zindex'>

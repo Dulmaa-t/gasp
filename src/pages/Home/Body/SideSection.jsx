@@ -3,8 +3,11 @@ import { Link } from 'react-router-dom'
 
 import LinkButton from '../../../components/main/LinkButton'
 import Input from '../../../components/main/Input'
+import { useConfig } from 'context/configContext'
 
 export default function SideSection() {
+
+    const { configs } = useConfig()
 
     return (
         <section>
@@ -13,13 +16,10 @@ export default function SideSection() {
                     <div className="card">
                         <div className="text">
                             <h5 className="text-title">
-                                Thinking
-                            </h5>
-                            <h5 className="text-title">
-                                differently
+                                {configs.HOME_TITLE}
                             </h5>
                             <div className="text-about">
-                                <p>Вэб сайтын аюулгүй байдал, үр ашиг, хэрэглэгчдийн ажиллагааг хөнгөвчилсөн, оновчтой шийдэлд анхааран, төслийн хугацаа, өртөгийг харилцагчийнхаа шаардлагад нийцүүлэн шийдвэрлэнэ.</p>
+                                <p>{configs.HOME_ABOUT}</p>
                             </div>
                             <span>
                                 <Link to={'/news/'} className="button">Link Button</Link>

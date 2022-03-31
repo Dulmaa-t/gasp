@@ -1,27 +1,42 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+
+import { useConfig } from 'context/configContext'
 
 import News from './News'
 import SideSection from './SideSection'
 import Cards from './Cards'
 
-import LinkButton from '../../../components/main/LinkButton'
+export default function Index() {
 
-export default function index() {
+  const { configs } = useConfig()
+
+  useEffect(
+    () =>
+    {
+      if (configs.HOME_IMAGE)
+      {
+        document.getElementById("colImage").style.backgroundImage = `url(${process.env.REACT_APP_SERVER_URL + configs.HOME_IMAGE})`
+      }
+    },
+    [configs]
+  )
 
   return (
     <div>
       <section className='side-section'>
         <div className="grid-flex">
-          <div className="col col-image">
+          <div className="col col-image" id='colImage'>
             &nbsp;
           </div>
           <div className="col col-text col-left">
             <div className="Aligner-item">
               <h5 className="text-title">
-                Thinking <br /> differently
+                {configs.HOME_TITLE}
             </h5>
               <div className="text-about">
-                <p>Вэб сайтын аюулгүй байдал, үр ашиг, хэрэглэгчдийн ажиллагааг хөнгөвчилсөн, оновчтой шийдэлд анхааран, төслийн хугацаа, өртөгийг харилцагчийнхаа шаардлагад нийцүүлэн шийдвэрлэнэ.</p>
+                <p>
+                  {configs.HOME_ABOUT}
+                </p>
             </div>
             <span>
                 <a href="#" className="button">Link Button</a>

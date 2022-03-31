@@ -1,14 +1,18 @@
+import { useConfig } from 'context/configContext'
 import React from 'react'
 import Card from '../../../components/main/footer'
 
-export default function index() {
+export default function Footer() {
+
+  const { configs } = useConfig()
+
   const footer = [
     {
       title: "Байршил",
       menus: [
         {
           subtitle: "Хаяг",
-          text: "Улаанбаатар, Хан-Уул дүүрэг 3-р хороо, 57-114 тоот"
+          text: configs.FOOTER_ADDRESS
         }
       ]
     },
@@ -17,11 +21,11 @@ export default function index() {
       menus: [
         {
           subtitle: "Мэйл",
-          text: " info@altaisoft.mn"
+          text: configs.FOOTER_EMAIL
         },
         {
           subtitle: "Сайт",
-          text: " www.Gasp.mn"
+          text: configs.FOOTER_SITE
         },
       ]
     },
@@ -30,11 +34,11 @@ export default function index() {
       menus: [
         {
           subtitle: "Утас",
-          text: "7016-1914"
+          text: configs.FOOTER_PHONE
         },
         {
           subtitle: "Гар утас",
-          text: "9999-9999"
+          text: configs.FOOTER_PHONE_NUMBER
         },
       ]
     },
@@ -45,7 +49,7 @@ export default function index() {
       <div className="footer__addr">
         <h1 className="footer__logo">
           <a href="#">Gasp</a>
-          <p>Your daily bread</p>
+          <p>{configs.HOME_GOAL}</p>
         </h1>
 
       </div>
