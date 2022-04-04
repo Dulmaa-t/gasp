@@ -10,7 +10,7 @@ export default function SideSection() {
     const { configs } = useConfig()
 
     return (
-        <section>
+        <section className='content'>
             <div className="flexbox">
                 <div className="leftside">
                     <div className="card">

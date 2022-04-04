@@ -12,9 +12,9 @@ export default function Footer(props) {
                             (element, index) => {
                                 return (
                                     <li key={index}>
-                                        <a href="#" className="nav__link">
+                                        <div className="nav__link">
                                             <b>{element.subtitle}:&nbsp;</b>{element.text}
-                                        </a>
+                                        </div>
                                     </li>
                                 )
                             }

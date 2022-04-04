@@ -19,6 +19,7 @@ export default function Configs() {
                 <ConfigText configName={"FACEBOOK"} title="FACEBOOK"/>
                 <ConfigText configName={"INSTAGRAMM"} title="INSTAGRAM"/>
                 <ConfigText configName={"YOUTUBE"} title="YOUTUBE"/>
+                <ConfigText configName={"GOOGLE_MAP"} title="GOOGLE MAP"/>
                 <h3>Нүүр хуудас</h3>
                 <hr />
                 <ConfigImage configName={"HOME_IMAGE"} title="Ерөнхий танилцуулагын зураг"/>

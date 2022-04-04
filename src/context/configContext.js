@@ -15,7 +15,7 @@ export default function ConfigContextProvider(props)
     const getConfigs = async () =>
     {
         /** Back аас авах config үүдийн нэрийн жагсаалт */
-        const names = "SITE_LOGO,SITE_BANNER_IMAGE,FACEBOOK,INSTAGRAMM,YOUTUBE,HOME_IMAGE,HOME_ABOUT,HOME_TITLE,HOME_GOAL,FOOTER_ADDRESS,FOOTER_EMAIL,FOOTER_SITE,FOOTER_PHONE,FOOTER_PHONE_NUMBER,SITE_MENU_IMAGE"
+        const names = "GOOGLE_MAP,SITE_LOGO,SITE_BANNER_IMAGE,FACEBOOK,INSTAGRAMM,YOUTUBE,HOME_IMAGE,HOME_ABOUT,HOME_TITLE,HOME_GOAL,FOOTER_ADDRESS,FOOTER_EMAIL,FOOTER_SITE,FOOTER_PHONE,FOOTER_PHONE_NUMBER,SITE_MENU_IMAGE"
         const { success, data, error } = await axios.get(`/api/config/?names=${names}`).catch(err => err)
         if (success)
         {

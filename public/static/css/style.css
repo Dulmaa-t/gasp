@@ -41,9 +41,8 @@ header {
     text-align: center;
     position: fixed;
     background-color: #000;
-    padding: 0.5em;
+    padding: 0.5em 5em;
     z-index: 10;
-    width: 100%;
 }
 nav {
     position: absolute;
@@ -171,7 +170,7 @@ nav ul li a:hover{
     margin: 0 -1em;
 }
 .side-section {
-    margin: 10em 0;
+    margin: 2em 5em;
 }
 .col-text {
     height:20em;
@@ -201,6 +200,7 @@ nav ul li a:hover{
     -webkit-order: -1;
     -ms-flex-order: -1;
     order: -1;
+    margin: 0 5em;
 }
 .col-text{
     color: #fff;
@@ -208,9 +208,9 @@ nav ul li a:hover{
     align-items: center;
     justify-content: center;
 }
-.Aligner-item {
+/*.Aligner-item {
     width: 60%;
-}
+}*/
 .col-image {
     background-image: url("../image/5.jpg");
     background-repeat: no-repeat;
@@ -218,7 +218,6 @@ nav ul li a:hover{
 .text-title {
     color: #fff;
     font-size: 32px;
-    margin: 0 0 1rem;
     line-height: 1.25;
 }
 .text-about p {
@@ -310,15 +309,15 @@ nav ul li a:hover{
     .Aligner-item {
       width: 90%;
     }
-  }
+}
 .wrapper{
     display: flex;
     flex-wrap: wrap;
-    margin: 5em 0;
+    margin:  2em 5em;
 }
 .wrapper .card{
-    max-width: 300px;
-    min-height: 250px;
+    max-width: 250px;
+    min-height: 150px;
     margin:2em;
     box-shadow: 0px 2px 18px -4px rgba(0,0,0,0.75);
 }
@@ -349,7 +348,7 @@ main .border-success:hover {
 main .card-header {
     border-radius: 10px;
     margin: 1.5em;
-    height: 200px;
+    height: 150px;
 }
 main .primary {
     border: 1px solid #463CBB;
@@ -422,7 +421,7 @@ section .row {
 }
 section .card-img-top {
     width: 100%;
-    height: 350px;
+    height: 300px;
 }
 section .card {
     z-index: 1;
@@ -468,12 +467,17 @@ section .card-text {
     margin: 0.5em;
 }
 section .long-img {
-    height: 720px;
+    height: 685px;
 }
 .leftside, .rightside {
     color:#fff;
-    padding: 2%;
     text-align: left;
+}
+.leftside {
+    margin-right: 2em;
+}
+.rightside {
+    margin-right: -10em;
 }
 .leftside .button {
     color: #fff;
@@ -483,14 +487,16 @@ section .long-img {
     border: 1px solid #463CBB;
     border-radius: 25px;
 }
-section {
+.leftside .button:hover {
+    border: 1px solid #463CBB;
+    box-shadow: 0 0 30px 0 rgb(70 60 187);
+}
+.content {
     margin: 2em 5em;
 }
 @media ( min-width : 600px ){
     .flexbox {
         margin: 2em 5em;
-        width: 100%;
-        margin: 0 auto;
         display: -webkit-flex;
         display: flex;
     }
@@ -509,7 +515,7 @@ section {
     height: 0;
 }
 .form_wrapper {
-    width:500px;
+    width:450px;
     max-width:100%;
     box-sizing:border-box;
 } 
@@ -518,10 +524,9 @@ section {
     border: 1px solid #463CBB;
 }
 .form_wrapper .row {
-    margin:10px -18px;
+    margin:10px -15px;
 }
 .form_wrapper .row > div {
-    padding:0 15px;
     box-sizing:border-box;
 }
 .form_wrapper .col_half {
@@ -546,28 +551,27 @@ section {
     color: #fff;
     background-color: #2A1F46;
     border: 1px solid #2A1F46;
-    width: 100%;
-    padding: 15px;
+    padding: 10px;
     border-radius: 25px;
     -webkit-transition: all 0.30s ease-in-out;
     -moz-transition: all 0.30s ease-in-out;
     -ms-transition: all 0.30s ease-in-out;
     transition: all 0.30s ease-in-out;
 }
-.form_wrapper input[type="text"]:hover, .form_wrapper input[type="email"]:hover, .form_wrapper input[type="tel"]:hover, textarea:hover{
+.rightside .form_wrapper input[type="text"]:hover, .form_wrapper input[type="email"]:hover, .form_wrapper input[type="tel"]:hover, .form-wrapper textarea:hover{
     outline: #463CBB;
     border: 1px solid #463CBB;
     box-shadow: 0 0 30px 0 rgb(70 60 187);
 }
 .form_wrapper textarea {
-    height:8em;
-    margin: 1em;
+    width: 100%;
+    height: 8em;
+    margin: 1em 0.5em;
 }
 .form_wrapper input[type="submit"] {
     color: #fff;
     font-size: 12px;
     padding: 1em 3em;
-    margin: 2em 0;
     text-decoration: none;
     border: 1px solid #463CBB;
     background: -webkit-linear-gradient(rgb(36 0 116 / 30%), rgb(84 51 156 / 30%));
@@ -584,6 +588,7 @@ section {
 .text-center {
     text-align: center;
 }
+
 @media (max-width: 600px) {
     .form_wrapper {
         margin: 1.5em;
@@ -597,6 +602,27 @@ section {
     }
     .form_wrapper input[type="text"], .form_wrapper input[type="email"], .form_wrapper input[type="tel"]{
         width: 80%;
+    }
+    .c-container {
+        padding:2em;
+    }
+    .col-md-8 {
+        width: 100%;
+        max-height: 420px;
+    }
+    .col-md-4 {
+        width: 100%;
+        max-height: 420px;
+    }
+    .col-md-6 {
+        width: 100%;
+        max-height: 420px;
+    }
+    .section .long-img {
+        height: 420px; 
+    }
+    .section .card-img-top {
+        height: 420px;
     }
 }
 .footer {
@@ -681,7 +707,7 @@ section {
     flex: 1 50%;
     margin-right: 1.25em;
 }  
-.nav__ul a {
+.nav__ul .nav__link {
     text-decoration: none;
     color: #964CEA;
     font-weight: 200;
@@ -758,7 +784,7 @@ nav ul li .logo{
     background-color: #2C3E50;
 }
 .sub-menu a:hover, .sub-menu-nav:hover .nav-btn {
-    background-color: #2C3E50;
+    background-color: #6c28c9;
 }  
 .sub-menu-alt {
     display: none;
@@ -792,15 +818,41 @@ nav ul li .logo{
         width:100%;
     }
 }
-.main{
+.moreBtn {
     color: #fff;
+    font-size: 12px;
+    padding: 1em 2em;
+    text-decoration: none;
+    border: 1px solid #6e35b5;
+    border-radius: 25px;
+    background: none;
+}
+.moreBtn:hover {
+    border: 1px solid #6e35b5;
+    box-shadow: 0 0 30px 0 rgb(110, 53, 181);
+}
+.editBtn{
+    color: green;
     margin: 0.5em;
     font-family: 'Fredoka One', cursive;
     padding: 10px 30px;
     text-decoration: none;
     border-radius: 50px;
-    border: 1px solid #3e0481;
-    background: -webkit-linear-gradient(rgb(144 70 227 / 30%), rgb(181 131 238 / 30%));
+    border: 2px solid green;
+}
+.saveBtn{
+    background-color: #fff;
+}
+.addBtn {
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 50px;
+    padding: 10px 30px;
+}
+.deleteBtn {
+    color: red;
+    border: 2px solid red;
+    background-color: #fff;
 }
 .content-wrapper {
     margin: 0 auto;
@@ -1094,13 +1146,25 @@ h1,	.h1 {
         margin-bottom: 2em ;
         box-shadow: 0px 2px 18px -4px rgba(0,0,0,0.75);
     }
+    header {
+        padding: 0.5em 0;
+    }
+    .side-section {
+        margin: 2em;
+    }
+    section .long-img {
+        height: 300px;
+    }
+    .content {
+        margin: 2em;
+    }
+    .col-left {
+        margin: 2em;
+    }
 }
 .right-content {
     object-fit: scale-down;
     transform: scale(1.6);
-}
-.m-top-content {
-    margin: 4em 0;
 }
 .border-red {
     border: 1px solid red;
@@ -1294,8 +1358,54 @@ section.loginForm{
     color: #fff;
     margin-bottom: 10px;
     cursor: pointer;
-  }
-
-input:read-only, textarea:read-only {
-    background-color: rgba(61, 60, 60, 0.4);
 }
+/* loader */
+.full-screen{
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+}
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+.loader {
+    text-align: center;
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, transparent 40%, skyblue);
+    animation: move 0.8s linear infinite;
+  }
+  .loader::before {
+    position: absolute;
+    content: "";
+    top: 6px;
+    left: 6px;
+    right: 6px;
+    bottom: 6px;
+    background: #000;
+    border-radius: 50%;
+    z-index: 2;
+  }
+  .loader::after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: linear-gradient(45deg, transparent 40%, skyblue);
+    filter: blur(20px);
+  }
+  @keyframes move {
+    to {
+      transform: rotate(360deg);
+      filter: hue-rotate(360deg);
+    }
+  }
+  
+

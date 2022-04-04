@@ -17,6 +17,7 @@ const port = process.env.PORT
 
 var whitelist = [
     process.env.CLIENT_URL,
+    "http://192.168.1.32:3000"
 ]
 var corsOptions = {
     origin: function (origin, callback) {

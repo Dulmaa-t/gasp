@@ -12,7 +12,9 @@ export default function Footer() {
       menus: [
         {
           subtitle: "Хаяг",
-          text: configs.FOOTER_ADDRESS
+          text: <a href={configs.GOOGLE_MAP} target="_blank">
+            {configs.FOOTER_ADDRESS}
+          </a>
         }
       ]
     },

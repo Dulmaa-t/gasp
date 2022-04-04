@@ -4,7 +4,7 @@ import Sticky from 'react-sticky-el'
 
 import { useConfig } from 'context/configContext'
 
-import Urls from './Urls'
+import Urls from '../../../components/special/Urls'
 
 export default function Index() {
   const headerMenu = [

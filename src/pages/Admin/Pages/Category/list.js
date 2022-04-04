@@ -7,18 +7,15 @@ import Button from '../../../../components/main/Button';
 import axios from "utils/axios"
 import { timeZoneToDateString } from '../../../../utils'
 
-export default function CategoryList()
-{
+export default function CategoryList() {
 
     /** category ийг хадгалах state */
-    const [ categories, setCategories ] = useState([])
+    const [categories, setCategories] = useState([])
 
     /** back аас category жагсаалтыг авах */
-    const getCategory = async () =>
-    {
+    const getCategory = async () => {
         const { success, data, error } = await axios.get('/api/category/')
-        if (success)
-        {
+        if (success) {
             /** амжилттай дата авсан үед датаг state -д оноож өгөх нь */
             setCategories(data)
         }
@@ -29,17 +26,14 @@ export default function CategoryList()
     }
 
     /** хуудас руу анх ороход category жагсаалтыг авах */
-    useEffect(() =>
-    {
+    useEffect(() => {
         getCategory()
     }, [])
 
     /** category устгах нь */
-    const handleDelete = async (id) =>
-    {
+    const handleDelete = async (id) => {
         const { success, data, info, error } = await axios.delete(`/api/category/${id}/`)
-        if (success)
-        {
+        if (success) {
             /** амжилттай устгасны дараа alert харуулах нь */
             toast.success(info)
             getCategory()
@@ -54,7 +48,9 @@ export default function CategoryList()
         <>
             <h1 className={`page-title`}>Category</h1>
             <div className={`page-content`}>
-                <Link to={"/admin/category/create/"} className="main">Үүсгэх</Link>
+                <div class="table-title">
+                    <Link to={"/admin/news/create/"} className="addBtn">Add</Link>
+                </div>
                 <table>
                     <thead>
                         <tr>
@@ -71,8 +67,7 @@ export default function CategoryList()
                     <tbody>
                         {
                             categories.map(
-                                (category, idx) =>
-                                {
+                                (category, idx) => {
                                     return (
                                         <tr key={idx}>
                                             <td>
@@ -82,15 +77,16 @@ export default function CategoryList()
                                                 {timeZoneToDateString(category.createdAt)}
                                             </td>
                                             <td>
-                                                <Link to={`/admin/category/update/${category._id}/`} className="main">Засах</Link>
-                                                <Button
-                                                    style={{
-                                                        backgroundColor: "red"
-                                                    }}
+                                                <Link to={`/admin/category/update/${category._id}/`} className="editBtn">Засах</Link>
+                                                <Button className="deleteBtn"
+                                                    /* style={{
+                                                         color: "red"
+                                                     }}*/
                                                     onClick={() => handleDelete(category._id)}
                                                     title="Устгах"
                                                 />
                                             </td>
+                                            <div class="hr-line-dashed"></div>
                                         </tr>
                                     )
                                 }

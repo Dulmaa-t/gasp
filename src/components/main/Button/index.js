@@ -4,7 +4,7 @@ export default function Button(props) {
   return (
       <button
         role={"button"}
-        className={`main ${props.btn} ${props.className}`}
+        className={`moreBtn ${props.btn} ${props.className}`}
         style = {props.style}
         onClick={props.onClick}
           // {

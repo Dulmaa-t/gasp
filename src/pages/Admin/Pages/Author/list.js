@@ -7,18 +7,15 @@ import Button from '../../../../components/main/Button';
 import axios from "utils/axios"
 import { timeZoneToDateString } from '../../../../utils'
 
-export default function NewsList()
-{
+export default function NewsList() {
 
     /** author ийг хадгалах state */
-    const [ authors, setAuthor ] = useState([])
+    const [authors, setAuthor] = useState([])
 
     /** back аас author жагсаалтыг авах */
-    const getAuthor = async () =>
-    {
+    const getAuthor = async () => {
         const { success, data, error } = await axios.get('/api/author/')
-        if (success)
-        {
+        if (success) {
             /** амжилттай дата авсан үед датаг state -д оноож өгөх нь */
             setAuthor(data)
         }
@@ -29,17 +26,14 @@ export default function NewsList()
     }
 
     /** хуудас руу анх ороход author жагсаалтыг авах */
-    useEffect(() =>
-    {
+    useEffect(() => {
         getAuthor()
     }, [])
 
     /** Author устгах нь */
-    const handleDelete = async (id) =>
-    {
+    const handleDelete = async (id) => {
         const { success, data, info, error } = await axios.delete(`/api/author/${id}/`)
-        if (success)
-        {
+        if (success) {
             /** амжилттай устгасны дараа alert харуулах нь */
             toast.success(info)
             getAuthor()
@@ -54,7 +48,9 @@ export default function NewsList()
         <>
             <h1 className={`page-title`}>Author</h1>
             <div className={`page-content`}>
-                <Link to={"/admin/author/create/"} className="main">Үүсгэх</Link>
+                <div class="table-title">
+                    <Link to={"/admin/news/create/"} className="addBtn">Add</Link>
+                </div>
                 <table>
                     <thead>
                         <tr>
@@ -74,8 +70,7 @@ export default function NewsList()
                     <tbody>
                         {
                             authors.map(
-                                (author, idx) =>
-                                {
+                                (author, idx) => {
                                     return (
                                         <tr key={idx}>
                                             <td>
@@ -88,7 +83,7 @@ export default function NewsList()
                                                 {timeZoneToDateString(author.createdAt)}
                                             </td>
                                             <td>
-                                                <Link to={`/admin/author/update/${author._id}/`} className="main">Засах</Link>
+                                                <Link to={`/admin/author/update/${author._id}/`} className="editBtn">Засах</Link>
                                             </td>
                                         </tr>
                                     )

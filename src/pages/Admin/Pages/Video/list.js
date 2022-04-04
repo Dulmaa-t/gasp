@@ -7,18 +7,15 @@ import Button from '../../../../components/main/Button';
 import axios from "utils/axios"
 import { timeZoneToDateString } from '../../../../utils'
 
-export default function VideoList()
-{
+export default function VideoList() {
 
     /** video хадгалах state */
-    const [ videos, setVideos ] = useState([])
+    const [videos, setVideos] = useState([])
 
     /** back аас video жагсаалтыг авах */
-    const getVideos = async () =>
-    {
+    const getVideos = async () => {
         const { success, data, error } = await axios.get('/api/video/')
-        if (success)
-        {
+        if (success) {
             /** амжилттай дата авсан үед датаг state -д оноож өгөх нь */
             setVideos(data)
         }
@@ -29,17 +26,14 @@ export default function VideoList()
     }
 
     /** хуудас руу анх ороход мэдээний жагсаалтыг авах */
-    useEffect(() =>
-    {
+    useEffect(() => {
         getVideos()
     }, [])
 
     /** video устгах нь */
-    const handleDelete = async (id) =>
-    {
+    const handleDelete = async (id) => {
         const { success, data, info, error } = await axios.delete(`/api/video/${id}/`)
-        if (success)
-        {
+        if (success) {
             /** амжилттай устгасны дараа alert харуулах нь */
             toast.success(info)
             getVideos()
@@ -54,7 +48,9 @@ export default function VideoList()
         <>
             <h1 className={`page-title`}>VIDEO</h1>
             <div className={`page-content`}>
-                <Link to={"/admin/video/create/"} className="main">Үүсгэх</Link>
+                <div class="table-title">
+                    <Link to={"/admin/news/create/"} className="addBtn">Add</Link>
+                </div>
                 <table>
                     <thead>
                         <tr>
@@ -77,8 +73,7 @@ export default function VideoList()
                     <tbody>
                         {
                             videos.map(
-                                (video, idx) =>
-                                {
+                                (video, idx) => {
                                     return (
                                         <tr key={idx}>
                                             <td>
@@ -94,11 +89,8 @@ export default function VideoList()
                                                 {timeZoneToDateString(video.createdAt)}
                                             </td>
                                             <td>
-                                                <Link to={`/admin/video/update/${video._id}/`} className="main">Засах</Link>
-                                                <Button
-                                                    style={{
-                                                        backgroundColor: "red"
-                                                    }}
+                                                <Link to={`/admin/video/update/${video._id}/`} className="editBtn">Засах</Link>
+                                                <Button className="deleteBtn"
                                                     onClick={() => handleDelete(video._id)}
                                                     title="Устгах"
                                                 />

@@ -97,7 +97,14 @@ export default function PodcastCard() {
           </div>
 
         </section>
-      <MoreBtn onClick={handleMore}/>
+        {
+            // хэрэв podcast байвал харуулна
+            podcastCard.length !== 0
+            ?
+              <MoreBtn onClick={handleMore}/>
+            :
+              null
+          }
       <Footer />
     </div>
   )

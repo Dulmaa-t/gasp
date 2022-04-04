@@ -114,7 +114,7 @@ export default function NewsForm()
                                 />
                             </div>
                     }
-                    <button className='main' type='submit'>
+                    <button className='saveBtn' type='submit'>
                         Хадгалах
                     </button>
                 </form>

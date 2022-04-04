@@ -47,19 +47,11 @@ export default function NewsList() {
     return (
         <>
             <h1 className={`page-title`}>NEWS</h1>
-            
+
             <div className={`page-content`}>
                 <div class="table-title">
-                    <div className='row'>
-                        <div className='col-md-6'>
-                            <h2>Manage <b>Employees</b></h2>
-                        </div>
-                        <div className='col-md-6'>
-                            <Link to={"/admin/news/create/"} className="main">Үүсгэх</Link>
-                        </div>
-                    </div>
+                    <Link to={"/admin/news/create/"} className="addBtn">Add</Link>
                 </div>
-
                 <table>
                     <thead>
                         <tr>
@@ -92,11 +84,8 @@ export default function NewsList() {
                                                 {timeZoneToDateString(news.createdAt)}
                                             </td>
                                             <td>
-                                                <Link to={`/admin/news/update/${news._id}/`} className="main">Засах</Link>
-                                                <Button
-                                                    style={{
-                                                        backgroundColor: "red"
-                                                    }}
+                                                <Link to={`/admin/news/update/${news._id}/`} className="editBtn">Засах</Link>
+                                                <Button className="deleteBtn"
                                                     onClick={() => handleDelete(news._id)}
                                                     title="Устгах"
                                                 />

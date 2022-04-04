@@ -7,17 +7,14 @@ import Button from '../../../../components/main/Button';
 import axios from "utils/axios"
 import { timeZoneToDateString } from '../../../../utils'
 
-export default function PodcastList()
-{
+export default function PodcastList() {
     /** podcast хадгалах state */
-    const [ podcasts, setPodcasts ] = useState([])
+    const [podcasts, setPodcasts] = useState([])
 
     /** back аас podcast жагсаалтыг авах */
-    const getPodcasts = async () =>
-    {
+    const getPodcasts = async () => {
         const { success, data, error } = await axios.get('/api/podcast/')
-        if (success)
-        {
+        if (success) {
             /** амжилттай дата авсан үед датаг state -д оноож өгөх нь */
             setPodcasts(data)
         }
@@ -28,17 +25,14 @@ export default function PodcastList()
     }
 
     /** хуудас руу анх ороход podcast жагсаалтыг авах */
-    useEffect(() =>
-    {
+    useEffect(() => {
         getPodcasts()
     }, [])
 
     /** Мэдээ устгах нь */
-    const handleDelete = async (id) =>
-    {
+    const handleDelete = async (id) => {
         const { success, data, info, error } = await axios.delete(`/api/podcast/${id}/`)
-        if (success)
-        {
+        if (success) {
             /** амжилттай устгасны дараа alert харуулах нь */
             toast.success(info)
             getPodcasts()
@@ -53,7 +47,9 @@ export default function PodcastList()
         <>
             <h1 className={`page-title`}>Podcast</h1>
             <div className={`page-content`}>
-                <Link to={"/admin/podcast/create/"} className="main">Үүсгэх</Link>
+                <div class="table-title">
+                    <Link to={"/admin/news/create/"} className="addBtn">Add</Link>
+                </div>
                 <table>
                     <thead>
                         <tr>
@@ -76,8 +72,7 @@ export default function PodcastList()
                     <tbody>
                         {
                             podcasts.map(
-                                (podcast, idx) =>
-                                {
+                                (podcast, idx) => {
                                     return (
                                         <tr key={idx}>
                                             <td>
@@ -93,11 +88,8 @@ export default function PodcastList()
                                                 {timeZoneToDateString(podcast.createdAt)}
                                             </td>
                                             <td>
-                                                <Link to={`/admin/podcast/update/${podcast._id}/`} className="main">Засах</Link>
-                                                <Button
-                                                    style={{
-                                                        backgroundColor: "red"
-                                                    }}
+                                                <Link to={`/admin/podcast/update/${podcast._id}/`} className="editBtn">Засах</Link>
+                                                <Button className="deleteBtn"
                                                     onClick={() => handleDelete(podcast._id)}
                                                     title="Устгах"
                                                 />
