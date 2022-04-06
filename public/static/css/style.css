@@ -737,12 +737,13 @@ nav ul li .logo{
     bottom: 0rem;
     padding: 1rem;
     color: #fff;
+    width: 100%;
 }
 .news-card:hover .news-card__details-wrapper {
     opacity: 1;
 }
 .news-card:hover .news-card__text-wrapper {
-    margin-bottom: 115px;
+    padding-bottom: 64px;
     background-color: rgba(0, 0, 0, 0.6);
 }
 .news-card:hover .news-card__title {
