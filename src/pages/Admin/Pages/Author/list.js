@@ -49,7 +49,7 @@ export default function NewsList() {
             <h1 className={`page-title`}>Author</h1>
             <div className={`page-content`}>
                 <div class="table-title">
-                    <Link to={"/admin/news/create/"} className="addBtn">Add</Link>
+                    <Link to={"/admin/author/create/"} className="addBtn">Add</Link>
                 </div>
                 <table>
                     <thead>

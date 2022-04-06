@@ -3,7 +3,6 @@ import React, { useEffect } from 'react'
 import { useConfig } from 'context/configContext'
 
 import News from './News'
-import SideSection from './SideSection'
 import Cards from './Cards'
 
 export default function Index() {
@@ -49,7 +48,6 @@ export default function Index() {
       <main>
         <Cards />
         <News />
-        <SideSection />
       </main>
     </div>
 
