@@ -34,3 +34,8 @@ exports.update = async (authorId, body) =>
         body
     )
 }
+
+exports.delete = async (authorId) =>
+{
+    await Authors.deleteOne({ _id: authorId })
+}

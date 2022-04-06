@@ -20,5 +20,6 @@ router
     .route("/:authorId/")
     .get(asyncHandler(authController.getDetail))
     .put(asyncHandler(authController.update))
+    .delete(asyncHandler(authController.delete))
 
 module.exports = router

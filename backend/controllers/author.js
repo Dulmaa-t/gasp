@@ -42,3 +42,10 @@ exports.update = async (req, res) =>
     await authorService.update(authorId, body)
     res.sendInfo("Амжилттай заслаа")
 }
+
+exports.delete = async (req, res) =>
+{
+    const { authorId } = req.params
+    await authorService.delete(authorId)
+    res.sendInfo('Амжилттай устагалаа');
+}
