@@ -84,6 +84,13 @@ export default function NewsList() {
                                             </td>
                                             <td>
                                                 <Link to={`/admin/author/update/${author._id}/`} className="editBtn">Засах</Link>
+                                                <Button className="deleteBtn"
+                                                    /* style={{
+                                                         color: "red"
+                                                     }}*/
+                                                    onClick={() => handleDelete(author._id)}
+                                                    title="Устгах"
+                                                />
                                             </td>
                                         </tr>
                                     )
