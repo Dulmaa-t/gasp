@@ -46,10 +46,12 @@ export default function NewsAbout() {
       <div className='header'>
         <img className="header-img" src={process.env.REACT_APP_SERVER_URL + configs.SITE_MENU_IMAGE} alt="Card image cap"></img>
       </div>
-      <h1 className='text-center'>
-        {about.title}
-      </h1>
-      <div id='main-news'>
+      <div className='c-container'>
+        <h1 className='text-center'>
+          {about.title}
+        </h1>
+        <div id='main-news'>
+        </div>
       </div>
       <Footer />
     </>
