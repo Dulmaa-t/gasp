@@ -32,7 +32,6 @@ exports.getDetailWithLogged = async (req, res) =>
 {
     const authId = req.userId
     const foundAuthor = await authorService.getDetail(authId)
-    console.log(foundAuthor);
     res.sendData(foundAuthor);
 }
 

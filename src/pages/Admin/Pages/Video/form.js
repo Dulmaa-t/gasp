@@ -54,7 +54,7 @@ export default function NewsForm()
         const { success, data, error } = await axios.get(`/api/video/${videoId ? videoId + "/" : ""}`)
         if (success)
         {
-            data.author = data.author._id
+            data.author = data.author?._id || ""
             data.category = data?.category?._id
             setFormData(data)
         }

@@ -62,7 +62,7 @@ export default function NewsForm()
         const { success, data, error } = await axios.get(`/api/news/${newsId}/`)
         if (success)
         {
-            data.author = data.author._id
+            data.author = data.author?._id || ""
             setFormData(data)
         }
         else {
@@ -87,6 +87,27 @@ export default function NewsForm()
     {
         const value = event.target.value
         setFormData({ ...formData, [key]: value })
+    }
+
+    /** Зураг оруулахад ажиллах функц */
+    const uploadImageCallBack = async (blobInfo, success, failure, progress) =>
+    {
+        // Сонгогдсон зургийг авах
+        const file = blobInfo.blob()
+
+        const formData = new FormData()
+        formData.append('image', file)
+
+        const config =
+        {
+            headers: { 'content-type': 'multipart/form-data' }
+        }
+        const { success: rSuccess, data, error, info } = await axios.post(`/api/config/image/`, formData, config).catch(err => err)
+        rSuccess
+        ?
+            success(process.env.REACT_APP_SERVER_URL + data)
+        :
+            failure()
     }
 
     /** хадгалах үед back руу хүсэлт шидэж хадгалах функц */
@@ -223,8 +244,17 @@ export default function NewsForm()
                         init={{
                             height: 500,
                             menubar: true,
+                            plugins: 'image | preview',
                             content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
-                            toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | forecolor | backcolor | image',
+                            plugins: "casechange advcode advlist lists spellchecker formatpainter autoresize visualblocks tinydrive image link media imagetools wordcount code",
+                            toolbar: [
+                                "bold italic underline | forecolor | formatselect | alignleft aligncenter alignright | bullist numlist",
+                                "cut copy paste formatpainter removeformat | casechange visualblocks | spellchecker | link image media | code"
+                            ],
+                            images_upload_handler: uploadImageCallBack,
+                            image_title: true,
+                            image_advtab: true,
+                            importcss_append: true,
                         }}
                     />
                     <button className='main' type='submit'>
