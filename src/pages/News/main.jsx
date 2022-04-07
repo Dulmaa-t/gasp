@@ -71,24 +71,34 @@ export default function News() {
       <div className="news-menu">
         <div className="content-wrapper">
           {
-            news.map(
-              (element, index) => {
-                return (
-                  <Card
-                    key={index}
-                    id={element._id}
-                    image={element.image}
-                    title={element.title}
-                    text={element.text}
-                    createdAt={timeZoneToDateString(element.createdAt)}
-                  />
-                )
-              }
-            )
+            news.length > 0
+            ?
+              news.map(
+                (element, index) => {
+                  return (
+                    <Card
+                      key={index}
+                      id={element._id}
+                      image={element.image}
+                      title={element.title}
+                      text={element.text}
+                      createdAt={timeZoneToDateString(element.createdAt)}
+                    />
+                  )
+                }
+              )
+            :
+              "Хоосон байна"
           }
         </div>
       </div>
-      <MoreBtn onClick={handleMore}/>
+      {
+        news.length > 0
+        ?
+          <MoreBtn onClick={handleMore}/>
+        :
+          null
+      }
       <Footer />
     </div>
   )

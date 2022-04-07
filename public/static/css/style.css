@@ -753,6 +753,12 @@ nav ul li .logo{
     transform: scale(1.2);
     z-index: -1;
 }
+.news-card__excerpt {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 86%;
+    overflow: hidden;
+}
 /* Video menu */
 .video-menu {
     margin: 4em 0;

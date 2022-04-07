@@ -48,7 +48,7 @@ export default function VideoList() {
         <>
             <h1 className={`page-title`}>VIDEO</h1>
             <div className={`page-content`}>
-                <div class="table-title">
+                <div className="table-title">
                     <Link to={"/admin/news/create/"} className="addBtn">Add</Link>
                 </div>
                 <table>

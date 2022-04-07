@@ -48,7 +48,7 @@ export default function CategoryList() {
         <>
             <h1 className={`page-title`}>Category</h1>
             <div className={`page-content`}>
-                <div class="table-title">
+                <div className="table-title">
                     <Link to={"/admin/news/create/"} className="addBtn">Add</Link>
                 </div>
                 <table>
@@ -86,7 +86,7 @@ export default function CategoryList() {
                                                     title="Устгах"
                                                 />
                                             </td>
-                                            <div class="hr-line-dashed"></div>
+                                            <div className="hr-line-dashed"></div>
                                         </tr>
                                     )
                                 }
