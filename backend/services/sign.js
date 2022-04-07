@@ -18,10 +18,16 @@ const { timeToMs } = require('../utils')
  */
 exports.in = async (email, password, res) =>
 {
+
+    if (!email)
+    {
+        throw new MyError('Имэйл эсвэл нууц үг буруу байна')
+    }
+
     //хэрэглэгчийн имейлийг шалгана
     const user = await Authors.findOne(
         {
-            email: email,
+            email: email.toLowerCase().trim(),
         }
     )
     //хэрэглэгчийн мэдээлэл байгаа эсэхийг шалгаж буй

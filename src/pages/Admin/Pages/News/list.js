@@ -78,7 +78,7 @@ export default function NewsList() {
                                                 {news.title}
                                             </td>
                                             <td>
-                                                {news.author.nickName}
+                                                {news.author?.nickName || ""}
                                             </td>
                                             <td>
                                                 {timeZoneToDateString(news.createdAt)}

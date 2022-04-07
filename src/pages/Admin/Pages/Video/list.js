@@ -80,7 +80,7 @@ export default function VideoList() {
                                                 {video.title}
                                             </td>
                                             <td>
-                                                {video.author.nickName}
+                                                {video.author?.nickName || ""}
                                             </td>
                                             <td>
                                                 {video.category?.name || ""}

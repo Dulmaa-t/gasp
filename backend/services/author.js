@@ -1,3 +1,4 @@
+const MyError = require('../middleware/error')
 const Authors = require('../models/authors')
 
 /** шинэ author үүсгэх нь
@@ -6,6 +7,11 @@ const Authors = require('../models/authors')
  */
 exports.createAuthor = async (content) =>
 {
+    if (!content.emai)
+    {
+        throw new MyError("Цахим шуудан байхгүй байна")
+    }
+    content.email = content.email.toLowerCase().trim()
     await Authors.create(content)
 }
 
@@ -27,6 +33,12 @@ exports.getDetail = async (authorId) =>
 
 exports.update = async (authorId, body) =>
 {
+
+    if (body?.email)
+    {
+        body.email = body.email.toLowerCase().trim()
+    }
+
     await Authors.updateOne(
         {
             _id: authorId,

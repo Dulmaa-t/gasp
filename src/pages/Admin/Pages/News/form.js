@@ -223,7 +223,8 @@ export default function NewsForm()
                         init={{
                             height: 500,
                             menubar: true,
-                            content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
+                            content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
+                            toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | forecolor | backcolor | image',
                         }}
                     />
                     <button className='main' type='submit'>
