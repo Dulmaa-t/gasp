@@ -54,7 +54,7 @@ exports.getNewsDetail = async (newsId) =>
  */
 exports.update = async (newsId, content) =>
 {
-    const oldNews = await News.findById(podcastId)
+    const oldNews = await News.findById(newsId)
     let image = oldNews.image
     /** id аар нь хайж олоод засах нь */
     const updated = await News.updateOne(

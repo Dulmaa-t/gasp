@@ -28,7 +28,7 @@ export default function AuthContextProvider(props)
         const { success, data, error } = await axios.get("/api/author/logged/").catch(err => err)
         if (success)
         {
-            loggedUser(data)
+            loggedUser(data ? data : initUserDetail)
         }
     }
 

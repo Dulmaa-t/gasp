@@ -8,8 +8,8 @@ import LoginForm from 'pages/LoginForm'
 import ResetPass from 'pages/LoginForm/resetPass'
 import ConfirmPass from 'pages/LoginForm/confirmPass'
 
-export default function Admin() {
-
+export default function Admin()
+{
   const { userDetail } = useAuth()
   const isAuth = Object.keys(userDetail).length > 0
 
