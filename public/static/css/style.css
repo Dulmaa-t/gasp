@@ -7,6 +7,13 @@ body {
     font-family: 'Nunito', sans-serif;
     background-color: #000;
 }
+p {
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 15px;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+}
 .headerImg {
     transform:unset;
     background-image: url('../image/unnamed.png');
@@ -41,8 +48,12 @@ header {
     text-align: center;
     position: fixed;
     background-color: #000;
-    padding: 0.5em 5em;
+    padding: 0.5em 0;
     z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 nav {
     position: absolute;
@@ -394,6 +405,7 @@ section .news-8 {
 }
 section .card-title {
     margin: 0.5em;
+    text-transform: uppercase;
 }
 section .card-title a{
     color: #fff;
@@ -505,25 +517,6 @@ section .long-img {
 .heart {
     color: #2f2f2f;
 }  
-@media screen and (min-width: 24.375em) {
-    .legal .legal__links {
-        margin-left: auto;
-    }
-}  
-@media screen and (min-width: 40.375em) {
-    .footer__nav > * {
-        flex: 1;
-    }    
-    .nav__item--extra {
-        flex-grow: 1.4;
-    }
-    .footer__addr {
-        flex: 1 0px;
-    }
-    .footer__nav {
-        flex: 2 0px;
-    }
-}
 /*News page*/
 nav ul li .logo{
     margin: 0 auto;
@@ -589,37 +582,6 @@ nav ul li .logo{
 .sub-menu-nav:hover .sub-menu-alt {
     display: block;
 }  
-@media screen and (max-width: 600px) {
-    .sub-menu {
-        margin: 0.5em 2em;
-        flex-direction: column;
-    }
-    .sub-menu-nav {
-        text-align:center;
-        width:100%;
-    }
-    .nav-btn {
-        width:70%;
-    }
-    .icon {
-        margin: 0 1em;
-    }
-    .icon .nav-item {
-        margin: 0 auto;
-    }
-    .side-section .grid-flex {
-        margin: 2em;
-    }
-    .side-section .col-image {
-        background-size: contain;
-    }
-    .side-section .text-title {
-        margin: 0 auto;
-    }
-    .side-section .Aligner-item {
-        width: 100%;
-    }
-}
 .moreBtn {
     color: #fff;
     font-size: 12px;
@@ -655,6 +617,10 @@ nav ul li .logo{
     color: red;
     border: 2px solid red;
     background-color: #fff;
+}
+.deleteBtn:hover {
+    border: 2px solid red;
+    box-shadow: none;
 }
 .content-wrapper {
     margin: 0 auto;
@@ -882,7 +848,58 @@ h1,	.h1 {
 .postcard__tagbox .tag__item:hover {
     background: rgba(83, 83, 83, 0.8);
 }
+@media screen and (min-width: 24.375em) {
+    .legal .legal__links {
+        margin-left: auto;
+    }
+}  
+@media screen and (min-width: 40.375em) {
+    .footer__nav > * {
+        flex: 1;
+    }    
+    .nav__item--extra {
+        flex-grow: 1.4;
+    }
+    .footer__addr {
+        flex: 1 0px;
+    }
+    .footer__nav {
+        flex: 2 0px;
+    }
+}
+@media screen and (max-width: 600px) {
+    .sub-menu {
+        margin: 0.5em 2em;
+        flex-direction: column;
+    }
+    .sub-menu-nav {
+        text-align:center;
+        width:100%;
+    }
+    .nav-btn {
+        width:70%;
+    }
+    .icon {
+        margin: 0 1em;
+    }
+    .icon .nav-item {
+        margin: 0 auto;
+    }
+    .side-section .grid-flex {
+        margin: 2em;
+    }
+    .side-section .col-image {
+        background-size: contain;
+    }
+    .side-section .text-title {
+        margin: 0 auto;
+    }
+    .side-section .Aligner-item {
+        width: 100%;
+    }
+}
 @media screen and (min-width: 769px) {
+
     .postcard {
         flex-wrap: inherit;
     }
@@ -953,12 +970,8 @@ h1,	.h1 {
         margin-bottom: 2em;
         box-shadow: 0px 2px 18px -4px rgba(0,0,0,0.75);
     }
-    .wrapper {
-        margin: 2em;
-    }
     header {
         width: 100%;
-        padding: 0.5em;
     }
     .side-section {
         margin: 0 auto;
@@ -1093,7 +1106,7 @@ section.loginForm{
     color: #fff;
     font-size: 16px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-}      
+}
 .loginForm .container .password-control {
     position: absolute;
     top: 11px;
@@ -1246,6 +1259,9 @@ section.loginForm{
     .form_wrapper input[type="text"], .form_wrapper input[type="email"], .form_wrapper input[type="tel"]{
         width: 80%;
     }
+    .wrapper {
+        margin: 0 auto;
+    }
     .c-container {
         padding:2em;
     }
@@ -1333,5 +1349,28 @@ section.loginForm{
     }
     nav li {
         margin-bottom: 0;
+    }
+}
+@media only screen and (min-width: 1200px) {
+    header {
+        display: flex;
+        justify-content: center;
+        align-items: center
+    }
+    .logo {
+        margin-right: 2em;
+    }
+}
+@media only screen and (min-width: 1600px) {
+    header {
+        display: flex;
+        justify-content: center;
+        align-items: center
+    }
+    .logo {
+        margin-right: 2em;
+    }
+    .side-section {
+        padding: 0 16em;
     }
 }

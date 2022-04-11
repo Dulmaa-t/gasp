@@ -74,7 +74,7 @@ export default function News() {
                         lastNews[0].map((news, idx) =>
                         {
                             return (
-                                <div className={`col-md-${idx === 0 ? "4" : "8"}`} key={idx}>
+                                <div className={`col-md-${idx === 0 ? "7" : "5" }`} key={idx}>
                                     <div className="card card-01 height-fix">
                                         <img className="card-img-top" src={process.env.REACT_APP_SERVER_URL + news.image} alt="Card image cap" />
                                         <div className="card-img-overlay">
@@ -93,7 +93,7 @@ export default function News() {
                         lastNews[1].map((news, idx) =>
                         {
                             return (
-                                <div className={`col-md-${idx === 0 ? "8" : "4"}`} key={idx}>
+                                <div className={`col-md-${idx === 0 ? "5" : "7"}`} key={idx}>
                                     <div className="card card-01 height-fix">
                                         <img className="card-img-top" src={process.env.REACT_APP_SERVER_URL + news.image} alt="Card image cap" />
                                         <div className="card-img-overlay">
@@ -112,38 +112,15 @@ export default function News() {
                         lastNews[2].map((news, idx) =>
                         {
                             return (
-                                <div className={`col-md-${idx === 0 ? "4" : "8"}`} key={idx}>
+                                <div className={`col-md-${idx === 0 ? "7" : "5"}`} key={idx}>
                                     <div className="card card-01 height-fix">
-                                        <img className={`card-img-top ${idx === 0 ? "long-img" : ""}`} src={process.env.REACT_APP_SERVER_URL + news.image} alt="Card image cap" />
+                                        <img className="card-img-top" src={process.env.REACT_APP_SERVER_URL + news.image} alt="Card image cap" />
                                         <div className="card-img-overlay">
                                             <h4 className="card-title"><Link to={`/news/${news._id}/`}>{news.title}</Link></h4>
                                             <p className="card-text">{news.text}</p>
                                             <p className="card-text"><Link to={`/news/${news._id}/`}></Link><i className="fa fa-heart-o"></i></p>
                                         </div>
                                     </div>
-                                    {
-                                        idx === 1
-                                        &&
-                                            <div className="c-row">
-                                                {
-                                                    lastNews[3].map((news, idx) =>
-                                                    {
-                                                        return (
-                                                            <div className={`col-md-${idx === 0 ? "8" : "4"}`} key={idx}>
-                                                                <div className="card card-01 height-fix">
-                                                                    <img className="card-img-top" src={process.env.REACT_APP_SERVER_URL + news.image} alt="Card image cap" />
-                                                                    <div className="card-img-overlay">
-                                                                        <h4 className="card-title"><Link to={`/news/${news._id}/`}>{news.title}</Link></h4>
-                                                                        <p className="card-text">{news.text}</p>
-                                                                        <p className="card-text"><Link to={`/news/${news._id}/`}></Link><i className="fa fa-heart-o"></i></p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        )
-                                                    })
-                                                }
-                                            </div>
-                                    }
                                 </div>
                             )
                         })

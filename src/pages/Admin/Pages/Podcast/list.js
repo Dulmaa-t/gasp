@@ -79,7 +79,7 @@ export default function PodcastList() {
                                                 {podcast.title}
                                             </td>
                                             <td>
-                                                {podcast.author.nickName}
+                                                {podcast.author?.nickName}
                                             </td>
                                             <td>
                                                 {podcast.category?.name || ""}
