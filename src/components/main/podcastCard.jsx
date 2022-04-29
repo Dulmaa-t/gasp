@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function podcastCard(props) {
+export default function PodcastCard(props) {
     return (
         <div>
             <article className="postcard dark blue">

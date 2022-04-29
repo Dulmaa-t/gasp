@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function newsCard(props) {
+export default function NewsCard(props) {
     return (
         <div className="news-card">
             <a href="#" className="news-card__card-link"></a>

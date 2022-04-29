@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function card(props) {
+export default function Card(props) {
     return (
         <div className={`card border-${props.color}`}>
             <div className={`card-header ${props.color}`}>

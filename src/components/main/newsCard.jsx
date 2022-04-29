@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export default function newsCard({ createdAt, title, text, id, image })
+export default function NewsCard({ createdAt, title, text, id, image })
 {
 
     const errorImage = 'https://images.pexels.com/photos/127513/pexels-photo-127513.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'

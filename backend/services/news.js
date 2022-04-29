@@ -106,6 +106,6 @@ exports.delete = async (newsId) =>
 
 exports.newsHome = async () =>
 {
-    const newsHome = await News.find({}).sort("-createdAt").limit(8)
+    const newsHome = await News.find({}).sort("-createdAt").limit(9)
     return newsHome
 }
