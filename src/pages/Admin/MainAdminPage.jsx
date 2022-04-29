@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
-import { useAuth } from 'context/authContext'
+import { UseAuth } from 'context/authContext'
 
 import Menu from './Menu'
 import AdminPages from './Pages'
@@ -11,7 +11,7 @@ import css from './style.module.css'
 export default function MainAdminPage()
 {
 
-    const { signOut } = useAuth()
+    const { signOut } = UseAuth()
 
     useEffect(() => {
 

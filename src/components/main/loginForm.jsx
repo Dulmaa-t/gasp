@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
-import { useAuth } from 'context/authContext'
+import { UseAuth } from 'context/authContext'
 
 import axios from 'utils/axios'
 
@@ -16,7 +16,7 @@ export default function LoginForm(props)
     )
     const [ showPass, setShowPass ] = useState(false)
 
-    const { loggedUser } = useAuth()
+    const { loggedUser } = UseAuth()
 
     const showPassword = () =>
     {

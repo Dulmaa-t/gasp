@@ -8,7 +8,7 @@ import Footer from '../Home/Footer'
 import MoreBtn from '../../components/special/MoreBtn'
 
 import axios from 'utils/axios'
-import { timeZoneToDateString } from 'utils/index'
+import { TimeZoneToDateString } from 'utils/index'
 
 export default function News() {
 
@@ -82,7 +82,7 @@ export default function News() {
                       image={element.image}
                       title={element.title}
                       text={element.text}
-                      createdAt={timeZoneToDateString(element.createdAt)}
+                      createdAt={TimeZoneToDateString(element.createdAt)}
                     />
                   )
                 }

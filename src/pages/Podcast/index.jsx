@@ -7,7 +7,7 @@ import Card from '../../components/main/podcastCard'
 import MoreBtn from '../../components/special/MoreBtn'
 
 import axios from 'utils/axios'
-import { timeZoneToDateString, msToTime } from 'utils/index'
+import { TimeZoneToDateString, msToTime } from 'utils/index'
 
 export default function PodcastCard() {
 
@@ -77,7 +77,7 @@ export default function PodcastCard() {
                       key={index}
                       image={process.env.REACT_APP_SERVER_URL + element.image}
                       title={element.title}
-                      dateTime={timeZoneToDateString(element.createdAt)}
+                      dateTime={TimeZoneToDateString(element.createdAt)}
                       clock={msToTime(3600000)}
                       text={element.text}
                       url={element.url}

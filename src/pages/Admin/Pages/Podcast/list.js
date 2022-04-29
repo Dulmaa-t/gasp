@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import Button from '../../../../components/main/Button';
 
 import axios from "utils/axios"
-import { timeZoneToDateString } from '../../../../utils'
+import { TimeZoneToDateString } from '../../../../utils'
 
 export default function PodcastList() {
     /** podcast хадгалах state */
@@ -85,7 +85,7 @@ export default function PodcastList() {
                                                 {podcast.category?.name || ""}
                                             </td>
                                             <td>
-                                                {timeZoneToDateString(podcast.createdAt)}
+                                                {TimeZoneToDateString(podcast.createdAt)}
                                             </td>
                                             <td>
                                                 <Link to={`/admin/podcast/update/${podcast._id}/`} className="editBtn">Засах</Link>

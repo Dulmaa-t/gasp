@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import Button from '../../../../components/main/Button';
 
 import axios from "utils/axios"
-import { timeZoneToDateString } from '../../../../utils'
+import { TimeZoneToDateString } from '../../../../utils'
 
 export default function VideoList() {
 
@@ -86,7 +86,7 @@ export default function VideoList() {
                                                 {video.category?.name || ""}
                                             </td>
                                             <td>
-                                                {timeZoneToDateString(video.createdAt)}
+                                                {TimeZoneToDateString(video.createdAt)}
                                             </td>
                                             <td>
                                                 <Link to={`/admin/video/update/${video._id}/`} className="editBtn">Засах</Link>

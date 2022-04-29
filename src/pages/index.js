@@ -10,13 +10,13 @@ import News from './News/'
 import Video from './Video'
 import Podcast from './Podcast'
 import Admin from './Admin'
-import { useAuth } from 'context/authContext'
+import { UseAuth } from 'context/authContext'
 
 export default function Page() {
 
   const [ isLoading, setLoading ] = useState(true)
   const { getConfigs } = useConfig()
-  const { getDetail } = useAuth()
+  const { getDetail } = UseAuth()
 
   /** Сайтад хэрэгтэй утгуудыг веб уншихаас өмнө татаж авах */
   const getDatas = async () =>

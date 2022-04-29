@@ -4,7 +4,7 @@
  * @param {number} spliceNo
  * @returns 0 ээр дүүрсэн тоо
  */
-export const FullZero = (num, spliceNo=-2) => ("0" + num).slice(spliceNo)
+export const fullZero = (num, spliceNo=-2) => ("0" + num).slice(spliceNo)
 
 /**
  * timezone ийг string date болгох

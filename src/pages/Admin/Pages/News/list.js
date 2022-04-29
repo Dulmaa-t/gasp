@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import Button from '../../../../components/main/Button';
 
 import axios from "utils/axios"
-import { timeZoneToDateString } from '../../../../utils'
+import { TimeZoneToDateString } from '../../../../utils'
 
 export default function NewsList() {
 
@@ -81,7 +81,7 @@ export default function NewsList() {
                                                 {news.author?.nickName || ""}
                                             </td>
                                             <td>
-                                                {timeZoneToDateString(news.createdAt)}
+                                                {TimeZoneToDateString(news.createdAt)}
                                             </td>
                                             <td>
                                                 <Link to={`/admin/news/update/${news._id}/`} className="editBtn">Засах</Link>

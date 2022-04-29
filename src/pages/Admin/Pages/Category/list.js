@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import Button from '../../../../components/main/Button';
 
 import axios from "utils/axios"
-import { timeZoneToDateString } from '../../../../utils'
+import { TimeZoneToDateString } from '../../../../utils'
 
 export default function CategoryList() {
 
@@ -74,7 +74,7 @@ export default function CategoryList() {
                                                 {category.name}
                                             </td>
                                             <td>
-                                                {timeZoneToDateString(category.createdAt)}
+                                                {TimeZoneToDateString(category.createdAt)}
                                             </td>
                                             <td>
                                                 <Link to={`/admin/category/update/${category._id}/`} className="editBtn">Засах</Link>

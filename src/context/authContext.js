@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 
 import axios from 'utils/axios'
 
-export const AuthContext = CreateContext()
+export const AuthContext = createContext()
 
 const initUserDetail = {}
 export default function AuthContextProvider(props)
