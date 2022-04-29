@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 
 import axios from 'utils/axios'
 
-export const AuthContext = createContext()
+export const AuthContext = CreateContext()
 
 const initUserDetail = {}
 export default function AuthContextProvider(props)
@@ -72,7 +72,7 @@ export default function AuthContextProvider(props)
     );
 }
 
-export function useAuth()
+export function UseAuth()
 {
     return useContext(AuthContext)
 }

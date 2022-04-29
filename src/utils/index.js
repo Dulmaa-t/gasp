@@ -4,7 +4,7 @@
  * @param {number} spliceNo
  * @returns 0 ээр дүүрсэн тоо
  */
-export const fullZero = (num, spliceNo=-2) => ("0" + num).slice(spliceNo)
+export const FullZero = (num, spliceNo=-2) => ("0" + num).slice(spliceNo)
 
 /**
  * timezone ийг string date болгох
@@ -13,7 +13,7 @@ export const fullZero = (num, spliceNo=-2) => ("0" + num).slice(spliceNo)
  * @param {string}          symbol      өдрийн голд байх тэмдэгт
  * @returns бүтэн string date
  */
-export function timeZoneToDateString(timezone, hasHour=true, symbol="-", hasMs=false)
+export function TimeZoneToDateString(timezone, hasHour=true, symbol="-", hasMs=false)
 {
     const date = new Date(timezone)
 
